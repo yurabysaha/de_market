@@ -4,11 +4,6 @@ from product.forms import CommentForm
 from product.models import Comment, Item
 
 
-def home(request):
-    products = Item.objects.all()
-    return render(request, 'home.html', {'products': products})
-
-
 def create_comment(request, item_id):
     if request.user.is_authenticated:
         if request.method == "POST":

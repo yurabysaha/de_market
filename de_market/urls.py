@@ -21,7 +21,7 @@ from django.urls import path, include
 from product import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', include('pages.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('cart/', include('cart.urls')),

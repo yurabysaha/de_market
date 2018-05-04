@@ -6,5 +6,3 @@ from product.models import Item
 class Wishlist(models.Model):
     user = models.ForeignKey(User, related_name='wishlist', on_delete=models.CASCADE)
     item = models.ManyToManyField(Item)
-
-
