@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+        <div class="container h-100 mt-4">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title text-center">{% trans "Sign In" %}</h4>
+
+                    <!-- START FORM TO LOGIN! -->
+                            <form class="login" method="POST" action="{% url 'account_login' %}">
+                                {% csrf_token %}
+                            <!-- Login fields -->
+                                <div class="form-group">
+									<label for="id_login"><strong>E-mail:</strong></label>
+                                    <input type="email" name="email" required="" id="id_login" class="form-control" value="" required="" autofocus="">
+                                </div>
+                            <!-- Password fields -->
+                                <div class="form-group">
+									<label for="id_password"><strong>Password:</strong></label>
+                                    <div style="position:relative"><input type="password" name="password1" required="" id="id_password" class="form-control">
+                                    </div>
+                                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                                </div>
+                            <!-- Checkbox for "remember me" -->
+                                <div class="form-group text-center">
+                                    <label for="id_remember"><strong>Remember Me:</strong></label>
+                                    <input type="checkbox" name="remember" id="id_remember">
+                                </div>
+
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                {% endif %}
+
+								<div class="form-group mt-3">
+									<button type="submit" class="btn btn-primary btn-block">
+										{% trans "Sign In" %}
+									</button>
+								</div>
+							</form>
+                        <!-- END FORM TO LOGIN! -->
+
+                        <!-- LOGIN WITH SOCIAL ACCOUNTS -->
+                            {% get_providers as socialaccount_providers %}
+
+                            {% if socialaccount_providers %}
+                                <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                                    of your existing third party accounts. <br /> Or, <a href="{{ signup_url }}">sign up</a>
+                                    for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+                                <div class="socialaccount_ballot">
+                                <ul class="socialaccount_providers">
+                                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                                </ul>
+                                <div class="login-or">{% trans 'or' %}</div>
+                                </div>
+                            {% else %}
+                                <p class="text-center">{% blocktrans %}If you have not created an account yet, then please
+                                <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                            {% endif %}
+                            {% include "socialaccount/snippets/login_extra.html" %}
+						</div>
+					</div>
+
+				</div>
+            </div>
+		</div>
+
+{% endblock %}
