@@ -59,11 +59,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'de_market.urls'
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,7 +119,6 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # Internationalization
