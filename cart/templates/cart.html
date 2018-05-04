@@ -1,0 +1,15 @@
+{% block body %}
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.item.title }}</td>
+            <td>{{ item.item.price }}</td>
+            <td>{{ item.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
