@@ -34,27 +34,33 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item ml-3">
                     <a class="nav-link" href="#">About us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ml-3">
                     <a class="nav-link" href="#">Payment/Delivery</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ml-3">
                     <a class="nav-link" href="#">FAQ</a>
                 </li>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0 ml-3">
+                    <input class="form-control mr-sm-2 h-75" type="search" placeholder="Search by name" aria-label="Search">
+                    <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button>
                 </form>
             </ul>
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_signup' %}">Registration</a>
-                </li>
+                {% if not user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_signup' %}">Registration</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
