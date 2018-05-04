@@ -7,90 +7,92 @@
 
 {% block content %}
 
-        <div class="container h-100 mt-4">
-			<div class="row justify-content-md-center h-100">
-				<div class="card-wrapper">
+    <div class="container h-100 mt-4">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
 
-					<div class="card fat">
-						<div class="card-body">
+                <div class="card fat">
+                    <div class="card-body">
 
-                    <!-- Field with form.errors -->
+                        <!-- Field with form.errors -->
                         {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                {{ error|escape }}
-                            </div>
-                                    {% endfor %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        {{ error|escape }}
+                                    </div>
+                                {% endfor %}
                             {% endfor %}
                             {% for error in form.non_field_errors %}
                                 <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                                {{ error|escape }}
-                            </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    {{ error|escape }}
+                                </div>
                             {% endfor %}
                         {% endif %}
-                     <!-- END Field with form.errors -->
+                        <!-- END Field with form.errors -->
 
-							<h4 class="card-title text-center">{% trans "Sign In" %}</h4>
+                        <h4 class="card-title text-center">{% trans "Sign In" %}</h4>
 
-                    <!-- START FORM TO LOGIN! -->
-                            <form class="login" method="POST" action="{% url 'account_login' %}">
-                                {% csrf_token %}
+                        <!-- START FORM TO LOGIN! -->
+                        <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
                             <!-- Login fields -->
-                                <div class="form-group">
-                                   <label for="id_login"><strong>E-mail:</strong></label>
-                                   <input type="email" name="login" class="form-control" autofocus="autofocus" required="" id="id_login">
-                                </div>
+                            <div class="form-group">
+                                <label for="id_login"><strong>E-mail:</strong></label>
+                                <input type="email" name="login" class="form-control" autofocus="autofocus" required=""
+                                       id="id_login">
+                            </div>
                             <!-- Password fields -->
-                                <div class="form-group">
-                                    <label for="id_password"><strong>Password:</strong></label>
-                                    <input type="password" name="password" class="form-control" required="" id="id_password">
-                                    <a class="button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>
-                                </div>
+                            <div class="form-group">
+                                <label for="id_password"><strong>Password:</strong></label>
+                                <input type="password" name="password" class="form-control" required=""
+                                       id="id_password">
+                                <a class="button" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+                            </div>
                             <!-- Checkbox "Remember me" -->
-                                <div class="form-group text-center">
-                                    <label for="id_remember"><strong>Remember Me:</strong></label>
-                                    <input type="checkbox" name="remember" id="id_remember">
-                                </div>
-                                <div>
-                                    <button class="primaryAction btn btn-primary btn-block" type="submit">Sign In</button>
-                                </div>
-                            </form>
+                            <div class="form-group text-center">
+                                <label for="id_remember"><strong>Remember Me:</strong></label>
+                                <input type="checkbox" name="remember" id="id_remember">
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-danger btn-block" type="submit">Sign In</button>
+                            </div>
+                        </form>
                         <!-- END FORM TO LOGIN! -->
 
                         <!-- LOGIN WITH SOCIAL ACCOUNTS -->
-                            <div class="container mt-3">
-                                {% get_providers as socialaccount_providers %}
+                        <div class="container mt-3">
+                            {% get_providers as socialaccount_providers %}
 
-                                {% if socialaccount_providers %}
+                            {% if socialaccount_providers %}
                                 <p>{% blocktrans with site.name as site_name %}Please sign in with one
-                                    of your existing third party accounts. <br /> Or, <a href="{{ signup_url }}">sign up</a>
+                                    of your existing third party accounts. <br/> Or,
+                                    <a href="{{ signup_url }}">sign up</a>
                                     for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-                                    <div class="socialaccount_ballot">
+                                <div class="socialaccount_ballot">
                                     <ul class="socialaccount_providers">
                                         {% include "socialaccount/snippets/provider_list.html" with process="login" %}
                                     </ul>
                                     <div class="login-or">{% trans 'or' %}</div>
-                                    </div>
-                                {% else %}
-                                    <p class="text-center">{% blocktrans %}If you have not created an account yet, then please
+                                </div>
+                            {% else %}
+                                <p class="text-center">{% blocktrans %} If you have not created an account yet, <br>
+                                    then please
                                     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-                                {% endif %}
-                                {% include "socialaccount/snippets/login_extra.html" %}
-                            </div>
-
-
+                            {% endif %}
+                            {% include "socialaccount/snippets/login_extra.html" %}
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
 
+        </div>
+    </div>
 
 {% endblock %}

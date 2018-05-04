@@ -6,68 +6,75 @@
 
 {% block content %}
 
-        <div class="container h-100 mt-4">
-			<div class="row justify-content-md-center h-100">
-				<div class="card-wrapper">
+    <div class="container h-100 mt-4">
+        <div class="row justify-content-md-center h-100">
+            <div class="card-wrapper">
 
-					<div class="card fat">
-						<div class="card-body">
-                            {% if form.errors %}
+                <div class="card fat">
+                    <div class="card-body">
+                        {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                {{ error|escape }}
-                            </div>
-                                    {% endfor %}
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        {{ error|escape }}
+                                    </div>
+                                {% endfor %}
                             {% endfor %}
                             {% for error in form.non_field_errors %}
                                 <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                                {{ error|escape }}
-                        </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    {{ error|escape }}
+                                </div>
                             {% endfor %}
                         {% endif %}
-							<h4 class="card-title text-center">{% trans "Sign Up" %}</h4>
-						<!-- START FORM TO REGISTRATIONS! -->
-                            <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-                                {% csrf_token %}
+                        <h4 class="card-title text-center">{% trans "Sign Up" %}</h4>
+                        <!-- START FORM TO REGISTRATIONS! -->
+                        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
                             <!-- Email field -->
-								<div class="form-group">
-									<label for="id_email"><strong>E-mail:</strong></label>
-                                    <input type="email" name="email" required="" id="id_email" class="form-control" value="" required="" autofocus="">
-                                </div>
+                            <div class="form-group">
+                                <label for="id_email"><strong>E-mail:</strong></label>
+                                <input type="email" name="email" required="" id="id_email" class="form-control" value=""
+                                       required="" autofocus="">
+                            </div>
                             <!-- Password field -->
-								<div class="form-group">
-									<label for="id_password1"><strong>Password:</strong></label>
-                                    <div style="position:relative"><input type="password" name="password1" required="" id="id_password1" class="form-control">
-                                    </div>
+                            <div class="form-group">
+                                <label for="id_password1"><strong>Password:</strong></label>
+                                <div style="position:relative"><input type="password" name="password1" required=""
+                                                                      id="id_password1" class="form-control">
                                 </div>
+                            </div>
                             <!-- Password confirm field -->
-                                <div class="form-group">
-									<label for="id_password2"><strong>Password (again):</strong></label>
-                                    <div style="position:relative"><input type="password" name="password2" required="" id="id_password2" class="form-control">
+                            <div class="form-group">
+                                <label for="id_password2"><strong>Password (again):</strong></label>
+                                <div style="position:relative"><input type="password" name="password2" required=""
+                                                                      id="id_password2" class="form-control">
                                 </div>
 
-								<div class="form-group mt-3">
-									<button type="submit" class="btn btn-success btn-block">
-										{% trans "Sign Up" %}
-									</button>
-								</div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="btn btn-outline-danger btn-block">
+                                        {% trans "Sign Up" %}
+                                    </button>
+                                </div>
                                 {% if redirect_field_value %}
-                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                    <input type="hidden" name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
                                 {% endif %}
-								<div class="margin-top20 text-center">
-									<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-								</div>
-							</form>
-						</div>
-					</div>
+                                <div class="margin-top20 text-center">
+                                    <p>{% blocktrans %}Already have an account? Then please
+                                        <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-				</div>
             </div>
-		</div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -16,6 +16,8 @@
     {% endblock meta %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -65,6 +67,34 @@
         </div>
     </nav>
 </div>
+<div class="container">
+    <div class="row justify-content-end">
+
+        <div class="col-lg-3 col-md-6">
+           <div class="card-body border-0 text-center">
+                  <i class="material-icons" style="font-size: 35px; color: #FE3C01">settings_phone</i>
+                    <p>+470 033 2212 21</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+               <div class="card-body border-0 text-center">
+                  <a href="/"><i class="material-icons px-10" style="font-size: 35px; color: #FE3C01; padding-left: 33px">start</i>
+                    <p>Wish List</p></a>
+              </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+              <div class="card-body border-0 text-center">
+                  <a href="/"><i class="material-icons" style="font-size: 35px; color: #FE3C01">shopping_cart</i>
+                    <p>Open Cart</p></a>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
 <div class="container">
     {% if messages %}
         {% for message in messages %}
