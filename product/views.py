@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-# Create your views here
 from product.forms import CommentForm
-from product.models import Comment
+from product.models import Comment, Item
+
+
+def home(request):
+    products = Item.objects.all()
+    return render(request, 'home.html', {'products': products})
 
 
 def create_comment(request, item_id):
@@ -43,6 +47,6 @@ def comment_delete(request, comment_id):
         if request.method == "DELETE":
             comment.delete()
             return redirect("item_details")
-        return render(request, "product/item_details.html", context)
+        return render(request, "product/item_details.html")
     else:
         return redirect('/')

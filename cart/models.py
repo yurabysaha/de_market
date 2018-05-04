@@ -1,3 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+from product.models import Item
+
+
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    item = models.ManyToManyField(Item)
+    last_change = models.DateTimeField(auto_now_add=True)
