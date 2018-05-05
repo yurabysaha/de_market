@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from product.forms import CommentForm
-from product.models import Comment, Item
+from product.models import Comment, Item, Category
 
 
 def open_detail(request, item_id):
@@ -51,3 +51,7 @@ def comment_delete(request, comment_id):
         return render(request, "product/item_details.html")
     else:
         return redirect('/')
+
+def category_list(request):
+    categories = Category.objects.order_by('name_en').all()
+    return render(request, 'home.html', {'categories': categories})
