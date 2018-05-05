@@ -1,11 +1,12 @@
 from django.shortcuts import render
 
-from product.models import Item
+from product.models import Item, Category
 
 
 def home(request):
     products = Item.objects.all()
-    return render(request, 'home.html', {'products': products})
+    categories = Category.objects.all()
+    return render(request, 'home.html', {'products': products, 'categories': categories})
 
 
 def about_us(request):

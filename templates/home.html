@@ -2,5 +2,12 @@
 {% load i18n %}
 
 {% block content %}
-
+    <div class="brand" style="font-size: 25px">
+        <i class="material-icons card-body" style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu</i>Categories</div>
+        <div class="list-group w-25">
+    {% for category in categories %}
+        <a href="#" class="list-group-item list-group-item-action border-0 ">
+            <i class="material-icons" style="font-size: 25px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }} </a>
+    {% endfor %}
+    </div>
 {% endblock %}
