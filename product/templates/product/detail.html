@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+    <div class="row mb-5">
+        <div class="col-lg-6 item-photo">
+            <img class="img-thumbnail" style="max-width:100%;" src="{{ item.photos.first.image.url }}"/>
+        </div>
+
+        <div class="col-lg-5">
+            <h3>{{ item.title_en }}</h3>
+            <h4 class="mt-4">PRICE € {{ item.price }}</h4>
+
+            <div class="section p-2">
+                <a class="btn btn-outline-danger m-2" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
+                                                                                                style="font-size: 20px; color: #FE3C01">shopping_cart</i>
+                    Add to Cart</a>
+                <a class="btn btn-outline-danger" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons"
+                                                                                                style="font-size: 20px; margin-right: -20px; color: #FE3C01">start</i>
+                    Add to Wish List</a>
+            </div>
+        </div>
+    </div>
+
+{#    description block   #}
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    {{ item.description_en }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {#  Item like this block   #}
+<div class="row">
+
+</div>
+
+    {#  Comments block   #}
+<div class="row">
+
+</div>
+
+{% endblock %}

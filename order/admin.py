@@ -3,9 +3,10 @@ from django.contrib import admin
 from order.models import Order
 
 
-class ItemInline(admin.StackedInline):
+class ItemInline(admin.TabularInline):
     model = Order.items.through
-    extra = 1
+    extra = 0
+    model._meta.verbose_name_plural = "Order Items"
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -13,7 +14,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [ItemInline]
     list_filter = ('status',)
     search_fields = ('pk',)
-    list_display = ('__str__', 'user', 'total', 'status')
+    list_display = ('__str__', 'user', 'total', 'status',)
     exclude = ('items',)
 
 

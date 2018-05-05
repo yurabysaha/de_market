@@ -4,6 +4,12 @@ from product.forms import CommentForm
 from product.models import Comment, Item
 
 
+def open_detail(request, item_id):
+        if request.method == "GET":
+            item = get_object_or_404(Item, id=item_id)
+            return render(request, 'product/detail.html', {'item': item})
+
+
 def create_comment(request, item_id):
     if request.user.is_authenticated:
         if request.method == "POST":
