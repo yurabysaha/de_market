@@ -52,6 +52,7 @@ def comment_delete(request, comment_id):
     else:
         return redirect('/')
 
+
 def category_list(request):
     categories = Category.objects.order_by('name_en').all()
     return render(request, 'home.html', {'categories': categories})
