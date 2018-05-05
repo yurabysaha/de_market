@@ -7,7 +7,7 @@ def add_to_cart(request, item_id):
     if request.user.is_authenticated:
 
         if request.method == "POST":
-            cart = Cart.objects.get_or_create(user_id=request.user_id)
+            cart = Cart.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(id=item_id)
             cart.add(item)
             return render(request, 'cart.html', {'cart': cart})
@@ -20,7 +20,7 @@ def add_to_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     if request.user.is_authenticated:
-        cart = Cart.objects.get_or_create(user_id=request.user_id)
+        cart = Cart.objects.get_or_create(user_id=request.user.id)
         item = get_object_or_404(id=item_id)
         cart.remove(item)
         return render(request, 'cart.html', {'cart': cart})
@@ -31,7 +31,7 @@ def remove_from_cart(request, item_id):
 
 def get_cart(request):
     if request.user.is_authenticated:
-        cart = Cart.objects.get_or_create(user_id=request.user_id)
+        cart = Cart.objects.get_or_create(user_id=request.user.id)
         return render(request, 'cart.html', {'cart': cart})
 
     else:
