@@ -30,7 +30,7 @@ def remove_from_wishlist(request, item_id):
 
 def get_wishlist(request):
     if request.user.is_authenticated:
-        wishlist = Wishlist.objects.get_or_create(user_id=request.user_id)
+        wishlist = Wishlist.objects.get_or_create(user_id=request.user.id)
         return render(request, 'wishlist.html', {'wishlist': wishlist})
 
     else:

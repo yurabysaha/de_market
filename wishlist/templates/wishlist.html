@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+ {% if item.item %}
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.item.title }}</td>
+            <td>{{ item.item.price }}</td>
+            <td>{{ item.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+ {% else %}
+    <h4>Payment/Delivery will be there</h4>
+
+ {% endif %}
+
+{% endblock %}
+
