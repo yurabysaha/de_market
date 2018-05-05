@@ -39,23 +39,7 @@
     <h4 class="text-secondary">Similar items</h4>
 
 <div class="row">
-    <div class="card-columns">
-        {%  for i in similar_items  %}
-            <div class="card"  style="max-width: 300px">
-                <a href="{% url 'item-detail' i.id %}" class="text-dark" style="text-decoration: none">
-                    <img class="card-img-top" src="{{ i.photos.first.image.url }}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title ">{{ i.title_en }}</h5>
-                    </div>
-                </a>
-                <div class="card-footer d-flex justify-content-between">
-                  <span><a href="{% url 'add_to_wishlist' i.id %}"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">start</i></a></span>
-                  <span class="font-weight-bold text-danger">€ {{ i.price }}</span>
-                  <span><a href="{% url 'add_to_cart' i.id %}"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">add_shopping_cart</i></a></span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% include 'product/card_items.html' %}
 </div>
 
     {#  Comments block   #}
