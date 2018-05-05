@@ -10,4 +10,21 @@
             <i class="material-icons" style="font-size: 25px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }} </a>
     {% endfor %}
     </div>
+        {% for item in products %}
+            <div class="air-card air-card m-0-left m-0-top p-0-top-bottom" style="margin-top: 15px;">
+                <div class="container">
+                    <form method="POST" action="cart/add/{{ item.id }}" class="form-group">{% csrf_token %}
+                    <div class="text-center">
+                        <tr>
+                            <td>{{ item.title_en }}</td>
+                            <td>{{ item.description_en }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.status }}</td>
+                            <button class="btn btn-outline-info" type="submit">Add<i class="fa fa-paper-plane-o ml-2"></i></button>
+                        </tr>
+                    </div>
+                </form>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}

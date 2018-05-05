@@ -7,9 +7,11 @@ def add_to_cart(request, item_id):
     if request.user.is_authenticated:
 
         if request.method == "POST":
-            cart = Cart.objects.get_or_create(user_id=request.user.id)
-            item = get_object_or_404(id=item_id)
-            cart.add(item)
+            cart1 = Cart.objects.get_or_create(user_id=request.user.id)
+            item = get_object_or_404(Item, id=item_id)
+            cart2 = list(cart1)
+            cart2.append(item)
+            cart = tuple(cart2)
             return render(request, 'cart.html', {'cart': cart})
         else:
             return redirect('/cart')
@@ -20,7 +22,7 @@ def add_to_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     if request.user.is_authenticated:
-        cart = Cart.objects.get_or_create(user_id=request.user.id)
+        cart = Cart.objects.get_or_create(Item, user_id=request.user.id)
         item = get_object_or_404(id=item_id)
         cart.remove(item)
         return render(request, 'cart.html', {'cart': cart})

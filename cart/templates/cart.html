@@ -1,15 +1,16 @@
-{% block body %}
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Price</th>
-        </tr>
-        {% for item in cart %}
-        <tr>
-            <td>{{ item.title_en }}</td>
-            <td>{{ item.item.price }}</td>
-            <td>{{ item.total_price }}</td>
-        </tr>
+{% extends "base.html" %}
+
+
+{% for item in cart %}
+                <div class="container">
+                    <div class="text-center">
+                        <tr>
+                            <td>{{ item.title_en }}</td>
+                            <td>{{ item.description_en }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.status }}</td>
+                            <button class="btn btn-outline-info" type="submit">Add<i class="fa fa-paper-plane-o ml-2"></i></button>
+                        </tr>
+                    </div>
+                </div>
         {% endfor %}
-    </table>
-{% endblock %}
