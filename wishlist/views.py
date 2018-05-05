@@ -7,8 +7,8 @@ def add_to_wishlist(request, item_id):
     if request.user.is_authenticated:
         if request.method == "POST":
             wishlist = Wishlist.objects.get_or_create(user_id=request.user.id)
-            item = get_object_or_404(id=item_id)
-            wishlist.add(item)
+            item = get_object_or_404(Item, id=item_id)
+            wishlist.append(item)
             return render(request, 'wishlist.html', {'wishlist': wishlist})
         else:
             return redirect('/wishlist')
@@ -20,7 +20,7 @@ def add_to_wishlist(request, item_id):
 def remove_from_wishlist(request, item_id):
     if request.user.is_authenticated:
         wishlist = Wishlist.objects.get_or_create(user_id=request.user.id)
-        item = get_object_or_404(id=item_id)
+        item = get_object_or_404(Item, id=item_id)
         wishlist.remove(item)
         return render(request, 'wishlist.html', {'wishlist': wishlist})
 
