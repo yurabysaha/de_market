@@ -1,3 +1,13 @@
-{% for item in wishlist %}
-    <h4>{{ item.title_en }}</h4>
-{% endfor %}
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+    {% for item in wishlist.item.all %}
+
+            <h4>{{ item.title_en }}</h4>
+
+    {% endfor %}
+
+{% endblock %}

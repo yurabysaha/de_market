@@ -5,13 +5,11 @@ from .models import Wishlist
 
 def add_to_wishlist(request, item_id):
     if request.user.is_authenticated:
-        if request.method == "POST":
-            wishlist = Wishlist.objects.get_or_create(user_id=request.user.id)
+        if request.method == "GET":
+            wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
-            wishlist = list(wishlist)
-            wishlist.append(item)
-            return render(request, 'wishlist/wishlist.html', {'wishlist': wishlist})
-
+            wishlist.item.add(item)
+            return redirect('/')
         else:
             return redirect('/wishlist')
 
@@ -33,7 +31,7 @@ def remove_from_wishlist(request, item_id):
 
 def get_wishlist(request):
     if request.user.is_authenticated:
-        wishlist = Wishlist.objects.get_or_create(user_id=request.user.id)
+        wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
         return render(request, 'wishlist/wishlist.html', {'wishlist': wishlist})
 
     else:
