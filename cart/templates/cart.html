@@ -4,7 +4,6 @@
 
 {% block content %}
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
   <table id="cart" class="table table-hover table-condensed">
     <thead>
@@ -19,16 +18,16 @@
       <tr>
         <td data-th="Product">
           <div class="row">
-            <div class="col-sm-2 hidden-xs"><img src="{{ item.photos.first.image.url }}" alt="..." class="img-responsive" /></div>
+            <div class="col-sm-2 hidden-xs"><img  class="card-img-top" src="{{ item.photos.first.image.url }}"  alt="Card image cap" class="img-responsive" /></div>
             <div class="col-sm-10">
-              <h4 class="nomargin">{{ item.title_en }}</h4>
-              <p>{{ item.description_en }}</p>
+              <a href="{% url 'item-detail' item.id %}"><h4 class="nomargin">{{ item.title_en }}</h4></a>
+              <p>{{ item.sku }}</p>
             </div>
           </div>
         </td>
         <td data-th="Price">{{ item.price }}€</td>
         <td class="actions" data-th="">
-          <a href="{% url 'remove_from_cart' item.id %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+          <a href="{% url 'remove_from_cart' item.id %}"><button class="btn btn-danger btn-sm"><i class="material-icons">delete</i></button>
         </td>
       </tr>
     </tbody>
@@ -37,7 +36,7 @@
 
       <tr>
         <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-        <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+        <td class="hidden-xs text-center"><strong>Total price is $1.99</strong></td>
         <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
       </tr>
     </tfoot>
