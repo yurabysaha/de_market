@@ -4,9 +4,9 @@ from product.models import Item, Category
 
 
 def home(request):
-    products = Item.objects.all()
+    items = Item.objects.all()[:12]
     categories = Category.objects.all()
-    return render(request, 'home.html', {'products': products, 'categories': categories})
+    return render(request, 'home.html', {'items': items, 'categories': categories})
 
 
 def about_us(request):
