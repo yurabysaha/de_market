@@ -1,3 +1,5 @@
+import random
+
 from django.contrib import admin
 
 from product.models import Item, ItemPhoto, Category
@@ -11,9 +13,16 @@ class ItemPhotoInline(admin.TabularInline):
 class ItemAdmin(admin.ModelAdmin):
     """Add photos to Item in Admin"""
     inlines = [ItemPhotoInline]
-    list_display = ('pk', '__str__', 'status', 'category',)
+    list_display = ('sku', '__str__', 'status', 'category',)
     list_filter = ('category',)
-    search_fields = ('pk',)
+    search_fields = ('sku',)
+    readonly_fields = ('sku',)
+
+    def save_model(self, request, obj, form, change):
+        """Add SKU to Item."""
+        super().save_model(request, obj, form, change)
+        obj.sku = str(obj.id) + str(random.randint(100, 999))
+        obj.save()
 
 
 admin.site.register(Item, ItemAdmin)
