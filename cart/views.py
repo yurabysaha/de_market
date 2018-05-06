@@ -30,4 +30,3 @@ def get_cart(request):
 
     else:
         return redirect('/')
-
