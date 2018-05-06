@@ -2,29 +2,47 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="brand" style="font-size: 25px">
-        <i class="material-icons card-body" style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu</i>Categories</div>
-        <div class="list-group w-25">
-    {% for category in categories %}
-        <a href="#" class="list-group-item list-group-item-action border-0 ">
-            <i class="material-icons" style="font-size: 25px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }} </a>
-    {% endfor %}
-    </div>
-        {% for item in products %}
-            <div class="air-card air-card m-0-left m-0-top p-0-top-bottom" style="margin-top: 15px;">
-                <div class="container">
-                    <form method="POST" action="wishlist/add_wish/{{ item.id }}" class="form-group">{% csrf_token %}
-                    <div class="text-center">
-                        <tr>
-                            <td>{{ item.title_en }}</td>
-                            <td>{{ item.description_en }}</td>
-                            <td>{{ item.price }}</td>
-                            <td>{{ item.status }}</td>
-                            <button class="btn btn-outline-info" type="submit">Add to Wish List<i class="fa fa-paper-plane-o ml-2"></i></button>
-                        </tr>
-                    </div>
-                </form>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="brand" style="font-size: 25px">
+                <i class="material-icons card-body" style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu
+                </i>Categories</div>
+                <div class="list-group">
+                    {% for category in categories %}
+                         <a href="#" class="list-group-item list-group-item-action border-0 ">
+                             <i class="material-icons" style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }}</a>
+                    {% endfor %}
                 </div>
             </div>
-        {% endfor %}
-{% endblock %}
+
+    <div class="col-lg-9">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+             <div class="carousel-inner">
+                <div class="carousel-item active">
+                     <img class="d-block w-100" src="https://images.pexels.com/photos/994524/pexels-photo-994524.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://images.pexels.com/photos/891676/pexels-photo-891676.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Second slide">
+                </div>
+                 <div class="carousel-item">
+                     <img class="d-block w-100" src="https://images.pexels.com/photos/243059/pexels-photo-243059.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Third slide">
+                 </div>
+             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+     </div>
+
+     <h4 class="text-secondary">Last added products</h4>
+        <div class="row">
+            {% include 'product/card_items.html' %}
+        </div>
+    </div>
+
+    {% endblock %}
