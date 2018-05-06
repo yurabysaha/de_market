@@ -26,7 +26,12 @@ def remove_from_cart(request, item_id):
 def get_cart(request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user_id=request.user.id)
-        return render(request, 'cart.html', {'cart': cart})
 
+        # canculate total for price in cart items
+        cart_total = 0
+        for i in cart.item.all():
+            cart_total += i.price
+
+        return render(request, 'cart.html', {'cart': cart, 'cart_total': cart_total})
     else:
         return redirect('/')
