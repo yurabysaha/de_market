@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<body>
+
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%">Product Name</th>
+          <th style="width:10%">SKU</th>
+          <th style="width:10%">Price</th>
+          <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+{% for item in wishlist.item.all %}
+      <tr>
+        <td data-th="Product">
+          <div class="row">
+            <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
+            <div class="col-lg-10">
+                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title_en }}</h5></a>
+            </div>
+          </div>
+        </td>
+        <td>
+          {{ item.sku }}
+          </td>
+        <td data-th="Price">{{ item.price }}€</td>
+        <td class="actions" data-th="">
+          <a href="{% url 'remove_from_wishlist' item.id %}" class="btn btn-outline-danger btn-sm"
+             style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
+          <a href="{% url 'add_to_cart' item.id %}" class="btn btn-outline-danger btn-sm"
+             style="padding: 5px; padding-bottom: 0;"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">add_shopping_cart</i></a>
+        </td>
+      </tr>
+    </tbody>
+      {% endfor %}
+       <td><a href="/" class="btn btn-outline-secondary">Continue Shopping</a></td>
+  </table>
+</div>
+
+{% endblock %}
