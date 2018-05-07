@@ -4,6 +4,45 @@
 
 {% block content %}
 
+<body>
+{% for item in wishlist.item.all %}
+
+<div class="container">
+  <h2>Wish list</h2>
+  <table class="table">
+    <thead>
+       <tr>
+        <th style="width:50%">Product Name</th>
+          <th style="width:10%">SKU</th>
+          <th style="width:10%">Price</th>
+          <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-th="Product">
+          <div class="row">
+            <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
+            <div class="col-lg-10">
+                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title_en }}</h5></a>
+            </div>
+          </div>
+        </td>
+        <td>{{ item.sku }}</td>
+        <td>€{{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+    {% endfor %}
+
+
+
+
+
+
     {% for item in wishlist.item.all %}
 
             <h4>{{ item.title_en }}</h4>

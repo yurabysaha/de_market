@@ -28,7 +28,7 @@
           <td>
           {{ item.sku }}
           </td>
-        <td data-th="Price">{{ item.price }}€</td>
+        <td data-th="Price">€ {{ item.price }}</td>
         <td class="actions" data-th="">
           <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
         </td>
