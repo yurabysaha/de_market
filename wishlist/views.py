@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from product.models import Item
 from .models import Wishlist
@@ -9,6 +10,7 @@ def add_to_wishlist(request, item_id):
             wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
             wishlist.item.add(item)
+            messages.success(request, 'You add item to Wish list!')
             return redirect('/')
         else:
             return redirect('/wishlist')

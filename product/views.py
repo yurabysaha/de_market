@@ -5,10 +5,10 @@ from product.models import Comment, Item, Category
 
 
 def open_detail(request, item_id):
-        if request.method == "GET":
-            item = get_object_or_404(Item, id=item_id)
-            items = Item.objects.exclude(id=item_id)[:3]
-            return render(request, 'product/detail.html', {'item': item, 'items': items})
+    item = get_object_or_404(Item, id=item_id)
+    items = Item.objects.exclude(id=item_id)[:3]
+
+    return render(request, 'product/detail.html', {'item': item, 'items': items})
 
 
 def create_comment(request, item_id):
@@ -52,7 +52,3 @@ def comment_delete(request, comment_id):
         return render(request, "product/item_details.html")
     else:
         return redirect('/')
-
-def category_list(request):
-    categories = Category.objects.order_by('name_en').all()
-    return render(request, 'home.html', {'categories': categories})

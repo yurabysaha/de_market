@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cart
 from product.models import Item
@@ -9,6 +10,7 @@ def add_to_cart(request, item_id):
             cart, created = Cart.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
             cart.item.add(item)
+            messages.success(request, 'You add item to cart!')
     return redirect('/')
 
 
