@@ -26,7 +26,7 @@ class Item(models.Model):
         (1, 'Published'),
         (2, 'Sold'),
     )
-
+    sku = models.CharField(max_length=255, verbose_name='SKU')
     title_en = models.CharField(max_length=255, verbose_name='Name on English')
     title_de = models.CharField(max_length=255, verbose_name='Name on German')
     description_en = models.TextField(verbose_name='Description on English')

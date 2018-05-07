@@ -1,15 +1,48 @@
-{% block body %}
-    <table>
-        <tr>
-            <th>Item</th>
-            <th>Price</th>
-        </tr>
-        {% for item in cart %}
-        <tr>
-            <td>{{ item.item.title }}</td>
-            <td>{{ item.item.price }}</td>
-            <td>{{ item.total_price }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:50%">Product Name</th>
+          <th style="width:10%">SKU</th>
+          <th style="width:10%">Price</th>
+          <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+       {% for item in cart.item.all %}
+      <tr>
+        <td data-th="Product">
+          <div class="row">
+            <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
+            <div class="col-lg-10">
+              <h5 class="nomargin">{{ item.title_en }}</h5>
+            </div>
+          </div>
+        </td>
+          <td>
+          {{ item.sku }}
+          </td>
+        <td data-th="Price">{{ item.price }}€</td>
+        <td class="actions" data-th="">
+            <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+        </td>
+      </tr>
+    </tbody>
+      {% endfor %}
+    <tfoot>
+      <tr>
+        <td><a href="/" class="btn btn-warning">Continue Shopping</a></td>
+        <td class="hidden-xs text-center"><strong>€  {{ cart_total }}</strong></td>
+        <td><a href="#" class="btn btn-success btn-block">Checkout</a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
 {% endblock %}
