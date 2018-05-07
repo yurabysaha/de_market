@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from product.models import Item
 from .models import Wishlist
@@ -9,12 +10,13 @@ def add_to_wishlist(request, item_id):
             wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
             wishlist.item.add(item)
-            return redirect('/')
-        else:
-            return redirect('/wishlist')
+            messages.success(request, 'You add item to Wish list!')
 
+            return redirect('/')
     else:
-        return redirect('/')
+        messages.info(request, 'Please login or register first!')
+
+    return redirect('/')
 
 
 def remove_from_wishlist(request, item_id):
@@ -22,8 +24,8 @@ def remove_from_wishlist(request, item_id):
         wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
         item = get_object_or_404(Item, id=item_id)
         wishlist.item.remove(item)
-        return redirect('/wishlist')
 
+        return redirect('/wishlist')
     else:
         return redirect('/')
 
@@ -31,7 +33,7 @@ def remove_from_wishlist(request, item_id):
 def get_wishlist(request):
     if request.user.is_authenticated:
         wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
-        return render(request, 'wishlist.html', {'wishlist': wishlist})
 
+        return render(request, 'wishlist.html', {'wishlist': wishlist})
     else:
         return redirect('/')
