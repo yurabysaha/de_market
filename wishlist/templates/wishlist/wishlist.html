@@ -5,13 +5,11 @@
 {% block content %}
 
 <body>
-{% for item in wishlist.item.all %}
 
 <div class="container">
-  <h2>Wish list</h2>
-  <table class="table">
+  <table id="cart" class="table table-hover table-condensed">
     <thead>
-       <tr>
+      <tr>
         <th style="width:50%">Product Name</th>
           <th style="width:10%">SKU</th>
           <th style="width:10%">Price</th>
@@ -19,6 +17,7 @@
       </tr>
     </thead>
     <tbody>
+{% for item in wishlist.item.all %}
       <tr>
         <td data-th="Product">
           <div class="row">
@@ -28,25 +27,21 @@
             </div>
           </div>
         </td>
-        <td>{{ item.sku }}</td>
-        <td>€{{ item.price }}</td>
+        <td>
+          {{ item.sku }}
+          </td>
+        <td data-th="Price">{{ item.price }}€</td>
+        <td class="actions" data-th="">
+          <a href="{% url 'remove_from_wishlist' item.id %}" class="btn btn-outline-danger btn-sm"
+             style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
+          <a href="{% url 'add_to_cart' item.id %}" class="btn btn-outline-danger btn-sm"
+             style="padding: 5px; padding-bottom: 0;"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">add_shopping_cart</i></a>
+        </td>
       </tr>
     </tbody>
+      {% endfor %}
+              <td><a href="/" class="btn btn-outline-secondary">Continue Shopping</a></td>
   </table>
 </div>
-
-</body>
-    {% endfor %}
-
-
-
-
-
-
-    {% for item in wishlist.item.all %}
-
-            <h4>{{ item.title_en }}</h4>
-
-    {% endfor %}
 
 {% endblock %}
