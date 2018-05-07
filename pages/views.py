@@ -19,3 +19,10 @@ def delivery(request):
 
 def faq(request):
     return render(request, 'faq.html')
+
+
+def search(request, item_id):
+    query = request.GET.get('q')
+    if query:
+        items = Item.objects.filter(title_en__icontains=query)
+        return render(request, 'search.html', {'items': items})
