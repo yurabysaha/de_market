@@ -11,6 +11,8 @@ def add_to_cart(request, item_id):
             item = get_object_or_404(Item, id=item_id)
             cart.item.add(item)
             messages.success(request, 'You add item to cart!')
+    else:
+        messages.info(request, 'Please login or register first!')
     return redirect('/')
 
 
@@ -22,14 +24,15 @@ def remove_from_cart(request, item_id):
         return redirect('/cart')
 
     else:
-        return redirect('/')
+        messages.info(request, 'Please login or register first!')
+    return redirect('/')
 
 
 def get_cart(request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user_id=request.user.id)
 
-        # canculate total for price in cart items
+        # calculate total for price in cart items
         cart_total = 0
         for i in cart.item.all():
             cart_total += i.price
