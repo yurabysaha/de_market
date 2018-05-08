@@ -45,10 +45,12 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <form class="form-inline my-2 my-lg-0 ml-3">
-                    <input class="form-control mr-sm-2 h-75" type="search" placeholder="Search by name" aria-label="Search">
-                    <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button>
-                </form>
+
+               <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="Search" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+                     <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="Search">
+                     <a href="{% url 'search' %}?q=&category_id="><button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button></a>
+               </form>
+
             </ul>
             <ul class="navbar-nav mr-auto">
                 {% if not user.is_authenticated %}
