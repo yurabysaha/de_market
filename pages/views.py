@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from product.models import Item, Category
 
@@ -22,6 +22,12 @@ def faq(request):
 
 
 def search(request):
-    query = request.GET.get('q')
-    items = Item.objects.filter(title_en__icontains=query)
-    return render(request, 'search.html', {'items': items})
+    categories = Category.objects.all()
+    query_item_name = request.GET.get('q')
+    query_category_id = request.GET.get('category_id')
+    if query_category_id:
+        items = Item.objects.filter(category=query_category_id, title_en__icontains=query_item_name)
+        return render(request, 'search.html', {'items': items, 'categories': categories})
+    else:
+        items = Item.objects.filter(title_en__icontains=query_item_name)
+        return render(request, 'search.html', {'items': items, 'categories': categories})

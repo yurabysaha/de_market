@@ -3,6 +3,25 @@
 
 {% block content %}
 
+<div class="form-group">
+  <form class="form-inline my-2 my-lg-0 ml-3" action="{% url 'search' %}" method="get">
+      <div style="width:0; margin:0 auto;">
+          <select class="form-control form-control sm-50 h-103"  name="category_id">
+                  <option value="">All Categories</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name_en }}</option>
+                {% endfor %}
+          </select>
+      </div>
+      <div>
+          <div style="width: 550px; margin:20px;">
+            <input class="form-control mr-sm-10 h-75"  id="searchbox" name="q" type="text" placeholder="Search">
+            <button type="submit" class="btn btn-outline-success h-75 p-1 m-1">Search</button>
+          </div>
+      </div >
+  </form>
+</div>
+
 {% if items %}
 <div class="card-columns">
 
