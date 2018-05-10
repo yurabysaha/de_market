@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from product.forms import CommentForm
 from product.models import Comment, Item, Category
-
+from product.help_functions import handle_pagination
 
 def open_detail(request, item_id):
         if request.method == "GET":
@@ -53,6 +53,20 @@ def comment_delete(request, comment_id):
     else:
         return redirect('/')
 
+
 def category_list(request):
     categories = Category.objects.order_by('name_en').all()
     return render(request, 'home.html', {'categories': categories})
+
+
+def category_detail(request, category_id):
+    if request.method == "GET":
+        cat = get_object_or_404(Category, id=category_id)
+        categories = Category.objects.order_by('name_en').all()
+        item_with_category = Item.objects.filter(category__id=category_id)
+        item = Item.objects.filter(category__id=category_id)[0]
+        return render(request, 'product/category_detail.html', {'categories': categories,
+                                                                'item_with_category': handle_pagination(request, item_with_category),
+                                                                'cat': cat,
+                                                                'item': item })
+

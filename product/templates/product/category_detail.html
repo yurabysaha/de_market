@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                <div class="dropdown">
+                    <div class="btn-group">
+                         <div class="btn"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <h4><i class="material-icons" style="font-size: 20px; position: relative; top: 2px; left: 5px">reorder</i>
+                            Categories</h4>
+                        </div>
+
+                    <div class="dropdown-menu">
+                        {% for category in categories %}
+                         <a class="dropdown-item" href="{% url 'category_detail' category.id %}">
+                             <i class="material-icons" style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }}</a>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </div>
+
+                </nav>
+            </div>
+
+            <div class="col-8">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                    <h4> {{ cat.name_en }} </h4>
+                </nav>
+            </div>
+        </div>
+    </div>
+ <!-- Pagination -->
+    <div class="container">
+
+
+        <nav class="mt-3">
+            <ul class="pagination pg-red">
+                <!--Arrow left-->
+                <li class="page-item">
+                    {% if item_with_category.has_previous %}
+                    <a class="page-link" aria-label="Previous"
+                       href="?page={{ item_with_category.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    {% endif %}
+                </li>
+                <!--Numbers-->
+                {% for num in item_with_category.paginator.page_range %}
+                    {% if item_with_category.number == num %}
+                        <li class="page-item active"><a class="page-link">{{ num }}</a></li>
+                    {% elif num > item_with_category.number|add:'-3' and num < item_with_category.number|add:'3' %}
+                        <li class="page-item"><a class="page-link">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <!--Arrow right-->
+                <li class="page-item">
+                    {% if item_with_category.has_next %}
+                    <a class="page-link" aria-label="Next"
+                       href="?page={{ item_with_category.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="container mt-3">
+        <div class="card-columns mt-4">
+
+        {% for i in item_with_category %}
+        <div class="card" style="max-width: 300px">
+            <a href="{% url 'item-detail' i.id %}"><img class="card-img-top" src="{{ i.photos.first.image.url }}" alt="Card image cap"></a>
+                <div class="card-body">
+                    <a href="{% url 'item-detail' i.id %}"><h5 class="card-title ">{{ i.title_en }}</h5></a>
+                </div>
+                        <div class="card-footer d-flex justify-content-between">
+                <span><a href="{% url 'add_to_wishlist' i.id %}"><i class="material-icons"
+                                                                    style="font-size: 25px; color: #FE3C01;">start</i></a></span>
+                <span class="font-weight-bold text-danger">€ {{ i.price }}</span>
+                <span><a href="{% url 'add_to_cart' i.id %}"><i class="material-icons"
+                                                                style="font-size: 25px; color: #FE3C01;">add_shopping_cart</i></a></span>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="container mt-5" style="border: 1px solid #9a9a9a">
+        <div>
+            <h4 class="font-italic mt-3" style="color: #FE3C01"> <strong></strong>{{ cat.name_en }}</h4>
+            <img src="{{ item.photos.first.image.url }}" class="float-right img-thumbnail ml-2" alt="placeholder" height="360px" width="240px" >
+            <p class="text-justify">{{ cat.description_en }}</p>
+        </div>
+    </div>
+{% endblock %}
