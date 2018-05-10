@@ -46,22 +46,21 @@
 
     {#  Comments block  #}
 
-<div class="container">
+<div class="table-responsive">
         <h2 class="text-center">Comments</h2>
-  <table class="table">
+  <table class="table table-hover">
       {% for comment in comments %}
     <thead>
       <tr>
         <th>Commented by: {{ user.email }}  at  {{ comment.created_at|date:"M d" }}</th>
-        <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
     <div class="btn-group-vertical">
       <tr>
-         <td>{{ comment.body }}</td>
-         <td><button class="btn btn-link"><a href="/item/{{ item.id }}/comment/{{ comment.id }}/update"><i class="material-icons"
+          <td><p class="text-muted">{{ comment.body }}</p></td>
+          <td><button class="btn btn-link"><a href="/item/{{ item.id }}/comment/{{ comment.id }}/update"><i class="material-icons"
                                                                 style="font-size: 25px; color: #FE3C01;">edit</i></a></button>
           <form method="post" action="/item/{{ item.id }}/comment/{{ comment.id }}/delete/" class="post-form">{% csrf_token %}
           <button class="btn btn-link"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">delete</i></button>
