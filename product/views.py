@@ -24,7 +24,7 @@ def create_comment(request, item_id):
                 return redirect('/item/{}'.format(item_id))
         else:
             form = CommentForm()
-            return render(request, 'product/comment_create_update.html', {'form': form})
+            return render(request, 'product/comment_create.html', {'form': form})
     else:
         return redirect('/')
 
@@ -39,7 +39,7 @@ def update_comment(request, comment_id, item_id):
                 return redirect('/item/{}'.format(item_id))
         else:
             form = CommentForm(instance=comment)
-        return render(request, 'product/comment_create_update.html', {'form': form})
+        return render(request, 'product/comment_update.html', {'form': form})
     else:
         return redirect('/')
 
