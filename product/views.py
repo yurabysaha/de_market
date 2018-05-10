@@ -31,7 +31,7 @@ def create_comment(request, item_id):
 
 def update_comment(request, comment_id, item_id):
     if request.user.is_authenticated:
-        comment = get_object_or_404(Comment, id=comment_id)
+        comment = get_object_or_404(Comment, id=comment_id, user=request.user.id)
         if request.method == "POST":
             form = CommentForm(request.POST, instance=comment)
             if form.is_valid():
@@ -46,10 +46,10 @@ def update_comment(request, comment_id, item_id):
 
 def comment_delete(request, comment_id, item_id):
     if request.user.is_authenticated:
-        comment = get_object_or_404(Comment, id=comment_id)
-        if request.method == "DELETE":
+        comment = get_object_or_404(Comment, id=comment_id, user=request.user.id)
+        if request.method == "POST":
             comment.delete()
-            return render(request, "product/detail.html")
+            return redirect('/item/{}'.format(item_id))
         return render(request, "product/detail.html")
     else:
         return redirect('/')
