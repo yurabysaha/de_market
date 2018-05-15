@@ -28,7 +28,7 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Market</a>
+        <a class="navbar-brand" href="/">Market</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,10 +45,12 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
                 </li>
-                <form class="form-inline my-2 my-lg-0 ml-3">
-                    <input class="form-control mr-sm-2 h-75" type="search" placeholder="Search by name" aria-label="Search">
-                    <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button>
-                </form>
+
+                       <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="Search" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+                             <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="Search">
+                             <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button>
+                       </form>
+
             </ul>
             <ul class="navbar-nav mr-auto">
                 {% if not user.is_authenticated %}
@@ -79,18 +81,17 @@
 
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
-                  <a href="{% url 'get-cart' %}"><i class="material-icons px-10" style="font-size: 35px; color: #FE3C01; padding-left: 33px">start</i>
+                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
                     <p class="text-secondary">Wish List</p></a>
               </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
               <div class="card-body border-0 text-center">
-                  <a href="/cart"><i class="material-icons" style="font-size: 35px; color: #FE3C01">shopping_cart</i>
+                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
                     <p class="text-secondary">Open Cart</p></a>
               </div>
         </div>
-
     </div>
 </div>
 
