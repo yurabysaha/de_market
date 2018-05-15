@@ -37,6 +37,8 @@
 
 
         <nav class="mt-3">
+        <!-- перевірити на метод першої сторінки -->
+            {% if item_with_category.has_next %}
             <ul class="pagination pg-red">
                 <!--Arrow left-->
                 <li class="page-item">
@@ -67,6 +69,7 @@
                     {% endif %}
                 </li>
             </ul>
+        {% endif %}
         </nav>
 
     </div>
@@ -90,9 +93,9 @@
         {% endfor %}
         </div>
     </div>
-    <div class="container mt-5" style="border: 1px solid #9a9a9a">
+    <div class="container mt-5" style="border: 1px solid #9a9a9a;  min-height: 250px;">
         <div>
-            <h4 class="font-italic mt-3" style="color: #FE3C01"> <strong></strong>{{ cat.name_en }}</h4>
+            <h4 class="font-italic mt-3" style="color: #FE3C01;"> <strong></strong>{{ cat.name_en }}</h4>
             <img src="{{ item.photos.first.image.url }}" class="float-right img-thumbnail ml-2" alt="placeholder" height="360px" width="240px" >
             <p class="text-justify">{{ cat.description_en }}</p>
         </div>
