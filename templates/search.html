@@ -5,17 +5,16 @@
 
 <div class="form-group">
   <form class="form-inline my-2 my-lg-0 ml-3" method="get">
-      <div style="width:0; margin:0 auto;">
           <select class="form-control form-control sm-50 h-103" name="category_id">
                    <option value="">All Categories</option>
                               {% for category in categories %}
-                                    {% if  category.id == query_category_id %}
+                                    {% if category.id|slugify == query_category_id %}
                                             <option value="{{ category.id }}" selected="selected">{{ category.name_en }}</option>
-                                    {% endif %}
+                                    {% else %}
                                             <option value="{{ category.id }}">{{ category.name_en }}</option>
+                                  {% endif %}
                               {% endfor %}
           </select>
-      </div>
       <div>
           <div style="width: 550px; margin:20px;">
             <input class="form-control mr-sm-10 h-75"  id="searchbox" name="q" type="text" placeholder="Search", value="{{ query_item_name }}" >
@@ -46,12 +45,10 @@
             </div>
         </div>
     {% endfor %}
-  </table>
-</div>
 </div>
 {% else %}
 
-<h4><center>No results</center></h4>
+<h4 class="text-center">No results</h4>
 
 {% endif %}
 {% endblock %}
