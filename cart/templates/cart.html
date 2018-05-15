@@ -25,21 +25,21 @@
             </div>
           </div>
         </td>
-          <td>
+        <td>
           {{ item.sku }}
-          </td>
+        </td>
         <td data-th="Price">{{ item.price }}€</td>
         <td class="actions" data-th="">
-          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
+          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm" style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
         </td>
       </tr>
     </tbody>
       {% endfor %}
     <tfoot>
       <tr>
-        <td><a href="/" class="btn btn-warning">Continue Shopping</a></td>
-        <td class="hidden-xs text-center"><strong>Total price: €{{ cart_total }}</strong></td>
-        <td><a href="#" class="btn btn-success btn-block">Checkout</a></td>
+        <td><a href="/" class="btn btn-outline-secondary">Continue Shopping</a></td>
+        <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
+        <td ><a href="#" class="btn btn-outline-danger btn-block">Checkout</a></td>
       </tr>
     </tfoot>
   </table>
