@@ -27,7 +27,7 @@ def search(request):
     query_category_id = request.GET.get('category_id')
     if query_category_id:
         items = Item.objects.filter(category=query_category_id, title_en__icontains=query_item_name)
-        return render(request, 'search.html', {'items': items, 'categories': categories})
+        return render(request, 'search.html', {'items': items, 'categories': categories, 'query_item_name':query_item_name, 'query_category_id':query_category_id})
     else:
         items = Item.objects.filter(title_en__icontains=query_item_name)
-        return render(request, 'search.html', {'items': items, 'categories': categories})
+        return render(request, 'search.html', {'items': items, 'categories': categories, 'query_item_name':query_item_name})
