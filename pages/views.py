@@ -18,7 +18,8 @@ def delivery(request):
 
 
 def faq(request):
-    return render(request, 'faq.html')
+    categories = Category.objects.all()
+    return render(request, 'faq.html', {'categories': categories})
 
 
 def search(request):
