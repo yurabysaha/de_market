@@ -73,8 +73,11 @@
 </div>
         <div class="row pt-2">
               <div class="col-12">
-                  <p class="text-center">You can leave comment here</p>
-                  <p class="text-center"><a href="{% url 'create_comment' item.id %}" class="btn btn-sm btn-primary">Add Comment</a></p>
+                  <h2 class="text-center">Add Comment</h2>
+                        <form method="POST" class="post-form">{% csrf_token %}
+                            {{ form.as_p }}
+                            <h4 class="text-center"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">Add Comment</button></h4>
+                        </form>
               </div>
         </div>
 
