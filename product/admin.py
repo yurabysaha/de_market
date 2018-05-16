@@ -21,8 +21,9 @@ class ItemAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         """Add SKU to Item."""
         super().save_model(request, obj, form, change)
-        obj.sku = str(obj.id) + str(random.randint(100, 999))
-        obj.save()
+        if not obj.sku:
+            obj.sku = str(obj.id) + str(random.randint(100, 999))
+            obj.save()
 
 
 admin.site.register(Item, ItemAdmin)

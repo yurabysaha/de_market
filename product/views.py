@@ -6,13 +6,13 @@ from product.models import Comment, Item, Category
 def open_detail(request, item_id):
     item = get_object_or_404(Item, id=item_id)
     items = Item.objects.exclude(id=item_id)[:3]
-    comments = Comment.objects.all().filter(item=item)
+    comments = Comment.objects.filter(item=item)
     form = CommentForm()
     if request.method == "POST":
         create_comment(request, item_id)
         return redirect('/item/{}'.format(item_id))
     else:
-        return render(request, 'product/detail.html', {'item': item, 'items': items, 'comments':comments, 'form':form})
+        return render(request, 'product/detail.html', {'item': item, 'items': items, 'comments': comments, 'form': form})
 
 
 def create_comment(request, item_id):

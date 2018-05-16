@@ -11,6 +11,7 @@ class Category(models.Model):
     name_de = models.CharField(max_length=255, verbose_name='Name on German')
     description_en = models.TextField(verbose_name='Description on English')
     description_de = models.TextField(verbose_name='Description on German')
+    parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, verbose_name='Sub Category')
 
     def __str__(self):
         return self.name_en
@@ -32,6 +33,7 @@ class Item(models.Model):
     description_en = models.TextField(verbose_name='Description on English')
     description_de = models.TextField(verbose_name='Description on German')
     price = models.IntegerField(verbose_name='Price')
+    sale_price = models.IntegerField(verbose_name='Sale Price', null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
     author = models.CharField(max_length=255, verbose_name='Author name')
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
