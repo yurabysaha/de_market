@@ -1,7 +1,69 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+
 {% block content %}
-<h4>FAQ will be there</h4>
+    <!-- Text container for questions -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                <div class="dropdown">
+                    <div class="btn-group">
+                         <div class="btn"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <h4><i class="material-icons" style="font-size: 20px; position: relative; top: 2px; left: 5px">reorder</i>
+                            Categories</h4>
+                        </div>
+
+                    <div class="dropdown-menu">
+                        {% for category in categories %}
+                         <a class="dropdown-item" href="#">
+                             <i class="material-icons" style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }}</a>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </div>
+
+                </nav>
+            </div>
+
+            <div class="col-8">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                    <h4> Often asking questions on pictures web store </h4>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="conatiner mt-5">
+
+        <!-- Template for each questions -->
+        <div class="mt-5">
+            <h5 class="text-left" style="color: #FE3C01;"><strong>What kinds of pictures do you have?</strong></h5>
+            <p class="text-justify mt-3">On the site there are paintings from both the recognized masters and reproductions of the famous paintings.</p>
+        </div>
+        <div class="mt-5">
+            <h5 class="text-left " style="color: #FE3C01;"><strong>What are the sizes of pictures?</strong></h5>
+            <p class="text-justify mt-3">Paintings of artists already have the standard size specified in the description. <br />
+                Reproductions are of several sizes. If you did not find the size you need, you can order it from us. Please contact us following this link.
+            </p>
+        </div>
+        <div class="mt-5">
+            <h5 class="text-left" style="color: #FE3C01;"><strong>Do I need to prepay?</strong></h5>
+            <p class="text-justify mt-3">NO! You pay only after you have received and inspected the picture.
+            </p>
+        </div>
+        <div class="mt-5">
+            <h5 class="text-left" style="color: #FE3C01;"><strong>Can I order a frame for my painting?</strong></h5>
+            <p class="text-justify mt-3">Yes, of course, you can buy a painting with or without a frame (See the picture frames).
+                        All the pictures by default are made on the stretcher with a gallery stretch, which, in fact, looks very nice and is suitable for any interior.
+            </p>
+        </div>
+        <div class="mt-5">
+            <h5 class="text-left" style="color: #FE3C01;"><strong>Can I take the painting back?</strong></h5>
+            <p class="text-justify mt-3">Yes, of course, you can return the picture according to all the current laws of the country on the protection of consumers' rights.
+            </p>
+        </div>
+
+    </div>
 
 {% endblock %}
