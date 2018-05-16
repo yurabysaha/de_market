@@ -44,69 +44,41 @@
 </div>
     {% endif %}
 
-    {#  Comments block   #}
-<div class="row">
+    {#  Comments block  #}
 
-    <h4>Comments</h4>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="#"><b>Ryan Haywood</b></a>
-                            made a post.
-                        </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="#"><b>Ryan Haywood</b></a>
-                            made a post.
-                        </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="table-responsive">
+        <h2 class="text-center">Comments</h2>
+  <table class="table table-hover">
+      {% for comment in comments %}
+    <thead>
+      <tr>
+        <th>Commented by: {{ user.email }}  at  {{ comment.created_at|date:"M d" }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <div class="btn-group-vertical">
+      <tr>
+          <td><p class="text-muted">{{ comment.body }}</p></td>
+          <td><button class="btn btn-link"><a href="/item/{{ item.id }}/comment/{{ comment.id }}/update"><i class="material-icons"
+                                                                style="font-size: 25px; color: #FE3C01;">edit</i></a></button>
+          <form method="post" action="/item/{{ item.id }}/comment/{{ comment.id }}/delete/" class="post-form">{% csrf_token %}
+          <button class="btn btn-link"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">delete</i></button>
+          </form>
+      </tr>
     </div>
+    </tbody>
+     {% endfor %}
+  </table>
 </div>
-</div>
+        <div class="row pt-2">
+              <div class="col-12">
+                  <h2 class="text-center">Add Comment</h2>
+                        <form method="POST" class="post-form">{% csrf_token %}
+                            {{ form.as_p }}
+                            <h4 class="text-center"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">Add Comment</button></h4>
+                        </form>
+              </div>
+        </div>
 
 {% endblock %}
