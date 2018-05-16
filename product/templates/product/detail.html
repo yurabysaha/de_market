@@ -11,8 +11,13 @@
         <div class="col-lg-5">
             <h3>{{ item.title_en }}</h3>
             <h5 class="mt-4">SKU #<span class="text-dark"> {{ item.sku }}</span></h5>
-            <h4 class="mt-4">PRICE <span class="text-danger"> € {{ item.price }}</span></h4>
-
+            <h4><span class="mt-4"> PRICE
+                {% if item.sale_price %}<s class="text-muted"> € {{ item.price }}</s>
+                <span class="text-danger"> € {{ item.sale_price }}</span>
+                {% else %}
+                    <span class="text-danger"> € {{ item.price }}</span>
+                    </span></h4>
+                {% endif %}
             <div class="section p-2">
                 <a class="btn btn-outline-danger m-2" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
                                                                                                 style="font-size: 20px; color: #FE3C01">add_shopping_cart</i>

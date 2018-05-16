@@ -11,7 +11,7 @@ class Category(models.Model):
     name_de = models.CharField(max_length=255, verbose_name='Name on German')
     description_en = models.TextField(verbose_name='Description on English')
     description_de = models.TextField(verbose_name='Description on German')
-    parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, verbose_name='Sub Category')
+    parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name='Sub Category')
 
     def __str__(self):
         return self.name_en
