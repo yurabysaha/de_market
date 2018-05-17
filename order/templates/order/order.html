@@ -8,8 +8,8 @@
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th style="width:60%">Product Name</th>
-          <th style="width:5%">SKU</th>
+        <th style="width:50%">Product Name</th>
+          <th style="width:10%" class="text-right">SKU</th>
           <th style="width:10%" class="text-right">Price</th>
           <th style="width:10%"></th>
       </tr>
@@ -25,25 +25,28 @@
             </div>
           </div>
         </td>
-        <td>
-          {{ item.sku }}
-        </td>
-        <td data-th="Price" class="text-right">{{ item.price }}€</td>
+        <td class="text-right">{{ item.sku }}</td>
+        <td class="text-right" data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
       </tr>
-            {% endfor %}
-    <tr>
-
-      <td><form method="POST" class="form-group">{% csrf_token %}
-                        {{ form.as_p }}
-                        <button class="btn btn-outline-info" type="submit">Save</button>
-      </form></td>
-    </tr>
+          {% endfor %}
     </tbody>
+  </table>
+
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+          <th>
+            <form method="POST" class="form-group" id="order">{% csrf_token %}
+              {{ form.as_p }}
+            </form>
+          </th>
+      </tr>
+    </thead>
     <tfoot>
       <tr>
-        <td><a href="/cart" class="btn btn-outline-secondary">Back to Cart</a></td>
+        <td><a href="/cart/" class="btn btn-outline-secondary">Back to Cart</a></td>
         <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
-        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block">Create Order</a></td>
+        <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">Create Order</button></td>
       </tr>
     </tfoot>
   </table>

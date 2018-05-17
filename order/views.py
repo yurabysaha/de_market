@@ -3,6 +3,7 @@ from . forms import CreateOrder
 from cart.models import Cart
 from . models import Order
 from cart.views import remove_from_cart
+from django.contrib import messages
 
 
 def create_order(request):
@@ -12,7 +13,10 @@ def create_order(request):
         # calculate total for price in cart items
         cart_total = 0
         for i in cart.item.all():
-            cart_total += i.price
+            if i.sale_price:
+                cart_total += i.sale_price
+            else:
+                cart_total += i.price
 
         form = CreateOrder()
         if request.method == "POST":
@@ -23,9 +27,11 @@ def create_order(request):
             for item in items_in_cart:
                 order.items.add(item)
 
-            cart.items()
+            cart.item.clear()
+            messages.info(request, 'Thank you for your order, our manager will contact you soon!')
 
             return redirect('/')
+
         return render(request, 'order/order.html', {'form': form, 'cart':cart, 'cart_total':cart_total})
 
     else:
