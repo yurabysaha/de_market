@@ -4,13 +4,14 @@
 
 {% block content %}
 
+
 <div class="container">
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
         <th style="width:50%">Product Name</th>
-          <th style="width:10%">SKU</th>
-          <th style="width:10%">Price</th>
+          <th style="width:10%" class="text-right">SKU</th>
+          <th style="width:10%" class="text-right">Price</th>
           <th style="width:10%"></th>
       </tr>
     </thead>
@@ -25,24 +26,32 @@
             </div>
           </div>
         </td>
-        <td>
-          {{ item.sku }}
-        </td>
-        <td data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
-        <td class="actions" data-th="">
-          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm" style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
-        </td>
+        <td class="text-right">{{ item.sku }}</td>
+        <td class="text-right" data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
       </tr>
+          {% endfor %}
     </tbody>
-      {% endfor %}
+  </table>
+
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+          <th>
+            <form method="POST" class="form-group" id="order">{% csrf_token %}
+              {{ form.as_p }}
+            </form>
+          </th>
+      </tr>
+    </thead>
     <tfoot>
       <tr>
-        <td><a href="/" class="btn btn-outline-secondary">Continue Shopping</a></td>
+        <td><a href="/cart/" class="btn btn-outline-secondary">Back to Cart</a></td>
         <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
-        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block">Checkout</a></td>
+        <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">Create Order</button></td>
       </tr>
     </tfoot>
   </table>
 </div>
+
 
 {% endblock %}
