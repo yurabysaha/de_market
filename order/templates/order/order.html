@@ -4,6 +4,49 @@
 
 {% block content %}
 
-        <h2 class="text-center">Order Create</h2>
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:60%">Product Name</th>
+          <th style="width:5%">SKU</th>
+          <th style="width:10%" class="text-right">Price</th>
+          <th style="width:10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+       {% for item in cart.item.all %}
+      <tr>
+        <td data-th="Product">
+          <div class="row">
+            <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
+            <div class="col-lg-10">
+                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title_en }}</h5></a>
+            </div>
+          </div>
+        </td>
+        <td>
+          {{ item.sku }}
+        </td>
+        <td data-th="Price" class="text-right">{{ item.price }}€</td>
+      </tr>
+            {% endfor %}
+    <tr>
+
+      <td><form method="POST" class="form-group">{% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-outline-info" type="submit">Save</button>
+      </form></td>
+    </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><a href="/cart" class="btn btn-outline-secondary">Back to Cart</a></td>
+        <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
+        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block">Create Order</a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
 
 {% endblock %}

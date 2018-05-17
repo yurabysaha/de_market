@@ -6,7 +6,8 @@ class CreateOrder(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('delivery_address', 'contact_phone',)
-        widgets = {
-            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
-        }
 
+        widgets = {
+            'delivery_address': forms.TextInput(attrs={'class': 'text-area'}),
+            'contact_phone': forms.TextInput(attrs={'class': 'text-area'}),
+        }
