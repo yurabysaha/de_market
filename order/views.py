@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-# Create your views here.
+
+def create_order(request):
+
+    return render(request, 'order/order.html')
