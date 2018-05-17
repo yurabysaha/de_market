@@ -51,39 +51,51 @@
 
     {#  Comments block  #}
 
+
+
 <div class="table-responsive">
-        <h2 class="text-center">Comments</h2>
+     {% if request.user.is_authenticated %}
+        <div class="row pt-2">
+              <div class="col-12">
+                          <h2 class="text-center">Comments</h2>
+
+                        <form method="POST" action="{% url 'create_comment' item.id %}" class="post-form">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <h4 class="text-left"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">Add Comment</button></h4>
+                        </form>
+              </div>
+        </div>
+    {% else %}
+        <h4 class="text-center">Login before adding comment!</h4>
+    {% endif %}
   <table class="table table-hover">
       {% for comment in comments %}
     <thead>
       <tr>
-        <th>Commented by: {{ user.email }}  at  {{ comment.created_at|date:"M d" }}</th>
+        <th>Commented by: {{ comment.user.email }}  at  {{ comment.created_at|date:"M d" }}</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
+
     <div class="btn-group-vertical">
       <tr>
           <td><p class="text-muted">{{ comment.body }}</p></td>
+                             {% if request.user.is_authenticated %}
+
           <td><button class="btn btn-link"><a href="{% url 'update_comment' item.id comment.id %}"><i class="material-icons"
                                                                 style="font-size: 25px; color: #FE3C01;">edit</i></a></button>
           <form method="post" action="{% url 'comment_delete' item.id comment.id %}" class="post-form">{% csrf_token %}
           <button class="btn btn-link"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">delete</i></button>
+
           </form>
+          {% endif %}
       </tr>
     </div>
     </tbody>
      {% endfor %}
   </table>
 </div>
-        <div class="row pt-2">
-              <div class="col-12">
-                        <form method="POST" action="{% url 'create_comment' item.id %}" class="post-form">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <h4 class="text-center"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">Add Comment</button></h4>
-                        </form>
-              </div>
-        </div>
 
 {% endblock %}
