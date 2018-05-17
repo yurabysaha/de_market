@@ -2,6 +2,68 @@
 {% load i18n %}
 
 {% block content %}
-<h4>Payment/Delivery will be there</h4>
 
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                <div class="dropdown">
+                    <div class="btn-group">
+                         <div class="btn"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <h4><i class="material-icons" style="font-size: 20px; position: relative; top: 2px; left: 5px">reorder</i>
+                            Categories</h4>
+                        </div>
+
+                    <div class="dropdown-menu">
+                        {% for category in categories %}
+                         <a class="dropdown-item" href="#">
+                             <i class="material-icons" style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }}</a>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </div>
+
+                </nav>
+            </div>
+
+            <div class="col-8">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
+                    <h4> Payment and picture's delivery</h4>
+                </nav>
+            </div>
+        </div>
+    </div>
+<!-- Payment methods -->
+    <div class="conatiner mt-5">
+        <div class="mt-5">
+            <h5 class="text-left text-uppercase" style="color: #FE3C01;"><strong>Payment methods</strong></h5>
+            <!-- Payment methods -->
+            <ul>
+                <li>Payment in post office</li>
+                <li>Payment to bank card (Name of bunk). It's easy and don'n have a bank's commision.</li>
+            </ul>
+            </div>
+    </div>
+
+<!-- Delivery methods -->
+    <div class="conatiner mt-5">
+        <div class="mt-5">
+            <h5 class="text-left text-uppercase" style="color: #FE3C01;"><strong>Delivery condition</strong></h5>
+            <div class="mt-3">
+                <h6><strong>Delivery costs:</strong></h6>
+                <ul>
+                    <li>Standart in post office</li>
+                    <li>If costs more 100 EU, it's FREE</li>
+                </ul>
+            </div>
+            <div class="mt-3">
+                <h6><strong>Delivery duration:</strong></h6>
+                <ul>
+                    <li>One day in south Germany</li>
+                    <li>Two days in other parts of Germany</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

@@ -1,9 +1,12 @@
-from django.forms import forms
+from django import forms
 from product.models import Comment
 
 
-class CommentForm(forms.BaseForm):
+class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('user', 'body',)
+        fields = ('body',)
+        widgets = {
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+        }

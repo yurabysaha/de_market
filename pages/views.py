@@ -14,11 +14,13 @@ def about_us(request):
 
 
 def delivery(request):
-    return render(request, 'delivery.html')
+    categories = Category.objects.all()
+    return render(request, 'delivery.html', {'categories': categories})
 
 
 def faq(request):
-    return render(request, 'faq.html')
+    categories = Category.objects.all()
+    return render(request, 'faq.html', {'categories': categories})
 
 
 def search(request):

@@ -9,8 +9,14 @@
             </a>
             <div class="card-footer d-flex justify-content-between">
                 <span><a href="{% url 'add_to_wishlist' i.id %}"><i class="material-icons"
-                                                                    style="font-size: 25px; color: #FE3C01;">start</i></a></span>
-                <span class="font-weight-bold text-danger">€ {{ i.price }}</span>
+                                                                    style="font-size: 25px; color: #FE3C01; margin-right: -40px;">start</i></a></span>
+                {% if i.sale_price %}
+                    <span class="font-weight-bold text-muted"><s>€ {{ i.price }}</s></span>
+                    <span class="font-weight-bold text-danger">€ {{ i.sale_price }}</span>
+                {% else %}
+                    <span class="font-weight-bold text-danger">€ {{ i.price }}</span>
+                {% endif %}
+
                 <span><a href="{% url 'add_to_cart' i.id %}"><i class="material-icons"
                                                                 style="font-size: 25px; color: #FE3C01;">add_shopping_cart</i></a></span>
             </div>
