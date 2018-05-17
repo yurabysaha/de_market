@@ -2,48 +2,17 @@
 {% load i18n %}
 
 {% block content %}
+
     <div class="container mt-3">
         <div class="row">
-            <div class="col-4">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
-                <div class="dropdown">
-                    <div class="btn-group">
-                         <div class="btn"  id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <h4><i class="material-icons card-body" style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu</i>
-                            Categories</h4>
-                        </div>
-                    <div class="dropdown-menu">
-        {% for category in categories %}
-            {% if not category.parent %}
-            <span class="list-group-item list-group-item-action border-0">
-                         <a href="{% url 'category_detail' category.id %}" class="list-group-item-action"><i class="material-icons"
-                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }} </a>
-                {% if category.sub_category.count > 0 %}
-                    <a href="#{{ category.id }}" data-toggle="collapse"><i class="material-icons"
-                                                                         style="font-size: 20px; color: #FE3C01; position: relative; top: 3px; left: 5px">expand_more</i></a>
-
-                    {% for i in category.sub_category.all %}
-                        <span class="list-group-item list-group-item-action border-0 collapse" id="{{ category.id }}">
-                         <a href="{% url 'category_detail' i.id %}" class="list-group-item-action"><i class="material-icons"
-                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ i.name_en }} </a>
-                         </span>
-                    {% endfor %}
-                {% endif %}
-                     </span>
-              </span>
-            {% endif %}
-        {% endfor %}
-
-                    </div>
+            <div class="col-4 bg-light text-dark">
+                {% include 'collapse_category_dropdown.html' %}
+            </div>
+            <div class="col-8 bg-light text-dark">
+                <div class="brand" style="font-size: 25px">
+                    <i class="material-icons card-body"
+                    style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name_en }}
                 </div>
-            </div>
-            </div>
-            </nav>
-
-            <div class="col-8">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
-                    <h4> {{ cat.name_en }} </h4>
-                </nav>
             </div>
         </div>
     </div>
@@ -53,7 +22,7 @@
 
 
         <nav class="mt-3">
-        <!-- перевірити на метод першої сторінки -->
+
             {% if item_with_category.has_next %}
             <ul class="pagination pg-red">
                 <!--Arrow left-->
