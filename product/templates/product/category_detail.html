@@ -39,14 +39,15 @@
             </div>
             </div>
             </nav>
-        </div>
 
             <div class="col-8">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3" style="height: 60px;">
                     <h4> {{ cat.name_en }} </h4>
                 </nav>
             </div>
+        </div>
     </div>
+
  <!-- Pagination -->
     <div class="container">
 
@@ -86,7 +87,7 @@
             </ul>
         {% endif %}
         </nav>
-
+    </div>
     </div>
 
      <div class="container mt-3">
@@ -94,7 +95,8 @@
 
         {% for category in sub_categories %}
         <div class="card mr-4" style="max-width: 200px">
-            <a href="{% url 'category_detail' category.id %}"><img class="card-img-top" src="{{ item.photos.first.image.url }}" alt="Card image cap"></a>
+            <a href="{% url 'category_detail' category.id %}">
+                <img class="card-img-top" src="{{ category.items.first.photos.first.image.url }}" alt="Card image cap"></a>
             <div class="card-body">
                     <a href="{% url 'category_detail' category.id %}"><h5 class="card-title text-center">{{ category.name_en }}</h5></a>
 
@@ -128,7 +130,9 @@
     <div class="container mt-5" style="border: 1px solid #9a9a9a;  min-height: 250px;">
         <div>
             <h4 class="font-italic mt-3" style="color: #FE3C01;"> <strong></strong>{{ cat.name_en }}</h4>
+            {% if item %}
             <img src="{{ item.photos.first.image.url }}" class="float-right img-thumbnail ml-2" alt="placeholder" height="360px" width="240px" >
+            {% endif %}
             <p class="text-justify">{{ cat.description_en }}</p>
         </div>
     </div>
