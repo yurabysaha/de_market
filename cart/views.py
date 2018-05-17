@@ -35,7 +35,10 @@ def get_cart(request):
         # calculate total for price in cart items
         cart_total = 0
         for i in cart.item.all():
-            cart_total += i.price
+            if i.sale_price:
+                cart_total += i.sale_price
+            else:
+                cart_total += i.price
 
         return render(request, 'cart.html', {'cart': cart, 'cart_total': cart_total})
     else:
