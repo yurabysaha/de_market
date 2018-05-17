@@ -28,7 +28,7 @@
         <td>
           {{ item.sku }}
         </td>
-        <td data-th="Price">{{ item.price }}€</td>
+        <td data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
         <td class="actions" data-th="">
           <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm" style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
         </td>

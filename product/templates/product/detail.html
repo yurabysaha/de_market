@@ -3,9 +3,11 @@
 {% load static %}
 
 {% block content %}
-    <div class="row mb-5">
+    <div class="row mb-2">
         <div class="col-lg-6 item-photo">
-            <img class="img-thumbnail" style="max-width:100%;" src="{{ item.photos.first.image.url }}"/>
+            <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title_en }}">
+    <img class="img-thumbnail" style="max-width:100%;" src="{{ item.photos.first.image.url }}"/>
+</a>
         </div>
 
         <div class="col-lg-5">
@@ -29,6 +31,18 @@
         </div>
     </div>
 
+{#   small image preview block   #}
+    <div class="row mb-3">
+        <div class="col-md-8">
+                {% for i in item.photos.all %}
+                <a href="{{ i.image.url }}" data-toggle="lightbox" data-gallery="example-gallery">
+                    <img src="{{ i.image.url }}" class="img-thumbnail" style="max-width: 100px;">
+                </a>
+                {% endfor %}
+        </div>
+    </div>
+
+
 {#    description block   #}
     <div class="row">
         <div class="col-xs-12">
@@ -50,8 +64,6 @@
     {% endif %}
 
     {#  Comments block  #}
-
-
 
 <div class="table-responsive">
      {% if request.user.is_authenticated %}
