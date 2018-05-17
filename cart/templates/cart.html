@@ -39,7 +39,7 @@
       <tr>
         <td><a href="/" class="btn btn-outline-secondary">Continue Shopping</a></td>
         <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
-        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block">Checkout</a></td>
+        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">Checkout</a></td>
       </tr>
     </tfoot>
   </table>
