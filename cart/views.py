@@ -39,4 +39,5 @@ def get_cart(request):
 
         return render(request, 'cart.html', {'cart': cart, 'cart_total': cart_total})
     else:
+        messages.info(request, 'Please login or register first!')
         return redirect('/')
