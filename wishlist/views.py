@@ -36,4 +36,5 @@ def get_wishlist(request):
 
         return render(request, 'wishlist.html', {'wishlist': wishlist})
     else:
+        messages.info(request, 'Please login or register first!')
         return redirect('/')
