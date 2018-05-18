@@ -3,6 +3,16 @@
 {% load staticfiles %}
 
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119417362-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119417362-1');
+</script>
+
     <title>Market</title>
     {% block meta %}
         <meta charset="utf-8">
@@ -34,39 +44,54 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+{% trans "" %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ml-3">
-                    <a class="nav-link" href="{% url 'about_us' %}">About us</a>
+                    <a class="nav-link" href="{% url 'about_us' %}">{% trans "About us" %}</a>
                 </li>
                 <li class="nav-item ml-3">
-                    <a class="nav-link" href="{% url 'delivery' %}">Payment/Delivery</a>
+                    <a class="nav-link" href="{% url 'delivery' %}">{% trans "Payment/Delivery" %}</a>
                 </li>
                 <li class="nav-item ml-3">
-                    <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+                    <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>
                 </li>
 
-                       <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="Search" action="{% url 'search' %}" method="get" accept-charset="utf-8">
-                             <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="Search">
-                             <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">Search</button>
+                       <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+                             <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
+                             <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">{% trans "Search" %}</button>
                        </form>
 
             </ul>
             <ul class="navbar-nav mr-auto">
                 {% if not user.is_authenticated %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Registration</a>
+                        <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Registration" %}</a>
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
                     </li>
                 {% endif %}
             </ul>
+
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language" onchange="this.form.submit();" class="custom-select">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+
         </div>
     </nav>
 </div>
@@ -83,14 +108,14 @@
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
                    <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
-                    <p class="text-secondary">Wish List</p></a>
+                    <p class="text-secondary">{% trans "Wish List" %}</p></a>
               </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
               <div class="card-body border-0 text-center">
                   <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
-                    <p class="text-secondary">Open Cart</p></a>
+                    <p class="text-secondary">{% trans "Open Cart" %}</p></a>
               </div>
         </div>
     </div>
@@ -138,16 +163,16 @@
                             <a href="{% url 'site_map' %}" class="text-black">SITE MAP</a>
                         </p>
                         <p>
-                            <a href="{% url 'about_us' %}">ABOUT US</a>
+                            <a href="{% url 'about_us' %}">{% trans "ABOUT US" %}</a>
                         </p>
                         <p>
-                            <a href="{% url 'delivery' %}">PAYMENT/DELIVERY</a>
+                            <a href="{% url 'delivery' %}">{% trans "PAYMENT/DELIVERY" %}</a>
                         </p>
                         <p>
-                            <a href="{% url 'faq' %}">FAQ</a>
+                            <a href="{% url 'faq' %}">{% trans "FAQ" %}</a>
                         </p>
                         <p>
-                            <a href="#!">CONTACT US</a>
+                            <a href="#!">{% trans "CONTACT US" %}</a>
                         </p>
                     </ul>
                 </div>

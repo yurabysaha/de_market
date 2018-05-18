@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cart
 from product.models import Item
+from django.utils.translation import gettext as _
 
 
 def add_to_cart(request, item_id):
@@ -10,9 +11,9 @@ def add_to_cart(request, item_id):
             cart, created = Cart.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
             cart.item.add(item)
-            messages.success(request, 'You add item to cart!')
+            messages.success(request, _('You add item to cart!'))
     else:
-        messages.info(request, 'Please login or register first!')
+        messages.info(request, _('Please login or register first!'))
     return redirect('/')
 
 
@@ -24,7 +25,7 @@ def remove_from_cart(request, item_id):
         return redirect('/cart')
 
     else:
-        messages.info(request, 'Please login or register first!')
+        messages.info(request, _('Please login or register first!'))
     return redirect('/')
 
 
@@ -40,7 +41,7 @@ def get_cart(request):
             else:
                 cart_total += i.price
 
-        return render(request, 'cart.html', {'cart': cart, 'cart_total': cart_total})
+        return render(request, 'cart/cart.html', {'cart': cart, 'cart_total': cart_total})
     else:
-        messages.info(request, 'Please login or register first!')
+        messages.info(request, _('Please login or register first!'))
         return redirect('/')

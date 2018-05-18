@@ -6,7 +6,6 @@
         <div class="col-lg-3">
              {% include 'category_dropdown.html' %}
         </div>
-
         <div class="col-lg-9">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                  <div class="carousel-inner">
@@ -31,7 +30,7 @@
             </div>
          </div>
 
-     <h4 class="text-secondary">Last added products</h4>
+     <h4 class="text-secondary">{% trans "Last added products" %}</h4>
         <div class="row">
             {% include 'product/card_items.html' %}
         </div>

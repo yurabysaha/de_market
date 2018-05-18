@@ -9,9 +9,9 @@
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th style="width:50%">Product Name</th>
-          <th style="width:10%" class="text-right">SKU</th>
-          <th style="width:10%" class="text-right">Price</th>
+        <th style="width:50%">{% trans "Product Name" %}</th>
+          <th style="width:10%" class="text-right">{% trans "SKU" %}</th>
+          <th style="width:10%" class="text-right">{% trans "Price" %}</th>
           <th style="width:10%"></th>
       </tr>
     </thead>
@@ -45,9 +45,9 @@
     </thead>
     <tfoot>
       <tr>
-        <td><a href="/cart/" class="btn btn-outline-secondary">Back to Cart</a></td>
-        <td colspan="2" class="hidden-xs text-center"><strong>Total price: € {{ cart_total }}</strong></td>
-        <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">Create Order</button></td>
+        <td><a href="/cart/" class="btn btn-outline-secondary">{% trans "Back to Cart" %}</a></td>
+        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: € {{ cart_total }}</strong></td>
+        <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">{% trans "Create Order" %}</button></td>
       </tr>
     </tfoot>
   </table>
