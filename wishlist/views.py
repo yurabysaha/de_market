@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from product.models import Item
 from .models import Wishlist
+from django.utils.translation import gettext as _
 
 
 def add_to_wishlist(request, item_id):
@@ -10,11 +11,11 @@ def add_to_wishlist(request, item_id):
             wishlist, created = Wishlist.objects.get_or_create(user_id=request.user.id)
             item = get_object_or_404(Item, id=item_id)
             wishlist.item.add(item)
-            messages.success(request, 'You add item to Wish list!')
+            messages.success(request, _('You add item to Wish list!'))
 
             return redirect('/')
     else:
-        messages.info(request, 'Please login or register first!')
+        messages.info(request, _('Please login or register first!'))
 
     return redirect('/')
 
@@ -36,5 +37,5 @@ def get_wishlist(request):
 
         return render(request, 'wishlist.html', {'wishlist': wishlist})
     else:
-        messages.info(request, 'Please login or register first!')
+        messages.info(request, _('Please login or register first!'))
         return redirect('/')

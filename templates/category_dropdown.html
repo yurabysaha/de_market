@@ -1,6 +1,8 @@
+{% load i18n %}
+
 <div class="brand" style="font-size: 25px">
     <i class="material-icons card-body"
-       style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu</i>Categories
+       style="font-size: 30px; color: #FE3C01; position: relative; top: 5px; left: 5px">menu</i>{% trans "Categories" %}
 </div>
 <div class="list-group">
     {% for category in categories %}

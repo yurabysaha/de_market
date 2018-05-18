@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from order.models import Order
 
@@ -6,7 +7,7 @@ from order.models import Order
 class ItemInline(admin.TabularInline):
     model = Order.items.through
     extra = 0
-    model._meta.verbose_name_plural = "Order Items"
+    model._meta.verbose_name_plural = _("Order Items")
 
 
 class OrderAdmin(admin.ModelAdmin):

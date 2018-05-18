@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from . forms import CreateOrder
 from cart.models import Cart
 from . models import Order
-from cart.views import remove_from_cart
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 def create_order(request):
@@ -28,7 +28,7 @@ def create_order(request):
                 order.items.add(item)
 
             cart.item.clear()
-            messages.info(request, 'Thank you for your order, our manager will contact you soon!')
+            messages.info(request, _('Thank you for your order, our manager will contact you soon!'))
 
             return redirect('/')
 
