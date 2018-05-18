@@ -20,11 +20,10 @@ def create_order(request):
 
         form = CreateOrder()
         if request.method == "POST":
-            items_in_cart = cart.item.all()
             order = Order.objects.create(user=request.user, total=cart_total,
                                          delivery_address=request.POST['delivery_address'],
                                          contact_phone=request.POST['contact_phone'])
-            for item in items_in_cart:
+            for item in cart.item.all():
                 order.items.add(item)
 
             cart.item.clear()

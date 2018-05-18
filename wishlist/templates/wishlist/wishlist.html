@@ -17,13 +17,13 @@
       </tr>
     </thead>
     <tbody>
-{% for item in wishlist.item.all %}
+{% for item in item_in_wishlist %}
       <tr>
         <td data-th="Product">
           <div class="row">
             <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
             <div class="col-lg-10">
-                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title_en }}</h5></a>
+                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title }}</h5></a>
             </div>
           </div>
         </td>

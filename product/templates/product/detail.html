@@ -5,13 +5,13 @@
 {% block content %}
     <div class="row mb-2">
         <div class="col-lg-6 item-photo">
-            <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title_en }}">
+            <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title }}">
     <img class="img-thumbnail" style="max-width:100%;" src="{{ item.photos.first.image.url }}"/>
 </a>
         </div>
 
         <div class="col-lg-5">
-            <h3>{{ item.title_en }}</h3>
+            <h3>{{ item.title }}</h3>
             <h5 class="mt-4">SKU #<span class="text-dark"> {{ item.sku }}</span></h5>
             <h4><span class="mt-4"> {% trans "PRICE" %}
                 {% if item.sale_price %}<s class="text-muted"> € {{ item.price }}</s>
@@ -48,7 +48,7 @@
         <div class="col-xs-12">
             <div style="width:100%;border-top:1px solid silver">
                 <p style="padding:15px;">
-                    {{ item.description_en }}
+                    {{ item.description }}
                 </p>
             </div>
         </div>

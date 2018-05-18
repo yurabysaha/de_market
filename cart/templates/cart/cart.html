@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody>
-       {% for item in cart.item.all %}
+       {% for item in item_in_cart %}
       <tr>
         <td data-th="Product">
           <div class="row">
             <div class="col-lg-2"><img src="{{ item.photos.first.image.url }}" width="100px" alt="..." class="img-responsive" /></div>
             <div class="col-lg-10">
-                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title_en }}</h5></a>
+                <a href="{% url 'item-detail' item.id %}"><h5 class="nomargin">{{ item.title }}</h5></a>
             </div>
           </div>
         </td>
@@ -39,7 +39,7 @@
       <tr>
         <td><a href="/" class="btn btn-outline-secondary">{% trans "Continue Shopping" %}</a></td>
         <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: € {{ cart_total }}</strong></td>
-        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">{% trans "Checkout" %}</a></td>
+        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if not item_in_cart %} disabled {% endif %}">{% trans "Checkout" %}</a></td>
       </tr>
     </tfoot>
   </table>
