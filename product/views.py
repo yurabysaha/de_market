@@ -63,14 +63,14 @@ def category_detail(request, category_id):
     categories = Category.objects.order_by('name_en').all()
 
     if cat.sub_category.count() > 0:
-        item_with_category = Item.objects.filter(category__parent=cat)
+        items = Item.objects.filter(category__parent=cat)
     else:
-        item_with_category = Item.objects.filter(category__id=category_id)
+        items = Item.objects.filter(category__id=category_id)
 
     item = Item.objects.filter(category__id=category_id).first()
     sub_categories = cat.sub_category.all()
     return render(request, 'product/category_detail.html', {'categories': categories,
-                                                            'item_with_category': handle_pagination(request, item_with_category),
+                                                            'items': handle_pagination(request, items),
                                                             'cat': cat,
                                                             'item': item,
                                                             'sub_categories': sub_categories})
