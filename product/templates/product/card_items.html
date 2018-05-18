@@ -4,7 +4,7 @@
             <a href="{% url 'item-detail' i.id %}" class="text-dark" style="text-decoration: none">
                 <img class="card-img-top" src="{{ i.photos.first.image.url }}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title ">{{ i.title_en }}</h5>
+                    <h5 class="card-title ">{{ i.title }}</h5>
                 </div>
             </a>
             <div class="card-footer d-flex justify-content-between">

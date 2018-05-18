@@ -1,11 +1,15 @@
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from product.forms import CommentForm
-from product.models import Comment, Item, Category
-from product.help_functions import handle_pagination
+from product.models import Comment, Category
+from product.utils import handle_pagination, queryset_with_locale
+
 
 def open_detail(request, item_id):
-    item = get_object_or_404(Item, id=item_id)
-    items = Item.objects.exclude(id=item_id)[:3]
+    item = queryset_with_locale(request).filter(id=item_id).first()
+    if not item:
+        raise Http404
+    items = queryset_with_locale(request).exclude(id=item_id)[:3]
     comments = Comment.objects.filter(item=item)
     form = CommentForm()
 
@@ -63,14 +67,14 @@ def category_detail(request, category_id):
     categories = Category.objects.order_by('name_en').all()
 
     if cat.sub_category.count() > 0:
-        item_with_category = Item.objects.filter(category__parent=cat)
+        items = queryset_with_locale(request).filter(category__parent=cat)
     else:
-        item_with_category = Item.objects.filter(category__id=category_id)
+        items = queryset_with_locale(request).filter(category__id=category_id)
 
-    item = Item.objects.filter(category__id=category_id).first()
+    item = queryset_with_locale(request).filter(category__id=category_id).first()
     sub_categories = cat.sub_category.all()
     return render(request, 'product/category_detail.html', {'categories': categories,
-                                                            'item_with_category': handle_pagination(request, item_with_category),
+                                                            'items': handle_pagination(request, items),
                                                             'cat': cat,
                                                             'item': item,
                                                             'sub_categories': sub_categories})
