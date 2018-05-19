@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 
-from product.utils import queryset_with_locale
 from .models import Cart
 from product.models import Item
 from django.utils.translation import gettext as _
@@ -34,17 +33,16 @@ def remove_from_cart(request, item_id):
 def get_cart(request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user_id=request.user.id)
-        item_in_cart = queryset_with_locale(request).filter(cart=cart).prefetch_related('photos')
-        # calculate total for price in cart items
 
+        # calculate total for price in cart items
         cart_total = 0
-        for i in item_in_cart:
+        for i in cart.item.all():
             if i.sale_price:
                 cart_total += i.sale_price
             else:
                 cart_total += i.price
 
-        return render(request, 'cart/cart.html', {'cart': cart, 'cart_total': cart_total, 'item_in_cart': item_in_cart})
+        return render(request, 'cart/cart.html', {'cart': cart, 'cart_total': cart_total})
     else:
         messages.info(request, _('Please login or register first!'))
         return redirect('/')

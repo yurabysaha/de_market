@@ -9,7 +9,7 @@
         {% if not category.parent %}
             <span class="list-group-item list-group-item-action border-0">
                          <a href="{% url 'category_detail' category.id %}" class="list-group-item-action"><i class="material-icons"
-                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name_en }} </a>
+                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ category.name }} </a>
                 {% if category.sub_category.count > 0 %}
                     <a href="#{{ category.id }}" data-toggle="collapse"><i class="material-icons"
                                                                          style="font-size: 20px; color: #FE3C01; position: relative; top: 3px; left: 5px">expand_more</i></a>
@@ -17,7 +17,7 @@
                     <span class="list-group-item list-group-item-action border-0 collapse" id="{{ category.id }}">
                     {% for i in category.sub_category.all %}
                          <p><a href="{% url 'category_detail' i.id %}" class="list-group-item-action"><i class="material-icons"
-                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ i.name_en }} </a></p>
+                                                                       style="font-size: 20px; color: #FE3C01; position: relative; top: 5px; left: 5px">keyboard_arrow_right</i>  {{ i.name }} </a></p>
                     {% endfor %}
                     </span>
                 {% endif %}

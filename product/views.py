@@ -1,15 +1,15 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from product.forms import CommentForm
-from product.models import Comment, Category
-from product.utils import handle_pagination, queryset_with_locale
+from product.models import Comment, Category, Item
+from product.utils import handle_pagination
 
 
 def open_detail(request, item_id):
-    item = queryset_with_locale(request).filter(id=item_id).first()
+    item = Item.objects.filter(id=item_id).first()
     if not item:
         raise Http404
-    items = queryset_with_locale(request).exclude(id=item_id)[:3]
+    items = Item.objects.exclude(id=item_id)[:3]
     comments = Comment.objects.filter(item=item)
     form = CommentForm()
 
@@ -58,24 +58,23 @@ def comment_delete(request, comment_id, item_id):
 
 
 def category_list(request):
-    categories = Category.objects.order_by('name_en').all()
+    categories = Category.objects.all()
     return render(request, 'home.html', {'categories': categories})
 
 
 def category_detail(request, category_id):
     cat = get_object_or_404(Category, id=category_id)
-    categories = Category.objects.order_by('name_en').all()
+    categories = Category.objects.all()
 
     if cat.sub_category.count() > 0:
-        items = queryset_with_locale(request).filter(category__parent=cat)
+        items = Item.objects.filter(category__parent=cat)
     else:
-        items = queryset_with_locale(request).filter(category__id=category_id)
+        items = Item.objects.filter(category__id=category_id)
 
-    item = queryset_with_locale(request).filter(category__id=category_id).first()
+    item = Item.objects.filter(category__id=category_id).first()
     sub_categories = cat.sub_category.all()
     return render(request, 'product/category_detail.html', {'categories': categories,
                                                             'items': handle_pagination(request, items),
                                                             'cat': cat,
                                                             'item': item,
                                                             'sub_categories': sub_categories})
-
