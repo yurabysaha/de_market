@@ -1,11 +1,10 @@
 from django.shortcuts import render
 
-from product.models import Category
-from product.utils import queryset_with_locale
+from product.models import Category, Item
 
 
 def home(request):
-    items = queryset_with_locale(request).exclude(status=0)[:12]
+    items = Item.objects.exclude(status=0)[:12]
     categories = Category.objects.all()
     return render(request, 'home.html', {'items': items, 'categories': categories})
 
@@ -29,10 +28,10 @@ def search(request):
     query_item_name = request.GET.get('q')
     query_category_id = request.GET.get('category_id')
     if query_category_id:
-        items = queryset_with_locale(request).exclude(status=0).filter(category=query_category_id, title__icontains=query_item_name)
+        items = Item.objects.exclude(status=0).filter(category=query_category_id, title__icontains=query_item_name)
         return render(request, 'search.html', {'items': items, 'categories': categories, 'query_item_name':query_item_name, 'query_category_id':query_category_id})
     else:
-        items = queryset_with_locale(request).exclude(status=0).filter(title__icontains=query_item_name)
+        items = Item.objects.exclude(status=0).filter(title__icontains=query_item_name)
         return render(request, 'search.html', {'items': items, 'categories': categories, 'query_item_name':query_item_name})
 
 

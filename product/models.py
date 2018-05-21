@@ -1,6 +1,21 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.db.models import F
+from django.utils.translation import gettext_lazy as _, get_language
+
+
+class CategoryManager(models.Manager):
+
+    def get_queryset(self):
+        locale = get_language()
+        return super().get_queryset().annotate(name=F('name_' + locale), description=F('description_' + locale))
+
+
+class ItemManager(models.Manager):
+
+    def get_queryset(self):
+        locale = get_language()
+        return super().get_queryset().annotate(title=F('title_' + locale), description=F('description_' + locale))
 
 
 class Category(models.Model):
@@ -13,6 +28,8 @@ class Category(models.Model):
     description_en = models.TextField(verbose_name=_('Description on English'))
     description_de = models.TextField(verbose_name=_('Description on German'))
     parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name=_('Parent Category'))
+
+    objects = CategoryManager()
 
     def __str__(self):
         return self.name_en
@@ -40,6 +57,8 @@ class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = ItemManager()
 
     def __str__(self):
         return self.title_en

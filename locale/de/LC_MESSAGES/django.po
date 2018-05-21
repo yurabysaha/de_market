@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-18 07:56+0000\n"
+"POT-Creation-Date: 2018-05-19 14:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,21 +20,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cart/templates/cart/cart.html:11 order/templates/order/order.html:12
-#: wishlist/templates/wishlist.html:13
+#: wishlist/templates/wishlist/wishlist.html:13
 msgid "Product Name"
 msgstr "Produktname"
 
 #: cart/templates/cart/cart.html:12 order/templates/order/order.html:13
-#: product/models.py:31 wishlist/templates/wishlist.html:14
+#: product/models.py:48 wishlist/templates/wishlist/wishlist.html:14
 msgid "SKU"
 msgstr "SKU"
 
 #: cart/templates/cart/cart.html:13 order/templates/order/order.html:14
-#: product/models.py:36 wishlist/templates/wishlist.html:15
+#: product/models.py:53 wishlist/templates/wishlist/wishlist.html:15
 msgid "Price"
 msgstr "Preis"
 
-#: cart/templates/cart/cart.html:40 wishlist/templates/wishlist.html:44
+#: cart/templates/cart/cart.html:40
+#: wishlist/templates/wishlist/wishlist.html:44
 msgid "Continue Shopping"
 msgstr "Weiter einkaufen"
 
@@ -47,13 +48,13 @@ msgstr "Gesamtpreis"
 msgid "Checkout"
 msgstr "Auschecken"
 
-#: cart/views.py:14
+#: cart/views.py:15
 #, fuzzy
 #| msgid "You add item to Wish list!"
 msgid "You add item to cart!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"
 
-#: cart/views.py:16 cart/views.py:28 cart/views.py:46 wishlist/views.py:18
+#: cart/views.py:17 cart/views.py:29 cart/views.py:47 wishlist/views.py:18
 #: wishlist/views.py:40
 msgid "Please login or register first!"
 msgstr "Bitte einloggen oder zuerst registrieren!"
@@ -124,78 +125,79 @@ msgstr "In den Warenkorb legen"
 msgid "Create Order"
 msgstr "Bestellung anlegen"
 
-#: order/views.py:31
+#: order/views.py:30
 msgid "Thank you for your order, our manager will contact you soon!"
-msgstr "Vielen Dank für Ihre Bestellung, unser Manager wird Sie bald kontaktieren!"
+msgstr ""
+"Vielen Dank für Ihre Bestellung, unser Manager wird Sie bald kontaktieren!"
 
-#: product/models.py:8
+#: product/models.py:23
 #, fuzzy
 #| msgid "Categories"
 msgid "Category"
 msgstr "Kategorien"
 
-#: product/models.py:9 templates/category_dropdown.html:5
+#: product/models.py:24 templates/category_dropdown.html:5
 #: templates/collapse_category_dropdown.html:5
 msgid "Categories"
 msgstr "Kategorien"
 
-#: product/models.py:11 product/models.py:32
+#: product/models.py:26 product/models.py:49
 #, fuzzy
 #| msgid "English"
 msgid "Name on English"
 msgstr "Englisch"
 
-#: product/models.py:12 product/models.py:33
+#: product/models.py:27 product/models.py:50
 #, fuzzy
 #| msgid "German"
 msgid "Name on German"
 msgstr "Deutsche"
 
-#: product/models.py:13 product/models.py:34
+#: product/models.py:28 product/models.py:51
 msgid "Description on English"
 msgstr "Beschreibung auf Englisch"
 
-#: product/models.py:14 product/models.py:35
+#: product/models.py:29 product/models.py:52
 msgid "Description on German"
 msgstr "Beschreibung auf Deutsch"
 
-#: product/models.py:15
+#: product/models.py:30
 #, fuzzy
 #| msgid "Categories"
 msgid "Parent Category"
 msgstr "Eltern-Kategorie"
 
-#: product/models.py:23
+#: product/models.py:40
 msgid "Item"
 msgstr "Artikel"
 
-#: product/models.py:24
+#: product/models.py:41
 msgid "Items"
 msgstr "Artikel"
 
-#: product/models.py:27
+#: product/models.py:44
 msgid "Not Published"
 msgstr "Nicht veröffentlicht"
 
-#: product/models.py:28
+#: product/models.py:45
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:29
+#: product/models.py:46
 msgid "Sold"
 msgstr "Verkauft"
 
-#: product/models.py:37
+#: product/models.py:54
 #, fuzzy
 #| msgid "Price"
 msgid "Sale Price"
 msgstr "Preis"
 
-#: product/models.py:39
+#: product/models.py:56
 msgid "Author name"
 msgstr "Autorenname"
 
-#: product/models.py:56
+#: product/models.py:75
 #, fuzzy
 #| msgid "Comments"
 msgid "Comment text"
@@ -231,6 +233,12 @@ msgstr "Ähnliche Gegenstände"
 msgid "Comments"
 msgstr "Bemerkungen"
 
+#: product/templates/product/detail.html:77
+#, fuzzy
+#| msgid "Comments"
+msgid "Add Comment"
+msgstr "Einen Kommentar hinzufügen"
+
 #: product/templates/product/detail.html:82
 msgid "Login before adding comment!"
 msgstr "Melden Sie sich an bevor Sie einen Kommentar hinzufügen!"
@@ -238,6 +246,16 @@ msgstr "Melden Sie sich an bevor Sie einen Kommentar hinzufügen!"
 #: product/templates/product/detail.html:88
 msgid "Commented by"
 msgstr "Kommentiert von"
+
+#: templates/about_us.html:13 templates/base.html:51
+msgid "About us"
+msgstr "Über uns"
+
+#: templates/about_us.html:21
+#, fuzzy
+#| msgid "About us"
+msgid "About Market"
+msgstr "Über uns"
 
 #: templates/allauth/account/login.html:6
 #: templates/allauth/account/login.html:39
@@ -340,10 +358,6 @@ msgid ""
 "a>."
 msgstr ""
 
-#: templates/base.html:51
-msgid "About us"
-msgstr "Über uns"
-
 #: templates/base.html:54
 msgid "Payment/Delivery"
 msgstr "Zahlung/Lieferung"
@@ -352,8 +366,8 @@ msgstr "Zahlung/Lieferung"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: templates/base.html:60 templates/base.html:62 templates/search.html:20
-#: templates/search.html:21
+#: templates/base.html:60 templates/base.html:61 templates/base.html:62
+#: templates/search.html:20 templates/search.html:21
 msgid "Search"
 msgstr "Suchen"
 

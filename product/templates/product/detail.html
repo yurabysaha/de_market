@@ -74,7 +74,7 @@
                         <form method="POST" action="{% url 'create_comment' item.id %}" class="post-form">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <h4 class="text-left"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">Add Comment</button></h4>
+                            <h4 class="text-left"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">{% trans "Add Comment" %}</button></h4>
                         </form>
               </div>
         </div>
