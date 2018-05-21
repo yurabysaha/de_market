@@ -20,20 +20,24 @@
 
 <!-- Start site map -->
     <div class="container mt-5">
+        <div class="row">
     {% for category in categories %}
         {% if not category.parent %}
-        <ul>
-            <li style=""><a href="#"<h2>{{ category.name_en }}</h2></a></li>
+         <ul class=" ml-2 mr-2">
+            <li"><a href="{% url 'category_detail' category.id %}" class="text-dark"><h4>{{ category.name_en }}</h4></a></li>
             {% if category.sub_category.count > 0 %}
                 {% for i in category.sub_category.all %}
-                <ul>
-                    <li><a href="#"><p>{{ i.name_en }}</p></a></li>
+                <ul class="list-group">
+                    <li><a href="{% url 'category_detail' category.id %}" class="text-dark"><p>{{ i.name_en }}</p></a></li>
                 </ul>
                 {% endfor %}
             {% endif %}
-        </ul>
+         </ul>
         {% endif %}
     {% endfor %}
+         </div>
     </div>
+
+
 <!-- END site map -->
 {% endblock %}
