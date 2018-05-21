@@ -12,7 +12,7 @@
 
         <div class="col-lg-5">
             <h3>{{ item.title }}</h3>
-            <h5 class="mt-4">SKU #<span class="text-dark"> {{ item.sku }}</span></h5>
+            <h5 class="mt-4">{% trans "SKU #" %} <span class="text-dark"> {{ item.sku }}</span></h5>
             <h4><span class="mt-4"> {% trans "PRICE" %}
                 {% if item.sale_price %}<s class="text-muted"> € {{ item.price }}</s>
                 <span class="text-danger"> € {{ item.sale_price }}</span>
@@ -20,6 +20,7 @@
                     <span class="text-danger"> € {{ item.price }}</span>
                     </span></h4>
                 {% endif %}
+                     {% if item.size %}<h5 class="mt-4">{% trans "SIZE" %} <span class="text-dark"> {{ item.size }}</span></h5> {% endif %}
             <div class="section p-2">
                 <a class="btn btn-outline-danger m-2" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
                                                                                                 style="font-size: 20px; color: #FE3C01">add_shopping_cart</i>

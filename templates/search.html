@@ -9,9 +9,9 @@
                    <option value="">{% trans "All Categories" %}</option>
                               {% for category in categories %}
                                     {% if category.id|slugify == query_category_id %}
-                                            <option value="{{ category.id }}" selected="selected">{{ category.name_en }}</option>
+                                            <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>
                                     {% else %}
-                                            <option value="{{ category.id }}">{{ category.name_en }}</option>
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
                                   {% endif %}
                               {% endfor %}
           </select>

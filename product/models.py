@@ -32,7 +32,10 @@ class Category(models.Model):
     objects = CategoryManager()
 
     def __str__(self):
-        return self.name_en
+        if not hasattr(self, 'name'):
+            locale = get_language()
+            return eval('self.name_' + locale)
+        return self.name
 
 
 class Item(models.Model):
@@ -50,6 +53,7 @@ class Item(models.Model):
     title_de = models.CharField(max_length=255, verbose_name=_('Name on German'))
     description_en = models.TextField(verbose_name=_('Description on English'))
     description_de = models.TextField(verbose_name=_('Description on German'))
+    size = models.CharField(max_length=255, verbose_name=_('Size'), blank=True)
     price = models.IntegerField(verbose_name=_('Price'))
     sale_price = models.IntegerField(verbose_name=_('Sale Price'), null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
@@ -61,7 +65,9 @@ class Item(models.Model):
     objects = ItemManager()
 
     def __str__(self):
-        return self.title_en
+        if not hasattr(self, 'title'):
+            return self.title_en
+        return self.title
 
 
 class ItemPhoto(models.Model):
