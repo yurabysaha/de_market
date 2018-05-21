@@ -33,3 +33,8 @@ def search(request):
     else:
         items = Item.objects.exclude(status=0).filter(title__icontains=query_item_name)
         return render(request, 'search.html', {'items': items, 'categories': categories, 'query_item_name':query_item_name})
+
+
+def site_map(request):
+    categories = Category.objects.order_by('name_en').all()
+    return render(request, 'site_map.html', {'categories': categories})
