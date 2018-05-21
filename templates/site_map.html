@@ -28,7 +28,7 @@
             {% if category.sub_category.count > 0 %}
                 {% for i in category.sub_category.all %}
                 <ul class="list-group">
-                    <li><a href="{% url 'category_detail' category.id %}" class="text-dark"><p>{{ i.name_en }}</p></a></li>
+                    <li><a href="{% url 'category_detail' i.id %}" class="text-dark"><p>{{ i.name_en }}</p></a></li>
                 </ul>
                 {% endfor %}
             {% endif %}
