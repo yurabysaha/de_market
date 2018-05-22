@@ -1,6 +1,8 @@
 import random
 
+from allauth.socialaccount.models import SocialAccount, SocialToken, SocialApp
 from django.contrib import admin
+from django.contrib.sites.models import Site
 
 from product.models import Item, ItemPhoto, Category
 
@@ -28,3 +30,8 @@ class ItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
+
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialApp)
+admin.site.unregister(Site)

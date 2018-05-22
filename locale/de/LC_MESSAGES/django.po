@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-21 13:26+0000\n"
+"POT-Creation-Date: 2018-05-22 07:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,8 +49,6 @@ msgid "Checkout"
 msgstr "Auschecken"
 
 #: cart/views.py:15
-#, fuzzy
-#| msgid "You add item to Wish list!"
 msgid "You add item to cart!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"
 
@@ -68,10 +66,12 @@ msgid "German"
 msgstr "Deutsche"
 
 #: order/admin.py:10
-#, fuzzy
-#| msgid "Orders"
 msgid "Order Items"
 msgstr "Bestellungen"
+
+#: order/apps.py:7
+msgid "Order Management"
+msgstr "Auftragsverwaltung"
 
 #: order/forms.py:7
 msgid "Contact Phone"
@@ -130,6 +130,10 @@ msgid "Thank you for your order, our manager will contact you soon!"
 msgstr ""
 "Vielen Dank für Ihre Bestellung, unser Manager wird Sie bald kontaktieren!"
 
+#: product/apps.py:7
+msgid "Product Management"
+msgstr "Produktmanagement"
+
 #: product/models.py:23
 msgid "Category"
 msgstr "Kategorien"
@@ -184,10 +188,8 @@ msgid "Size"
 msgstr "Größe"
 
 #: product/models.py:58
-#, fuzzy
-#| msgid "Price"
 msgid "Sale Price"
-msgstr "Preis"
+msgstr "Verkaufspreis"
 
 #: product/models.py:60
 msgid "Author name"
@@ -250,9 +252,7 @@ msgid "About us"
 msgstr "Über uns"
 
 #: templates/about_us.html:21
-#, fuzzy
-#| msgid "About us"
-msgid "About Market"
+msgid "About"
 msgstr "Über uns"
 
 #: templates/allauth/account/login.html:6
