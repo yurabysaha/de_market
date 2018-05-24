@@ -9,7 +9,7 @@ def open_detail(request, item_id):
     item = Item.objects.filter(id=item_id).first()
     if not item:
         raise Http404
-    items = Item.objects.exclude(id=item_id)[:3]
+    items = Item.objects.exclude(id=item_id).exclude(status=0)[:3]
     comments = Comment.objects.filter(item=item)
     form = CommentForm()
 

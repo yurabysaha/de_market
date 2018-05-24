@@ -46,7 +46,6 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-{% trans "" %}
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ml-3">
@@ -59,10 +58,10 @@
                     <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>
                 </li>
 
-                       <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
-                             <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
-                             <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">{% trans "Search" %}</button>
-                       </form>
+               <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+                     <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
+                     <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">{% trans "Search" %}</button>
+               </form>
 
             </ul>
             <ul class="navbar-nav mr-auto">
@@ -143,7 +142,7 @@
     <footer class="footer font-small bg-light lighten-3 pt-4 mt-5">
         <!--Footer Links-->
         <div class="container text-center text-md-left">
-            <div class="row my-4">
+            <div class="row">
 
                 <!--First column-->
                 <div class="col-md-4 col-lg-4">
