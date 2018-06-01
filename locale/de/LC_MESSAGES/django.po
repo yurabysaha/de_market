@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: templates/base.html:48
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 07:53+0000\n"
+"POT-Creation-Date: 2018-06-01 09:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +178,7 @@ msgstr "Nicht veröffentlicht"
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:49
+#: product/models.py:49 product/templates/product/card_items.html:26
 msgid "Sold"
 msgstr "Verkauft"
 
@@ -399,6 +398,38 @@ msgstr "ÜBER UNS"
 #: templates/base.html:169
 msgid "PAYMENT/DELIVERY"
 msgstr "ZAHLUNG/LIEFERUNG"
+
+#: templates/delivery.html:24
+msgid "Payment methods"
+msgstr "Zahlungsarten"
+
+#: templates/delivery.html:27
+msgid "Transfer"
+msgstr "Überweisung"
+
+#: templates/delivery.html:28
+msgid "Payment upon receipt of goods in cash"
+msgstr "Zahlung bei Wareneingang in bar"
+
+#: templates/delivery.html:36
+msgid "Delivery condition"
+msgstr "Lieferbedingung"
+
+#: templates/delivery.html:38
+msgid "Delivery"
+msgstr "Lieferung"
+
+#: templates/delivery.html:40
+msgid "Standart in post office"
+msgstr "Standard in der Post"
+
+#: templates/delivery.html:44
+msgid "Delivery duration:"
+msgstr "Lieferdauer:"
+
+#: templates/delivery.html:46
+msgid "Delivery within 2-5 working days"
+msgstr "Lieferung innerhalb 2-5 Arbeitstage"
 
 #: templates/faq.html:16
 msgid "Frequently asked questions"
