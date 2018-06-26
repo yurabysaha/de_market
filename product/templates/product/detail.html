@@ -4,9 +4,9 @@
 
 {% block content %}
     <div class="row mb-2">
-        <div class="col-lg-6 item-photo">
+        <div class="col-lg-6 item-photo" >
             <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title }}">
-    <img class="img-thumbnail" style="max-width:100%;" src="{{ item.photos.first.image.url }}"/>
+    <img class="img-thumbnail" style="max-width:100%; cursor: -webkit-zoom-in;" src="{{ item.photos.first.image.url }}"/>
 </a>
         </div>
 
