@@ -12,7 +12,7 @@
 
         <div class="col-lg-5">
             <h3>{{ item.title }}</h3>
-            <h5 class="mt-4">{% trans "SKU #" %} <span class="text-dark"> {{ item.sku }}</span></h5>
+            <h5 class="mt-4">ART # <span class="text-dark"> {{ item.sku }}</span></h5>
             <h4><span class="mt-4"> {% trans "PRICE" %}
                 {% if item.sale_price %}<s class="text-muted"> € {{ item.price }}</s>
                 <span class="text-danger"> € {{ item.sale_price }}</span>
