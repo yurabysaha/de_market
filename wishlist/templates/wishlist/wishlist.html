@@ -33,9 +33,9 @@
         <td data-th="Price">{% if item.sale_price %} <s class="small">{{ item.price }}</s> {{ item.sale_price }} {% else %} {{ item.price }} {% endif %}</td>
         <td class="actions" data-th="">
           <a href="{% url 'remove_from_wishlist' item.id %}" class="btn btn-outline-danger btn-sm"
-             style="padding: 5px; padding-bottom: 0; color: #e1b5bf; border-color: #e1b5bf;"><i class="material-icons">delete</i></a>
+             style="padding: 5px; padding-bottom: 0; color: #6699FF; border-color: #6699FF;"><i class="material-icons">delete</i></a>
           <a href="{% url 'add_to_cart' item.id %}" class="btn btn-outline-danger btn-sm"
-             style="padding: 5px; padding-bottom: 0; border-color: #e1b5bf;"><i class="material-icons" style="font-size: 25px; color: #e1b5bf;">add_shopping_cart</i></a>
+             style="padding: 5px; padding-bottom: 0; border-color: #e1b5bf;"><i class="material-icons" style="font-size: 25px; color: #6699FF;">add_shopping_cart</i></a>
         </td>
       </tr>
     </tbody>

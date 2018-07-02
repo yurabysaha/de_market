@@ -41,7 +41,7 @@
 <div class="container-fluid bg-light">
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" style="color: #d4aab4" href="/">Kunst-WD</a>
+        <a class="navbar-brand" style="color: #6699FF" href="/">Kunst-WD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,8 +76,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
                     </li>
+
                 {% endif %}
+                    <li class="nav-item active">
+                        <a  class="nav-link" title="Facebook"  href="https://www.facebook.com/"><img width="25" alt="F icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/32px-F_icon.svg.png"></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" title="Instagram" href="https://www.instagram.com"><img width="25" alt="Instagram logo 2016" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/32px-Instagram_logo_2016.svg.png"></a>
             </ul>
+                    </li>
 
         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -103,21 +110,21 @@
 
         <div class="col-lg-3 col-md-6">
            <div class="card-body border-0 text-center">
-                  <i class="material-icons" style="font-size: 35px; color: #e1b5bf">settings_phone</i>
+                  <i class="material-icons" style="font-size: 35px; color: #6699FF">settings_phone</i>
                     <p>+49 0176 10224758<br>+49 0173 8279301</p>
             </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
-                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #e1b5bf;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
+                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
                     <p class="text-secondary">{% trans "Wish List" %}</p></a>
               </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
               <div class="card-body border-0 text-center">
-                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #e1b5bf">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
+                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
                     <p class="text-secondary">{% trans "Open Cart" %}</p></a>
               </div>
         </div>
@@ -146,7 +153,7 @@
 
                 <!--First column-->
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
-                    <blockquote class="blockquote" style="color: #d4aab4">
+                    <blockquote class="blockquote" style="color: #6699FF">
                     <p class="text-justify">Kunst für alle</p>
                     </blockquote>
                 </div>

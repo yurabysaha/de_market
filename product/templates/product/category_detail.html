@@ -12,7 +12,7 @@
             <div class="col-8 bg-light text-dark">
                 <div class="brand" style="font-size: 25px">
                     <i class="material-icons card-body"
-                    style="font-size: 30px; color: #e1b5bf; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name }}
+                    style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name }}
                 </div>
             </div>
         </div>
@@ -79,18 +79,5 @@
     <div class="container mt-3">
         {% include 'product/card_items.html' %}
     </div>
-<!-- End container -->
-
-{#<!-- START container with category's description -->#}
-{#    <div class="container mt-5" style="border: 1px solid #9a9a9a;  min-height: 250px;">#}
-{#        <div>#}
-{#            <h4 class="font-italic mt-3" style="color: #e1b5bf;"> <strong>{{ cat.name }}</strong></h4>#}
-{#            {% if item %}#}
-{#            <img src="{{ item.photos.first.image.url }}" class="float-right img-thumbnail ml-2" alt="placeholder" height="360px" width="240px" >#}
-{#            {% endif %}#}
-{#            <p class="text-justify">{{ cat.description }}</p>#}
-{#        </div>#}
-{#    </div>#}
-{#<!-- END Category's description -->#}
 
 {% endblock %}

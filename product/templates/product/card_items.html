@@ -12,7 +12,7 @@
             <div class="card-footer d-flex justify-content-between">
             {% if i.status != 2 %}
                 <span><a href="{% url 'add_to_wishlist' i.id %}"><i class="material-icons"
-                                                                    style="font-size: 23px; color: #e1b5bf; margin-right: -26px;">start</i></a></span>
+                                                                    style="font-size: 23px; color: #6699FF; margin-right: -26px;">start</i></a></span>
                 {% if i.sale_price %}
                     <span class="font-weight-bold text-muted"><s> {{ i.price }}</s></span>
                     <span class="font-weight-bold text-danger"> {{ i.sale_price }}</span>
@@ -21,7 +21,7 @@
                 {% endif %}
 
                 <span><a href="{% url 'add_to_cart' i.id %}"><i class="material-icons"
-                                                                style="font-size: 25px; color: #e1b5bf;">add_shopping_cart</i></a></span>
+                                                                style="font-size: 25px; color: #6699FF;">add_shopping_cart</i></a></span>
             {% else %}
                 <span class="font-weight-bold text-muted">{% trans 'Sold' %}</span>
             {% endif %}

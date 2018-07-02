@@ -27,7 +27,7 @@
           </div>
         </td>
         <td class="text-right">{{ item.sku }}</td>
-        <td class="text-right" data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
+        <td class="text-right" data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s> {{ item.sale_price }} {% else %} {{ item.price }} {% endif %}</td>
       </tr>
           {% endfor %}
     </tbody>
@@ -46,7 +46,7 @@
     <tfoot>
       <tr>
         <td><a href="/cart/" class="btn btn-outline-secondary">{% trans "Back to Cart" %}</a></td>
-        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: € {{ cart_total }}</strong></td>
+        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: {{ cart_total }}</strong></td>
         <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">{% trans "Create Order" %}</button></td>
       </tr>
     </tfoot>
