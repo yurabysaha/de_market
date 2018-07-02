@@ -65,26 +65,14 @@
 
             </ul>
             <ul class="navbar-nav mr-auto">
-                {% if not user.is_authenticated %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_login' %}">{% trans "Login" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">{% trans "Registration" %}</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
-                    </li>
 
-                {% endif %}
                     <li class="nav-item active">
                         <a  class="nav-link" title="Facebook"  href="https://www.facebook.com/"><img width="25" alt="F icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/32px-F_icon.svg.png"></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" title="Instagram" href="https://www.instagram.com"><img width="25" alt="Instagram logo 2016" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/32px-Instagram_logo_2016.svg.png"></a>
-            </ul>
                     </li>
+            </ul>
 
         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -117,14 +105,14 @@
 
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
-                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
+                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ request.session.wishlist_count }}</span>
                     <p class="text-secondary">{% trans "Wish List" %}</p></a>
               </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
               <div class="card-body border-0 text-center">
-                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
+                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF">shopping_cart</i><span class="badge badge-danger">{{ request.session.cart_items_count }}</span>
                     <p class="text-secondary">{% trans "Open Cart" %}</p></a>
               </div>
         </div>
@@ -217,9 +205,11 @@
             });
 
     {#For footer if page is small#}
-    if ($(document).height() <= $(window).height())
-  $("footer.footer").addClass("fixed-bottom");
-
+    $(document).ready( function () {
+            if ($(document).height() <= $(window).height())
+                $("footer.footer").addClass("fixed-bottom");
+        });
 </script>
+
 </body>
 </html>

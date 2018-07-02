@@ -15,8 +15,8 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [ItemInline]
     list_filter = ('status',)
     search_fields = ('pk',)
-    list_display = ('__str__', 'user', 'total', 'status',)
-    exclude = ('items',)
+    list_display = ('__str__', 'total', 'status',)
+    exclude = ('items', 'user_session')
 
 
 admin.site.register(Order, OrderAdmin)

@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -16,7 +18,7 @@ class Order(models.Model):
         (2, _('Send to Client')),
     )
 
-    user = models.ForeignKey(User, verbose_name=_('Buyer'), on_delete=False)
+    user_session = models.CharField(max_length=255, default=uuid.uuid4())
     items = models.ManyToManyField(Item, related_name='in_orders')
     track_number = models.CharField(max_length=255, verbose_name=_('Track Number'), blank=True)
     delivery_address = models.CharField(max_length=255, verbose_name=_('Delivery Address'), blank=True)

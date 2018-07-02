@@ -7,8 +7,8 @@ from django.utils.translation import gettext as _
 
 
 def create_order(request):
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(user_id=request.user.id)
+    if request.session.get('cart_id'):
+        cart, created = Cart.objects.get_or_create(user_session=request.session['cart_id'])
 
         # calculate total for price in cart items
         cart_total = 0
@@ -20,13 +20,15 @@ def create_order(request):
 
         form = CreateOrder()
         if request.method == "POST":
-            order = Order.objects.create(user=request.user, total=cart_total,
+            order = Order.objects.create(user_session=request.session['cart_id'], total=cart_total,
                                          delivery_address=request.POST['delivery_address'],
                                          contact_phone=request.POST['contact_phone'])
             for item in cart.item.all():
                 order.items.add(item)
 
             cart.item.clear()
+            del request.session['cart_items_count']
+
             messages.info(request, _('Thank you for your order, our manager will contact you soon!'))
 
             return redirect('/')
