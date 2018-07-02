@@ -10,7 +10,8 @@ def home(request):
 
 
 def about_us(request):
-    return render(request, 'about_us.html')
+    categories = Category.objects.all()
+    return render(request, 'about_us.html', {'categories': categories})
 
 
 def delivery(request):

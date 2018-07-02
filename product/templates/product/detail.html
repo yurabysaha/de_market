@@ -6,27 +6,27 @@
     <div class="row mb-2">
         <div class="col-lg-6 item-photo" >
             <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title }}">
-    <img class="img-thumbnail" style="max-width:100%; cursor: -webkit-zoom-in;" src="{{ item.photos.first.image.url }}"/>
+    <img class="shadow p-3 mb-3 bg-white rounded" style="max-width:100%; cursor: -webkit-zoom-in;" src="{{ item.photos.first.image.url }}"/>
 </a>
         </div>
 
         <div class="col-lg-5">
             <h3>{{ item.title }}</h3>
             <h5 class="mt-4">ART # <span class="text-dark"> {{ item.sku }}</span></h5>
-            <h4><span class="mt-4"> {% trans "PRICE" %}
-                {% if item.sale_price %}<s class="text-muted"> € {{ item.price }}</s>
-                <span class="text-danger"> € {{ item.sale_price }}</span>
+            <h5><span class="mt-4"> {% trans "PRICE" %}
+                {% if item.sale_price %}<s class="text-muted"> {{ item.price }}</s>
+                <span class="text-danger"> {{ item.sale_price }}</span>
                 {% else %}
-                    <span class="text-danger"> € {{ item.price }}</span>
-                    </span></h4>
+                    <span class="text-danger"> {{ item.price }}</span>
+                    </span></h5>
                 {% endif %}
                      {% if item.size %}<h5 class="mt-4">{% trans "SIZE" %} <span class="text-dark"> {{ item.size }}</span></h5> {% endif %}
             <div class="section p-2">
-                <a class="btn btn-outline-danger m-2" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
-                                                                                                style="font-size: 20px; color: #FE3C01">add_shopping_cart</i>
+                <a class="btn btn-outline-danger m-2"  style="color: #e1b5bf; border-color: #e1b5bf;" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
+                                                                                                style="font-size: 22px; color: #e1b5bf; position:relative; top: 5px;">add_shopping_cart</i>
                     {% trans "Add to Cart" %}</a>
-                <a class="btn btn-outline-danger" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons"
-                                                                                                style="font-size: 20px; margin-right: -20px; color: #FE3C01">start</i>
+                <a class="btn btn-outline-danger" style="color: #d3a7b1; border-color: #d3a7b1;" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons"
+                                                                                                                                               style="font-size: 18px; margin-right: -20px; color: #d3a7b1; position:relative; top: 2px;">start</i>
                     {% trans "Add to Wish List" %}</a>
             </div>
         </div>
@@ -66,49 +66,49 @@
 
     {#  Comments block  #}
 
-<div class="table-responsive">
-     {% if request.user.is_authenticated %}
-        <div class="row pt-2">
-              <div class="col-12">
-                          <h2 class="text-center">{% trans "Comments" %}</h2>
-
-                        <form method="POST" action="{% url 'create_comment' item.id %}" class="post-form">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <h4 class="text-left"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">{% trans "Add Comment" %}</button></h4>
-                        </form>
-              </div>
-        </div>
-    {% else %}
-        <h4 class="text-center">{% trans "Login before adding comment!" %}</h4>
-    {% endif %}
-  <table class="table table-hover">
-      {% for comment in comments %}
-    <thead>
-      <tr>
-        <th>{% trans "Commented by" %}: {{ comment.user.email }}  at  {{ comment.created_at|date:"M d" }}</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-
-    <div class="btn-group-vertical">
-      <tr>
-          <td><p class="text-muted">{{ comment.body }}</p></td>
-                             {% if request.user.is_authenticated %}
-
-          <td><button class="btn btn-link"><a href="{% url 'update_comment' item.id comment.id %}"><i class="material-icons"
-                                                                style="font-size: 25px; color: #FE3C01;">edit</i></a></button>
-          <form method="post" action="{% url 'comment_delete' item.id comment.id %}" class="post-form">{% csrf_token %}
-          <button class="btn btn-link"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">delete</i></button>
-
-          </form>
-          {% endif %}
-      </tr>
-    </div>
-    </tbody>
-     {% endfor %}
-  </table>
-</div>
+{#<div class="table-responsive">#}
+{#     {% if request.user.is_authenticated %}#}
+{#        <div class="row pt-2">#}
+{#              <div class="col-12">#}
+{#                          <h2 class="text-center">{% trans "Comments" %}</h2>#}
+{##}
+{#                        <form method="POST" action="{% url 'create_comment' item.id %}" class="post-form">#}
+{#                            {% csrf_token %}#}
+{#                            {{ form.as_p }}#}
+{#                            <h4 class="text-left"><button  type="submit" class="btn btn-outline-info btn-rounded waves-effect">{% trans "Add Comment" %}</button></h4>#}
+{#                        </form>#}
+{#              </div>#}
+{#        </div>#}
+{#    {% else %}#}
+{#        <h4 class="text-center">{% trans "Login before adding comment!" %}</h4>#}
+{#    {% endif %}#}
+{#  <table class="table table-hover">#}
+{#      {% for comment in comments %}#}
+{#    <thead>#}
+{#      <tr>#}
+{#        <th>{% trans "Commented by" %}: {{ comment.user.email }}  at  {{ comment.created_at|date:"M d" }}</th>#}
+{#        <th></th>#}
+{#      </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{##}
+{#    <div class="btn-group-vertical">#}
+{#      <tr>#}
+{#          <td><p class="text-muted">{{ comment.body }}</p></td>#}
+{#                             {% if request.user.is_authenticated %}#}
+{##}
+{#          <td><button class="btn btn-link"><a href="{% url 'update_comment' item.id comment.id %}"><i class="material-icons"#}
+{#                                                                style="font-size: 25px; color: #FE3C01;">edit</i></a></button>#}
+{#          <form method="post" action="{% url 'comment_delete' item.id comment.id %}" class="post-form">{% csrf_token %}#}
+{#          <button class="btn btn-link"><i class="material-icons" style="font-size: 25px; color: #FE3C01;">delete</i></button>#}
+{##}
+{#          </form>#}
+{#          {% endif %}#}
+{#      </tr>#}
+{#    </div>#}
+{#    </tbody>#}
+{#     {% endfor %}#}
+{#  </table>#}
+{#</div>#}
 
 {% endblock %}

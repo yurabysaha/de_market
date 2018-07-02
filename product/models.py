@@ -8,7 +8,7 @@ class CategoryManager(models.Manager):
 
     def get_queryset(self):
         locale = get_language()
-        return super().get_queryset().annotate(name=F('name_' + locale), description=F('description_' + locale))
+        return super().get_queryset().annotate(name=F('name_' + locale))
 
 
 class ItemManager(models.Manager):
@@ -25,8 +25,6 @@ class Category(models.Model):
 
     name_en = models.CharField(max_length=255, verbose_name=_('Name on English'))
     name_de = models.CharField(max_length=255, verbose_name=_('Name on German'))
-    description_en = models.TextField(verbose_name=_('Description on English'))
-    description_de = models.TextField(verbose_name=_('Description on German'))
     parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name=_('Parent Category'))
 
     objects = CategoryManager()
@@ -73,13 +71,3 @@ class Item(models.Model):
 class ItemPhoto(models.Model):
     item = models.ForeignKey(Item, related_name='photos', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='item-photos')
-
-
-class Comment(models.Model):
-    item = models.ForeignKey(Item, related_name='comments', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='comments', on_delete=False)
-    body = models.TextField(verbose_name=_('Comment text'))
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.body

@@ -28,9 +28,9 @@
         <td>
           {{ item.sku }}
         </td>
-        <td data-th="Price">{% if item.sale_price %} <s class="small">€ {{ item.price }}</s>  € {{ item.sale_price }} {% else %}€ {{ item.price }} {% endif %}</td>
+        <td data-th="Price">{% if item.sale_price %} <s class="small"> {{ item.price }}</s> {{ item.sale_price }} {% else %} {{ item.price }} {% endif %}</td>
         <td class="actions" data-th="">
-          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm" style="padding: 5px; padding-bottom: 0;"><i class="material-icons">delete</i></a>
+          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-danger btn-sm" style="padding: 5px; padding-bottom: 0; color: #e1b5bf; border-color: #e1b5bf;"><i class="material-icons">delete</i></a>
         </td>
       </tr>
     </tbody>
@@ -38,7 +38,7 @@
     <tfoot>
       <tr>
         <td><a href="/" class="btn btn-outline-secondary">{% trans "Continue Shopping" %}</a></td>
-        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: € {{ cart_total }}</strong></td>
+        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: {{ cart_total }}</strong></td>
         <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">{% trans "Checkout" %}</a></td>
       </tr>
     </tfoot>

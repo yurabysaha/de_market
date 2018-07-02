@@ -41,7 +41,7 @@
 <div class="container-fluid bg-light">
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">Kunst-WD</a>
+        <a class="navbar-brand" style="color: #d4aab4" href="/">Kunst-WD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,9 +54,9 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="{% url 'delivery' %}">{% trans "Payment/Delivery" %}</a>
                 </li>
-                <li class="nav-item ml-3">
-                    <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>
-                </li>
+{#                <li class="nav-item ml-3">#}
+{#                    <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>#}
+{#                </li>#}
 
                <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
                      <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
@@ -103,21 +103,21 @@
 
         <div class="col-lg-3 col-md-6">
            <div class="card-body border-0 text-center">
-                  <i class="material-icons" style="font-size: 35px; color: #FE3C01">settings_phone</i>
+                  <i class="material-icons" style="font-size: 35px; color: #e1b5bf">settings_phone</i>
                     <p>+49 0176 10224758<br>+49 0173 8279301</p>
             </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
-                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
+                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #e1b5bf;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ user.wishlist.item.count }}</span>
                     <p class="text-secondary">{% trans "Wish List" %}</p></a>
               </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
               <div class="card-body border-0 text-center">
-                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #FE3C01">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
+                  <a href="{% url 'get-cart' %}"><i class="material-icons" style="font-size: 35px; color: #e1b5bf">shopping_cart</i><span class="badge badge-danger">{{ user.cart.item.count }}</span>
                     <p class="text-secondary">{% trans "Open Cart" %}</p></a>
               </div>
         </div>
@@ -146,7 +146,9 @@
 
                 <!--First column-->
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <blockquote class="blockquote" style="color: #d4aab4">
                     <p class="text-justify">Kunst für alle</p>
+                    </blockquote>
                 </div>
                 <!--/.First column-->
 
@@ -156,18 +158,18 @@
                 <div class="col-md-4 col-lg-4 ml-auto text-center">
 
                     <ul class="list-unstyled">
-                        <p>
-                            <a href="{% url 'site_map' %}" class="text-dark">{% trans "SITE MAP" %}</a>
-                        </p>
+{#                        <p>#}
+{#                            <a href="{% url 'site_map' %}" class="text-dark">{% trans "SITE MAP" %}</a>#}
+{#                        </p>#}
                         <p>
                             <a href="{% url 'about_us' %}" class="text-dark">{% trans "ABOUT US" %}</a>
                         </p>
                         <p>
                             <a href="{% url 'delivery' %}" class="text-dark">{% trans "PAYMENT/DELIVERY" %}</a>
                         </p>
-                        <p>
-                            <a href="{% url 'faq' %}" class="text-dark">{% trans "FAQ" %}</a>
-                        </p>
+{#                        <p>#}
+{#                            <a href="{% url 'faq' %}" class="text-dark">{% trans "FAQ" %}</a>#}
+{#                        </p>#}
                     </ul>
                 </div>
                 <!--/.Second column-->
