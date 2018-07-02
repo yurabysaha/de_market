@@ -22,10 +22,10 @@
                 {% endif %}
                      {% if item.size %}<h5 class="mt-4">{% trans "SIZE" %} <span class="text-dark"> {{ item.size }}</span></h5> {% endif %}
             <div class="section p-2">
-                <a class="btn btn-outline-danger m-2"  style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
+                <a class="btn btn-outline-light m-2"  style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
                                                                                                 style="font-size: 22px; color: #6699FF; position:relative; top: 5px;">add_shopping_cart</i>
                     {% trans "Add to Cart" %}</a>
-                <a class="btn btn-outline-danger" style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons"
+                <a class="btn btn-outline-light" style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons"
                                                                                                                                                style="font-size: 18px; margin-right: -20px; color: #6699FF; position:relative; top: 2px;">start</i>
                     {% trans "Add to Wish List" %}</a>
             </div>
