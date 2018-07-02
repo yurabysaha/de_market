@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load staticfiles %}
+{% load static %}
 
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -54,9 +55,6 @@
                 <li class="nav-item ml-3">
                     <a class="nav-link" href="{% url 'delivery' %}">{% trans "Payment/Delivery" %}</a>
                 </li>
-{#                <li class="nav-item ml-3">#}
-{#                    <a class="nav-link" href="{% url 'faq' %}">{% trans "FAQ" %}</a>#}
-{#                </li>#}
 
                <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
                      <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
@@ -162,18 +160,13 @@
                 <div class="col-md-4 col-lg-4 ml-auto text-center">
 
                     <ul class="list-unstyled">
-{#                        <p>#}
-{#                            <a href="{% url 'site_map' %}" class="text-dark">{% trans "SITE MAP" %}</a>#}
-{#                        </p>#}
+
                         <p>
                             <a href="{% url 'about_us' %}" class="text-dark">{% trans "ABOUT US" %}</a>
                         </p>
                         <p>
                             <a href="{% url 'delivery' %}" class="text-dark">{% trans "PAYMENT/DELIVERY" %}</a>
                         </p>
-{#                        <p>#}
-{#                            <a href="{% url 'faq' %}" class="text-dark">{% trans "FAQ" %}</a>#}
-{#                        </p>#}
                     </ul>
                 </div>
                 <!--/.Second column-->
@@ -208,17 +201,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 
 <script>
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-                event.preventDefault();
-                $(this).ekkoLightbox();
-            });
 
-    {#For footer if page is small#}
+
+    {#  For footer if page is small  #}
     $(document).ready( function () {
             if ($(document).height() <= $(window).height())
                 $("footer.footer").addClass("fixed-bottom");
         });
 </script>
 
+
+
+<script>
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+ </script>
+
+{#   For zoom on image   #}
+
+<script type="text/javascript" src="{% static "js/jquery.loupe.min.js" %}"></script>
+
+<script type="text/javascript">
+$('.demo').loupe({
+  width: 200,
+  height: 150,
+  loupe: 'loupe'
+});
+</script>
 </body>
 </html>
