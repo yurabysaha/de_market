@@ -2,11 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-<div class="pr-3">
 
   <form class="form-group" method="get">
-  <div class="row col-md-9 pr-0">
-      <div class="col-sm-12 col-md-4 mb-2 pr-0">
+  <div class="row col-md-9 m-0">
+      <div class="col-sm-12 col-md-4 mb-2">
               <select class="form-control" name="category_id">
                        <option value="">{% trans "All Categories" %}</option>
                                   {% for category in categories %}
@@ -18,19 +17,18 @@
                                   {% endfor %}
               </select>
       </div>
-      <div class="col-sm-12 col-md-5 mb-2 pr-0">
+      <div class="col-sm-12 col-md-5 mb-2">
         <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}" value="{{ query_item_name }}" >
       </div>
-        <div class="col-sm-12 col-md-3 mb-2 pr-0">
+        <div class="col-sm-12 col-md-3 mb-2">
             <button type="submit" class="btn btn-outline-success col-sm-8">{% trans "Search" %}</button>
    </div>
         </div>
   </form>
-</div>
 
 {% if items %}
 
-    <div class="row  d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
         {% include 'product/card_items.html' %}
     </div>
 
