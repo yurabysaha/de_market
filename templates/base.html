@@ -58,18 +58,15 @@
 
                <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
                      <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
-                     <button class="btn btn-outline-success h-75 p-1 m-1" type="submit">{% trans "Search" %}</button>
+                     <button class="btn btn-outline-success h-75 col p-1 m-1" type="submit">{% trans "Search" %}</button>
                </form>
 
             </ul>
             <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item active">
-                        <a  class="nav-link" title="Facebook"  href="https://www.facebook.com/"><img width="25" alt="F icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/32px-F_icon.svg.png"></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" title="Instagram" href="https://www.instagram.com"><img width="25" alt="Instagram logo 2016" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/32px-Instagram_logo_2016.svg.png"></a>
-                    </li>
+                <li class="btn-group">
+                    <a  class="nav-link pr-1" title="Facebook"  href="https://www.facebook.com/"><img width="25" alt="F icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/32px-F_icon.svg.png"></a>
+                    <a class="nav-link" title="Instagram" href="https://www.instagram.com"><img width="25" alt="Instagram logo 2016" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/32px-Instagram_logo_2016.svg.png"></a>
+                </li>
             </ul>
 
         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -103,7 +100,7 @@
 
         <div class="col-lg-3 col-md-6">
                <div class="card-body border-0 text-center">
-                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF;{% if not user.wishlist.item %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ request.session.wishlist_count }}</span>
+                   <a href="{% url 'get_wishlist' %}"><i class="material-icons" style="font-size: 35px; color: #6699FF;{% if not request.session.wishlist_count %}padding-left: 33px{% endif %}">start</i><span style="margin-left: -38px" class="badge badge-danger">{{ request.session.wishlist_count }}</span>
                     <p class="text-secondary">{% trans "Wish List" %}</p></a>
               </div>
         </div>
@@ -131,8 +128,8 @@
     {% block content %}
     {% endblock content %}
 </div>
-<div class="container">
-     <div class="row col d-flex justify-content-between pt-5 align-items-center">
+<div class="container pr-0">
+     <div class="row col d-flex justify-content-between pt-5 align-items-center pr-0">
     <a href="https://www.ups.com"><img width="70" alt="UPS" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/United_Parcel_Service_logo_2014.svg/201px-United_Parcel_Service_logo_2014.svg.png"></a>
     <a href="https://www.dhl.de/"><img width="200" alt="DHL" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DHL_Logo.svg/640px-DHL_Logo.svg.png"></a>
     <a href="https://www.paypal.com"><img width="128" alt="PayPal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/128px-PayPal_logo.svg.png"></a>
