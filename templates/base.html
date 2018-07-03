@@ -14,9 +14,7 @@
   gtag('config', 'UA-119697449-1');
 </script>
 
-
     <title>Kunst-WD</title>
-    {% block meta %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#333333">
@@ -25,6 +23,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
         <meta name="og:type" content="website">
+    {% block meta %}
     {% endblock meta %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -47,18 +46,18 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse pl-3" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item ml-3">
+                <li class="nav-item ml-0">
                     <a class="nav-link" href="{% url 'about_us' %}">{% trans "About us" %}</a>
                 </li>
-                <li class="nav-item ml-3">
+                <li class="nav-item ml-0">
                     <a class="nav-link" href="{% url 'delivery' %}">{% trans "Payment/Delivery" %}</a>
                 </li>
 
-               <form class="form-inline my-2 my-lg-0 ml-3" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+               <form class="form-inline my-2 my-lg-0 ml-0" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
                      <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
-                     <button class="btn btn-outline-success h-75 col p-1 m-1" type="submit">{% trans "Search" %}</button>
+                     <button class="btn btn-outline-success h-75 col pt-1 pb-1 mb-1 mt-1" type="submit">{% trans "Search" %}</button>
                </form>
 
             </ul>
