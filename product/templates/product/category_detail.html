@@ -4,19 +4,17 @@
 {% block content %}
 
  <!-- START container with dropdown with categories and category's name -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-4 bg-light text-dark">
+        <div class="row mt-3">
+            <div class="col-md-4 col-sm-12 bg-light text-dark">
                 {% include 'collapse_category_dropdown.html' %}
             </div>
-            <div class="col-8 bg-light text-dark">
+            <div class="col-md-8 bg-light text-dark d-none d-sm-block">
                 <div class="brand" style="font-size: 25px">
                     <i class="material-icons card-body"
                     style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name }}
                 </div>
             </div>
         </div>
-    </div>
 <!-- END container -->
 
  <!-- Pagination -->
