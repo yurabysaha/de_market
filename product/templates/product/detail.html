@@ -2,8 +2,14 @@
 {% load i18n %}
 {% load static %}
 
+{% block meta %}
+    <meta property="og:title" content="{{ item.title }}">
+    <meta property="og:image" content="http://127.0.0.1:8000{{ item.photos.first.image.url }}">
+    <meta property="og:url" content="{{ request.get_full_path }}">
+{% endblock %}
+
 <style>
-    a.demo { float:left; }
+a.demo { float:left; }
 a img { border:none; }
 img.demo { float:right; }
 .demo {
@@ -34,6 +40,17 @@ img.demo { float:right; }
                     <span class="text-danger"> {{ item.price }}</span>
                     </span></h5>
                 {% endif %}
+
+        <!-- AddToAny BEGIN -->
+        <div class="a2a_kit a2a_kit_size_32 a2a_default_style pt-2">
+{#            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>#}
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_google_plus"></a>
+        </div>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+        <!-- AddToAny END -->
+
                      {% if item.size %}<h5 class="mt-4">{% trans "SIZE" %} <span class="text-dark"> {{ item.size }}</span></h5> {% endif %}
             <div class="section p-2">
                 <a class="btn btn-outline-light m-2"  style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
