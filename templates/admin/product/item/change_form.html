@@ -1,0 +1,13 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n %}
+
+{% block submit_buttons_bottom %}
+
+    {{ block.super }}
+
+<div class="submit">
+    <input type="submit" value="Up to Main Page" name="_set_point_for_places">
+</div>
+
+
+{% endblock %}

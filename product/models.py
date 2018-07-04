@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import F
@@ -40,6 +41,7 @@ class Item(models.Model):
     class Meta:
         verbose_name = _("Item")
         verbose_name_plural = _("Items")
+        ordering = ['-created_at']
 
     STATUS_CHOICES = (
         (0, _('Not Published')),
@@ -56,7 +58,7 @@ class Item(models.Model):
     sale_price = models.IntegerField(verbose_name=_('Sale Price'), null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
     author = models.CharField(max_length=255, verbose_name=_('Author name'))
-    category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
+    category = models.ManyToManyField(Category, related_name='items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
