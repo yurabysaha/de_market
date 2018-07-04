@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="row">
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
@@ -29,20 +29,35 @@
           {{ item.sku }}
         </td>
         <td data-th="Price">{% if item.sale_price %} <s class="small"> {{ item.price }}</s> {{ item.sale_price }} {% else %} {{ item.price }} {% endif %}</td>
-        <td class="actions" data-th="">
+        <td>
           <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-light btn-sm" style="padding: 5px; padding-bottom: 0; color: #6699FF; border-color: #6699FF;"><i class="material-icons">delete</i></a>
         </td>
       </tr>
+    {% endfor %}
     </tbody>
-      {% endfor %}
-    <tfoot>
+    <tfoot >
       <tr>
-        <td><a href="/" class="btn btn-outline-secondary">{% trans "Continue Shopping" %}</a></td>
-        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: {{ cart_total }}</strong></td>
-        <td><a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">{% trans "Checkout" %}</a></td>
+        <td><a href="/" class="btn btn-outline-secondary d-none d-md-table-cell">{% trans "Continue Shopping" %}</a></td>
+        <td colspan="2" class="hidden-xs text-center d-none d-md-table-cell"><strong>{% trans "Total price" %}: {{ cart_total }}</strong></td>
+        <td><a href="{% url 'create_order' %}" class="d-none d-md-table-cell btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">{% trans "Checkout" %}</a></td>
       </tr>
     </tfoot>
   </table>
-</div>
+    </div>
+
+    <div class='row d-block d-sm-none d-md-none'>
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <a href="/" class="btn btn-outline-secondary">{% trans "Continue Shopping" %}</a>
+        </div>
+        <div class="p-2">
+            <strong>{% trans "Total price" %}: {{ cart_total }}</strong>
+        </div>
+        <div class="p-2">
+            <a href="{% url 'create_order' %}" class="btn btn-outline-danger btn-block {% if cart.item.count == 0 %} disabled {% endif %}">{% trans "Checkout" %}</a>
+        </div>
+    </div>
+    </div>
+
 
 {% endblock %}
