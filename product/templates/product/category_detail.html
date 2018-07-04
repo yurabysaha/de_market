@@ -55,23 +55,23 @@
         </nav>
     </div>
 
-<!-- START container with sub categories. If category doesn't have subcategories, this container isn't displayed -->
-     <div class="container mt-3">
-        <div class="card-columns text-center mt-3">
-
-        {% for category in sub_categories %}
-        <div class="card mr-4" style="max-width: 200px">
-            <a href="{% url 'category_detail' category.id %}">
-                <img class="card-img-top" src="{{ category.items.first.photos.first.image.url }}" alt="Card image cap"></a>
-            <div class="card-body">
-                    <a href="{% url 'category_detail' category.id %}"><h5 class="card-title text-center">{{ category.name }}</h5></a>
-
-            </div>
-        </div>
-        {% endfor %}
-        </div>
-    </div>
-<!--END subcategories container -->
+{#<!-- START container with sub categories. If category doesn't have subcategories, this container isn't displayed -->#}
+{#     <div class="container mt-3">#}
+{#        <div class="card-columns text-center mt-3">#}
+{##}
+{#        {% for category in sub_categories %}#}
+{#        <div class="card mr-4" style="max-width: 200px">#}
+{#            <a href="{% url 'category_detail' category.id %}">#}
+{#                <img class="card-img-top" src="{{ category.items.first.photos.first.image.url }}" alt="Card image cap"></a>#}
+{#            <div class="card-body">#}
+{#                    <a href="{% url 'category_detail' category.id %}"><h5 class="card-title text-center">{{ category.name }}</h5></a>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#<!--END subcategories container -->#}
 
 <!-- START container with items. -->
     <div class="container mt-3">

@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
 from product.models import Category, Item
+from product.utils import handle_pagination
 
 
 def home(request):
-    items = Item.objects.exclude(status=0)[:12]
+    items = Item.objects.exclude(status=0)
     categories = Category.objects.all()
-    return render(request, 'home.html', {'items': items, 'categories': categories})
+    return render(request, 'home.html', {'items': handle_pagination(request, items, 12), 'categories': categories})
 
 
 def about_us(request):
