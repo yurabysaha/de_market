@@ -2,12 +2,12 @@
 
 <div class="card-columns">
     {% for i in items %}
-        <div class="card shadow p-3 mb-3 bg-white rounded" style="max-width: 300px; border:none">
+        <div class="card" style="max-width: 300px; border:none">
             <a href="{% url 'item-detail' i.id %}" class="text-dark" style="text-decoration: none">
-                <img class="card-img-top " src="{{ i.photos.first.image.url }}" alt="Card image cap">
-                <div class="pt-2" style="font-family: 'Monotype Corsiva'; font-style: oblique;">
-                    <h5 >{{ i.title }}</h5></a>
-                    <div class="d-flex justify-content-end">
+                <img class="card-img-top shadow p-2 mb-2 rounded" src="{{ i.photos.first.image.url }}" alt="Card image cap">
+                <div class="pb-2" style="font-family: 'Monotype Corsiva'; font-style: oblique;">
+                    <h5 class="m-0 p-0">{{ i.title }}</h5></a>
+                    <div class="d-flex justify-content-end pr-2 pt-0 mt-0">
                     {% if i.status != 2 %}
                         {% if i.sale_price %}
                             <span class="font-weight-bold text-muted pr-3"><s> {{ i.price }} €</s></span>
