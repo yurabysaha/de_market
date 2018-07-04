@@ -37,7 +37,8 @@ class ItemAdmin(admin.ModelAdmin):
 
             self.message_user(request, "This picture now in top")
             return HttpResponseRedirect(".")
-        super().response_change(request, obj)
+        return super().response_change(request, obj)
+
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
