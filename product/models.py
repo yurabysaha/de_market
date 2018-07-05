@@ -81,7 +81,7 @@ class Item(models.Model):
     price = models.IntegerField(verbose_name=_('Price'))
     sale_price = models.IntegerField(verbose_name=_('Sale Price'), null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
-    # author = models.ForeignKey(Painter, verbose_name=_('Author'), on_delete=False, null=True)
+    author = models.ForeignKey(Painter, verbose_name=_('Author'), on_delete=False, null=True)
     category = models.ManyToManyField(Category, related_name='items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
