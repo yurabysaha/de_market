@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-05 10:57+0000\n"
+"POT-Creation-Date: 2018-07-05 14:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Product Name"
 msgstr "Produktname"
 
 #: cart/templates/cart/cart.html:13 order/templates/order/order.html:14
-#: product/models.py:81 wishlist/templates/wishlist/wishlist.html:15
+#: product/models.py:82 wishlist/templates/wishlist/wishlist.html:15
 msgid "Price"
 msgstr "Preis"
 
@@ -46,11 +46,11 @@ msgstr "Auschecken"
 msgid "You add item to cart!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"
 
-#: de_market/settings.py:125
+#: de_market/settings.py:129
 msgid "English"
 msgstr "Englisch"
 
-#: de_market/settings.py:126
+#: de_market/settings.py:130
 msgid "German"
 msgstr "Deutsche"
 
@@ -119,90 +119,90 @@ msgstr ""
 msgid "Product Management"
 msgstr "Produktmanagement"
 
-#: product/models.py:31
+#: product/models.py:32
 msgid "Category"
 msgstr "Kategorien"
 
-#: product/models.py:32 templates/category_dropdown.html:5
+#: product/models.py:33 templates/category_dropdown.html:5
 #: templates/collapse_category_dropdown.html:5
 msgid "Categories"
 msgstr "Kategorien"
 
-#: product/models.py:34 product/models.py:76
+#: product/models.py:35 product/models.py:77
 msgid "Name on English"
 msgstr "Englisch"
 
-#: product/models.py:35 product/models.py:77
+#: product/models.py:36 product/models.py:78
 msgid "Name on German"
 msgstr "Deutsche"
 
-#: product/models.py:36
+#: product/models.py:37
 msgid "Parent Category"
 msgstr "Eltern-Kategorie"
 
-#: product/models.py:49
+#: product/models.py:50
 msgid "Painter"
 msgstr "Maler"
 
-#: product/models.py:50
+#: product/models.py:51
 msgid "Painters"
 msgstr "Maler"
 
-#: product/models.py:52
+#: product/models.py:53
 #, fuzzy
 #| msgid "Author name"
 msgid "Painter name"
 msgstr "Autorenname"
 
-#: product/models.py:53
+#: product/models.py:54
 msgid "Picture on English"
 msgstr "Bild auf Englisch"
 
-#: product/models.py:54
+#: product/models.py:55
 msgid "Picture on German"
 msgstr "Bild auf Deutsch"
 
-#: product/models.py:66
+#: product/models.py:67
 msgid "Item"
 msgstr "Artikel"
 
-#: product/models.py:67
+#: product/models.py:68
 msgid "Items"
 msgstr "Artikel"
 
-#: product/models.py:71
+#: product/models.py:72
 msgid "Not Published"
 msgstr "Nicht veröffentlicht"
 
-#: product/models.py:72
+#: product/models.py:73
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:73 product/templates/product/card_items.html:20
+#: product/models.py:74 product/templates/product/card_items.html:20
 msgid "Sold"
 msgstr "Verkauft"
 
-#: product/models.py:75
+#: product/models.py:76
 msgid "SKU"
 msgstr "SKU"
 
-#: product/models.py:78
+#: product/models.py:79
 msgid "Description on English"
 msgstr "Beschreibung auf Englisch"
 
-#: product/models.py:79
+#: product/models.py:80
 msgid "Description on German"
 msgstr "Beschreibung auf Deutsch"
 
-#: product/models.py:80
+#: product/models.py:81
 msgid "Size"
 msgstr "Größe"
 
-#: product/models.py:82
+#: product/models.py:83
 msgid "Sale Price"
 msgstr "Verkaufspreis"
 
-#: product/models.py:84
+#: product/models.py:85
 #, fuzzy
 #| msgid "Author name"
 msgid "Author"
@@ -216,19 +216,15 @@ msgstr "Kommentar aktualisieren"
 msgid "Update"
 msgstr "Kommentar aktualisieren"
 
-#: product/templates/product/detail.html:22
-msgid "PRICE"
-msgstr "PREIS"
-
-#: product/templates/product/detail.html:40
-msgid "SIZE"
-msgstr "GRÖSSE"
-
-#: product/templates/product/detail.html:45
+#: product/templates/product/detail.html:63
 msgid "Add to Cart"
 msgstr "In den Warenkorb legen"
 
-#: product/templates/product/detail.html:80
+#: product/templates/product/detail.html:72
+msgid "Product description"
+msgstr "Produktbeschreibung"
+
+#: product/templates/product/detail.html:99
 msgid "Similar items"
 msgstr "Ähnliche Gegenstände"
 

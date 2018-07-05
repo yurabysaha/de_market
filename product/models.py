@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import F
 from django.utils.translation import gettext_lazy as _, get_language
+from ckeditor.fields import RichTextField
 
 
 class CategoryManager(models.Manager):
@@ -75,8 +76,8 @@ class Item(models.Model):
     sku = models.CharField(max_length=255, verbose_name=_('SKU'))
     title_en = models.CharField(max_length=255, verbose_name=_('Name on English'))
     title_de = models.CharField(max_length=255, verbose_name=_('Name on German'))
-    description_en = models.TextField(verbose_name=_('Description on English'))
-    description_de = models.TextField(verbose_name=_('Description on German'))
+    description_en = RichTextField(verbose_name=_('Description on English'))
+    description_de = RichTextField(verbose_name=_('Description on German'))
     size = models.CharField(max_length=255, verbose_name=_('Size'), blank=True)
     price = models.IntegerField(verbose_name=_('Price'))
     sale_price = models.IntegerField(verbose_name=_('Sale Price'), null=True, blank=True)
