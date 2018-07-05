@@ -75,8 +75,21 @@
                 </div>
             </div>
         </div>
-    </div>
+
+                {#   author block   #}
+            <div class="row col-sm-12 m-0 p-0 d-flex align-items-end justify-content-end">
+                <h6><em>{% trans "Information about artists" %}:
+                    {% if LANGUAGE_CODE == 'de' %}
+                    <a href="{{ item.author.photo_de.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
+                    {% else %}
+                    <a href="{{ item.author.photo_en.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
+                    {% endif %}
+                </em></h6>
+            </div>
+
         </div>
+    </div>
+
 
 {#   small image preview block   #}
     <div class="row mb-3 col-sm-12 m-0 p-0">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-05 14:51+0000\n"
+"POT-Creation-Date: 2018-07-05 15:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,7 +204,6 @@ msgstr "Verkaufspreis"
 
 #: product/models.py:85
 #, fuzzy
-#| msgid "Author name"
 msgid "Author"
 msgstr "Autorenname"
 
@@ -224,7 +223,11 @@ msgstr "In den Warenkorb legen"
 msgid "Product description"
 msgstr "Produktbeschreibung"
 
-#: product/templates/product/detail.html:99
+#: product/templates/product/detail.html:81
+msgid "Information about artists"
+msgstr "Information über Künstler"
+
+#: product/templates/product/detail.html:106
 msgid "Similar items"
 msgstr "Ähnliche Gegenstände"
 

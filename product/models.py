@@ -24,7 +24,7 @@ class PainterManager(models.Manager):
 
     def get_queryset(self):
         locale = get_language()
-        return super().get_queryset().annotate(info=F('photo_' + locale))
+        return super().get_queryset().annotate(photo=F('photo_' + locale))
 
 
 class Category(models.Model):
