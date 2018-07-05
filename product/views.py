@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from product.models import Category, Item
 from product.utils import handle_pagination
+from django.utils.translation import gettext as _
 
 
 def open_detail(request, item_id):
@@ -34,3 +35,13 @@ def category_detail(request, category_id):
                                                             'cat': cat,
                                                             'item': item,
                                                             'sub_categories': sub_categories})
+
+
+def sales_items(request):
+    categories = Category.objects.all()
+    cat = {'name': _('Discount')}
+    items = Item.objects.filter(sale_price__isnull=False)
+
+    return render(request, 'product/category_detail.html', {'categories': categories,
+                                                            'cat': cat,
+                                                            'items': handle_pagination(request, items, 12)})
