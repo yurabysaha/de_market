@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 09:10+0000\n"
+"POT-Creation-Date: 2018-07-05 10:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,44 +23,34 @@ msgstr ""
 msgid "Product Name"
 msgstr "Produktname"
 
-#: cart/templates/cart/cart.html:12 order/templates/order/order.html:13
-#: product/models.py:51 wishlist/templates/wishlist/wishlist.html:14
-msgid "SKU"
-msgstr "SKU"
-
 #: cart/templates/cart/cart.html:13 order/templates/order/order.html:14
-#: product/models.py:57 wishlist/templates/wishlist/wishlist.html:15
+#: product/models.py:81 wishlist/templates/wishlist/wishlist.html:15
 msgid "Price"
 msgstr "Preis"
 
-#: cart/templates/cart/cart.html:40
+#: cart/templates/cart/cart.html:40 cart/templates/cart/cart.html:51
 #: wishlist/templates/wishlist/wishlist.html:44
 msgid "Continue Shopping"
 msgstr "Weiter einkaufen"
 
-#: cart/templates/cart/cart.html:41 order/models.py:25
-#: order/templates/order/order.html:49
+#: cart/templates/cart/cart.html:41 cart/templates/cart/cart.html:54
+#: order/models.py:27 order/templates/order/order.html:49
 msgid "Total price"
 msgstr "Gesamtpreis"
 
-#: cart/templates/cart/cart.html:42
+#: cart/templates/cart/cart.html:42 cart/templates/cart/cart.html:57
 msgid "Checkout"
 msgstr "Auschecken"
 
-#: cart/views.py:15
+#: cart/views.py:19
 msgid "You add item to cart!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"
 
-#: cart/views.py:17 cart/views.py:29 cart/views.py:47 wishlist/views.py:18
-#: wishlist/views.py:40
-msgid "Please login or register first!"
-msgstr "Bitte einloggen oder zuerst registrieren!"
-
-#: de_market/settings.py:133
+#: de_market/settings.py:125
 msgid "English"
 msgstr "Englisch"
 
-#: de_market/settings.py:134
+#: de_market/settings.py:126
 msgid "German"
 msgstr "Deutsche"
 
@@ -76,43 +66,39 @@ msgstr "Auftragsverwaltung"
 msgid "Contact Phone"
 msgstr "Kontakt-Telefon"
 
-#: order/forms.py:8 order/models.py:22
+#: order/forms.py:8 order/models.py:24
 msgid "Delivery Address"
 msgstr "Lieferadresse"
 
-#: order/models.py:10
+#: order/models.py:12
 msgid "Order"
 msgstr "Bestellung"
 
-#: order/models.py:11
+#: order/models.py:13
 msgid "Orders"
 msgstr "Bestellungen"
 
-#: order/models.py:14
+#: order/models.py:16
 msgid "New"
 msgstr "Neu"
 
-#: order/models.py:15
+#: order/models.py:17
 msgid "Paid"
 msgstr "Bezahlt"
 
-#: order/models.py:16
+#: order/models.py:18
 msgid "Send to Client"
 msgstr "Senden Sie an den Kunden"
 
-#: order/models.py:19
-msgid "Buyer"
-msgstr "Käufer"
-
-#: order/models.py:21
+#: order/models.py:23
 msgid "Track Number"
 msgstr "Titelnummer"
 
-#: order/models.py:23
+#: order/models.py:25
 msgid "Contact phone"
 msgstr "Kontakt-Telefon"
 
-#: order/models.py:30
+#: order/models.py:32
 msgid "Order # "
 msgstr "Bestellung # "
 
@@ -124,7 +110,7 @@ msgstr "In den Warenkorb legen"
 msgid "Create Order"
 msgstr "Bestellung anlegen"
 
-#: order/views.py:30
+#: order/views.py:32
 msgid "Thank you for your order, our manager will contact you soon!"
 msgstr ""
 "Vielen Dank für Ihre Bestellung, unser Manager wird Sie bald kontaktieren!"
@@ -133,70 +119,94 @@ msgstr ""
 msgid "Product Management"
 msgstr "Produktmanagement"
 
-#: product/models.py:23
+#: product/models.py:31
 msgid "Category"
 msgstr "Kategorien"
 
-#: product/models.py:24 templates/category_dropdown.html:5
+#: product/models.py:32 templates/category_dropdown.html:5
 #: templates/collapse_category_dropdown.html:5
 msgid "Categories"
 msgstr "Kategorien"
 
-#: product/models.py:26 product/models.py:52
+#: product/models.py:34 product/models.py:76
 msgid "Name on English"
 msgstr "Englisch"
 
-#: product/models.py:27 product/models.py:53
+#: product/models.py:35 product/models.py:77
 msgid "Name on German"
 msgstr "Deutsche"
 
-#: product/models.py:28 product/models.py:54
-msgid "Description on English"
-msgstr "Beschreibung auf Englisch"
-
-#: product/models.py:29 product/models.py:55
-msgid "Description on German"
-msgstr "Beschreibung auf Deutsch"
-
-#: product/models.py:30
+#: product/models.py:36
 msgid "Parent Category"
 msgstr "Eltern-Kategorie"
 
-#: product/models.py:43
+#: product/models.py:49
+msgid "Painter"
+msgstr "Maler"
+
+#: product/models.py:50
+msgid "Painters"
+msgstr "Maler"
+
+#: product/models.py:52
+#, fuzzy
+#| msgid "Author name"
+msgid "Painter name"
+msgstr "Autorenname"
+
+#: product/models.py:53
+msgid "Picture on English"
+msgstr "Bild auf Englisch"
+
+#: product/models.py:54
+msgid "Picture on German"
+msgstr "Bild auf Deutsch"
+
+#: product/models.py:66
 msgid "Item"
 msgstr "Artikel"
 
-#: product/models.py:44
+#: product/models.py:67
 msgid "Items"
 msgstr "Artikel"
 
-#: product/models.py:47
+#: product/models.py:71
 msgid "Not Published"
 msgstr "Nicht veröffentlicht"
 
-#: product/models.py:48
+#: product/models.py:72
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:49 product/templates/product/card_items.html:26
+#: product/models.py:73 product/templates/product/card_items.html:20
 msgid "Sold"
 msgstr "Verkauft"
 
-#: product/models.py:56
+#: product/models.py:75
+msgid "SKU"
+msgstr "SKU"
+
+#: product/models.py:78
+msgid "Description on English"
+msgstr "Beschreibung auf Englisch"
+
+#: product/models.py:79
+msgid "Description on German"
+msgstr "Beschreibung auf Deutsch"
+
+#: product/models.py:80
 msgid "Size"
 msgstr "Größe"
 
-#: product/models.py:58
+#: product/models.py:82
 msgid "Sale Price"
 msgstr "Verkaufspreis"
 
-#: product/models.py:60
-msgid "Author name"
+#: product/models.py:84
+#, fuzzy
+#| msgid "Author name"
+msgid "Author"
 msgstr "Autorenname"
-
-#: product/models.py:81
-msgid "Comment text"
-msgstr "Bemerkungen"
 
 #: product/templates/product/comment_update.html:7
 msgid "Update Comment"
@@ -206,47 +216,23 @@ msgstr "Kommentar aktualisieren"
 msgid "Update"
 msgstr "Kommentar aktualisieren"
 
-#: product/templates/product/detail.html:15
-msgid "SKU #"
-msgstr "SKU #"
-
-#: product/templates/product/detail.html:16
+#: product/templates/product/detail.html:22
 msgid "PRICE"
 msgstr "PREIS"
 
-#: product/templates/product/detail.html:23
+#: product/templates/product/detail.html:40
 msgid "SIZE"
 msgstr "GRÖSSE"
 
-#: product/templates/product/detail.html:27
+#: product/templates/product/detail.html:45
 msgid "Add to Cart"
 msgstr "In den Warenkorb legen"
 
-#: product/templates/product/detail.html:30
-msgid "Add to Wish List"
-msgstr "Wunschzettel"
-
-#: product/templates/product/detail.html:60
+#: product/templates/product/detail.html:80
 msgid "Similar items"
 msgstr "Ähnliche Gegenstände"
 
-#: product/templates/product/detail.html:73
-msgid "Comments"
-msgstr "Bemerkungen"
-
-#: product/templates/product/detail.html:78
-msgid "Add Comment"
-msgstr "Einen Kommentar hinzufügen"
-
-#: product/templates/product/detail.html:83
-msgid "Login before adding comment!"
-msgstr "Melden Sie sich an bevor Sie einen Kommentar hinzufügen!"
-
-#: product/templates/product/detail.html:89
-msgid "Commented by"
-msgstr "Kommentiert von"
-
-#: templates/about_us.html:13 templates/base.html:52
+#: templates/about_us.html:14 templates/base.html:52
 msgid "About us"
 msgstr "Über uns"
 
@@ -354,80 +340,60 @@ msgid ""
 "a>."
 msgstr ""
 
-#: templates/base.html:55 templates/delivery.html:15
+#: templates/base.html:55 templates/delivery.html:14
 msgid "Payment/Delivery"
 msgstr "Zahlung/Lieferung"
 
-#: templates/base.html:58 templates/base.html:172
-msgid "FAQ"
-msgstr "FAQ"
-
-#: templates/base.html:61 templates/base.html:62 templates/base.html:63
-#: templates/search.html:20 templates/search.html:21
+#: templates/base.html:58 templates/base.html:59 templates/base.html:60
+#: templates/search.html:21 templates/search.html:24
 msgid "Search"
 msgstr "Suchen"
 
-#: templates/base.html:70
-msgid "Login"
-msgstr "Anmelden"
-
-#: templates/base.html:73
-msgid "Registration"
-msgstr "Konto erstellen"
-
-#: templates/base.html:77
-msgid "Logout"
-msgstr "Ausloggen"
-
-#: templates/base.html:114
+#: templates/base.html:103
 msgid "Wish List"
 msgstr "Wunschzettel"
 
-#: templates/base.html:121
+#: templates/base.html:110
 msgid "Open Cart"
 msgstr "Warenkorb öffnen"
 
-#: templates/base.html:163
-msgid "SITE MAP"
-msgstr "SEITENVERZEICHNIS"
-
-#: templates/base.html:166
+#: templates/base.html:143
 msgid "ABOUT US"
 msgstr "ÜBER UNS"
 
-#: templates/base.html:169
+#: templates/base.html:146
 msgid "PAYMENT/DELIVERY"
 msgstr "ZAHLUNG/LIEFERUNG"
 
-#: templates/delivery.html:24
+#: templates/delivery.html:22
 msgid "Payment methods"
 msgstr "Zahlungsarten"
 
-#: templates/delivery.html:27
+#: templates/delivery.html:25
 msgid "Transfer"
 msgstr "Überweisung"
 
-#: templates/delivery.html:28
+#: templates/delivery.html:26
 msgid "Payment upon receipt of goods in cash"
 msgstr "Zahlung bei Wareneingang in bar"
 
-#: templates/delivery.html:36
+#: templates/delivery.html:34
 msgid "Delivery condition"
 msgstr "Lieferbedingung"
 
-#: templates/delivery.html:38
+#: templates/delivery.html:36
 msgid "Delivery"
 msgstr "Lieferung"
 
-#: templates/delivery.html:40
+#: templates/delivery.html:38
 msgid "Standart in post office"
 msgstr "Standard in der Post"
 
-#: templates/delivery.html:44
+#: templates/delivery.html:42
 msgid "Delivery duration:"
 msgstr "Lieferdauer:"
 
-#: templates/delivery.html:46
+#: templates/delivery.html:44
 msgid "Delivery within 2-5 working days"
 msgstr "Lieferung innerhalb 2-5 Arbeitstage"
 
@@ -435,18 +401,18 @@ msgstr "Lieferung innerhalb 2-5 Arbeitstage"
 msgid "Frequently asked questions"
 msgstr "Häufig gestellte Fragen"
 
-#: templates/home.html:33
+#: templates/home.html:16
 msgid "Last added products"
 msgstr "Zuletzt hinzugefügte Produkte"
 
-#: templates/search.html:9
+#: templates/search.html:10
 msgid "All Categories"
 msgstr "Alle Kategorien"
 
-#: templates/search.html:35
+#: templates/search.html:37
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: wishlist/views.py:14
+#: wishlist/views.py:19
 msgid "You add item to Wish list!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"

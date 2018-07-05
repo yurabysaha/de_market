@@ -4,7 +4,7 @@ from datetime import datetime
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 
-from product.models import Item, ItemPhoto, Category
+from product.models import Item, ItemPhoto, Category, Painter
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -42,3 +42,4 @@ class ItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
+admin.site.register(Painter)

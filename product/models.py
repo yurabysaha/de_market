@@ -19,6 +19,13 @@ class ItemManager(models.Manager):
         return super().get_queryset().annotate(title=F('title_' + locale), description=F('description_' + locale))
 
 
+class PainterManager(models.Manager):
+
+    def get_queryset(self):
+        locale = get_language()
+        return super().get_queryset().annotate(info=F('photo_' + locale))
+
+
 class Category(models.Model):
     class Meta:
         verbose_name = _("Category")
@@ -34,6 +41,23 @@ class Category(models.Model):
         if not hasattr(self, 'name'):
             locale = get_language()
             return eval('self.name_' + locale)
+        return self.name
+
+
+class Painter(models.Model):
+    class Meta:
+        verbose_name = _("Painter")
+        verbose_name_plural = _("Painters")
+
+    name = models.CharField(max_length=255, verbose_name=_('Painter name'))
+    photo_en = models.ImageField(upload_to='painter-photos', verbose_name=_('Picture on English'), null=True)
+    photo_de = models.ImageField(upload_to='painter-photos', verbose_name=_('Picture on German'), null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = PainterManager()
+
+    def __str__(self):
         return self.name
 
 
@@ -57,7 +81,7 @@ class Item(models.Model):
     price = models.IntegerField(verbose_name=_('Price'))
     sale_price = models.IntegerField(verbose_name=_('Sale Price'), null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
-    author = models.CharField(max_length=255, verbose_name=_('Author name'))
+    # author = models.ForeignKey(Painter, verbose_name=_('Author'), on_delete=False, null=True)
     category = models.ManyToManyField(Category, related_name='items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
