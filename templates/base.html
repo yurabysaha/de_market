@@ -135,10 +135,9 @@
         <div class="container text-center text-md-left">
             <div class="row">
                 <!--First column-->
-                <div class="col-md-4 col-lg-4 ml-auto text-center d-flex justify-content-end ">
+                <div class="col-md-4 col-lg-4 ml-auto text-center for_desktop_only">
 
                     <ul class="list-unstyled">
-
                         <p>
                             <a href="{% url 'about_us' %}" class="text-dark">{% trans "ABOUT US" %}</a>
                         </p>
@@ -151,8 +150,8 @@
 
                 <!--Second column-->
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
-                    <blockquote class="blockquote" style="color: #6699FF">
-                    <p class="text-justify" style="font-family: 'Monotype Corsiva'; font-style: oblique; font-size: 2rem;">Kunst für alle</p>
+                    <blockquote class="blockquote">
+                    <p class="text-justify" style="font-family: 'Monotype Corsiva'; font-style: oblique; font-size: 2rem;"><a href="/" style="text-decoration: none; color: #6699FF">Kunst für alle</a></p>
                     </blockquote>
                 </div>
                 <!--/.Second column-->
@@ -179,6 +178,15 @@
         </div>
     </footer>
 <!--/.Footer-->
+
+<style>
+    @media screen and (min-width: 720px) {
+    .for_desktop_only {
+        display: flex!important;
+        justify-content: flex-end!important;
+    }
+}
+</style>
 
 {# For zoom effect #}
 <style>
@@ -335,7 +343,9 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
         $('img.demo').xzoom({
             position: 'right',
             Xoffset: 50,
-            Yoffset: 20
+            Yoffset: 20,
+            scroll: false,
+            defaultScale: 0.9
 
         });
     });

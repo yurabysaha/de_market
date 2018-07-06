@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="row mb-2 col-sm-12 col-md-12 m-0 p-0">
-        <div class="col-lg-6 col-sm-12 col-md-6 item-photo">
+        <div class="col-lg-6 col-sm-12 col-md-6 item-photo pr-5">
             <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title }}">
             <img class="shadow rounded demo" style="max-width:100%;" src="{{ item.photos.first.image.url }}" xoriginal="{{ item.photos.first.image.url }}"/></a>
         </div>
@@ -21,13 +21,11 @@
             <h2 style="font-family: 'Monotype Corsiva'; font-style: oblique;">{{ item.title }}</h2>
         </div>
 
-        <div class="row d-flex justify-content-between">
-            <div class="d-flex align-items-end">
-                <h6>ART # {{ item.sku }}</h6>
-            </div>
+        <div class="row d-flex justify-content-end">
+
             <div>
                 <em><h1 class="p-0 m-0">
-                {% if item.sale_price %}<s class="text-muted"> {{ item.price }} €</s>
+                {% if item.sale_price %}<h2 class="p-0 m-0"><s class="text-muted"> {{ item.price }} €</s></h2>
                     <h1 class="p-0 m-0" style="color: #dd4b39"> {{ item.sale_price }} €</h1>
                 {% else %}
                     <h1 class="p-0 m-0" style="color: #dd4b39"> {{ item.price }} €</h1>
@@ -40,7 +38,7 @@
        <div class="row d-flex justify-content-between">
 
             <!-- AddToAny BEGIN -->
-            <div class="a2a_kit a2a_kit_size_32 a2a_default_style pt-2">
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style pt-2 d-flex align-items-end">
     {#            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>#}
                 <a class="a2a_button_facebook"></a>
                 <a class="a2a_button_twitter"></a>
@@ -49,15 +47,14 @@
             <script async src="https://static.addtoany.com/menu/page.js"></script>
             <!-- AddToAny END -->
 
-{#           {% if item.size %}<h5 class="mt-4">{% trans "SIZE" %} <span class="text-dark"> {{ item.size }}</span></h5> {% endif %}#}
-            <div class="row {% if LANGUAGE_CODE == 'de' %} col-md-7 {% else %} col-md-5 {% endif %} pt-3 p-0 m-0 ">
+            <div class="row {% if LANGUAGE_CODE == 'de' %} col-md-7 {% else %} col-md-5 {% endif %} pt-3 p-0 m-0 align-items-end">
 
-                <div class="col-md-2 p-0 pb-2" style="position: relative; top: 1px">
-                    <a class="btn btn-outline-light col-md-12 " style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons" style="font-size: 18px; color: #6699FF; position:relative; top: 2px; {% if LANGUAGE_CODE == 'de' %} left: 3px; {% else %} left: -3px; {% endif %}">start</i>
+                <div class="col-md-2 p-0" style="position: relative; top: -1px">
+                    <a class="btn btn-outline-light col-md-12 " style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_wishlist' item.id %}"><i class="material-icons" style="font-size: 18px; color: #6699FF; position:relative; top: 2px; {% if LANGUAGE_CODE == 'de' %} left: 5px; {% else %} left: -3px; {% endif %}">start</i>
                     </a>
                 </div>
 
-                <div class="col-md-10 p-0 pb-2 d-flex justify-content-end">
+                <div class="col-md-10 p-0 d-flex justify-content-end">
                     <a class="btn btn-outline-light col-md-11" style="color: #6699FF; border-color: #6699FF;" href="{% url 'add_to_cart' item.id %}"><i class="material-icons"
                                                                                                 style="font-size: 22px; color: #6699FF; position:relative; top: 5px;">add_shopping_cart</i>
                     {% trans "Add to Cart" %}</a>
@@ -76,16 +73,20 @@
             </div>
         </div>
 
+        {#   sku block   #}
+        <div class="d-flex align-items-end">
+            <h6>ART # {{ item.sku }}</h6>
+        </div>
                 {#   author block   #}
-            <div class="row col-sm-12 m-0 p-0 d-flex align-items-end justify-content-end">
-                <h6><em>{% trans "Information about artists" %}:
-                    {% if LANGUAGE_CODE == 'de' %}
-                    <a href="{{ item.author.photo_de.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
-                    {% else %}
-                    <a href="{{ item.author.photo_en.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
-                    {% endif %}
-                </em></h6>
-            </div>
+        <div class="row col-sm-12 m-0 p-0 d-flex align-items-end justify-content-end">
+            <h6><em>{% trans "Information about artists" %}:
+                {% if LANGUAGE_CODE == 'de' %}
+                <a href="{{ item.author.photo_de.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
+                {% else %}
+                <a href="{{ item.author.photo_en.url }}?image=250" data-toggle="lightbox"> {{ item.author.name }}</a>
+                {% endif %}
+            </em></h6>
+        </div>
 
         </div>
     </div>
@@ -103,13 +104,11 @@
     </div>
 
 
-
-
 {#      Item like this block    #}
 
     {% if items %}
-        <div class="container col-sm-12 m-0 p-0">
-            <h4 class="text-secondary">{% trans "Similar items" %}</h4>
+        <div class="container col-sm-12 m-0 p-0" style="width:100%;border-top:1px solid silver">
+            <h4 class="text-secondary pt-2">{% trans "Similar items" %}</h4>
 
             <div class="row col mx-auto d-flex justify-content-center">
                 {% include 'product/card_items.html' %}

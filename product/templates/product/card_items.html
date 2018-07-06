@@ -7,19 +7,19 @@
                 <img class="card-img-top shadow mb-2 rounded" src="{{ i.photos.first.image.url }}" alt="Card image cap">
                 <div class="pb-2" style="font-family: 'Monotype Corsiva'; font-style: oblique;">
                     <h5 class="m-0 p-0">{{ i.title }}</h5></a>
-                    <div class="d-flex justify-content-end pr-2 pt-0 mt-0">
-                    {% if i.status != 2 %}
-                        {% if i.sale_price %}
-                            <span class="font-weight-bold text-muted pr-3"><s> {{ i.price }} €</s></span>
-                            <span class="font-weight-bold text-danger"> {{ i.sale_price }} €</span>
-                        {% else %}
-                            <span class="font-weight-bold text-danger"> {{ i.price }} €</span>
-                        {% endif %}
-
-                    {% else %}
-                        <span class="font-weight-bold text-muted">{% trans 'Sold' %}</span>
-                    {% endif %}
-                    </div>
+{#                    <div class="d-flex justify-content-end pr-2 pt-0 mt-0">#}
+{#                    {% if i.status != 2 %}#}
+{#                        {% if i.sale_price %}#}
+{#                            <span class="font-weight-bold text-muted pr-3"><s> {{ i.price }} €</s></span>#}
+{#                            <span class="font-weight-bold text-danger"> {{ i.sale_price }} €</span>#}
+{#                        {% else %}#}
+{#                            <span class="font-weight-bold text-danger"> {{ i.price }} €</span>#}
+{#                        {% endif %}#}
+{##}
+{#                    {% else %}#}
+{#                        <span class="font-weight-bold text-muted">{% trans 'Sold' %}</span>#}
+{#                    {% endif %}#}
+{#                    </div>#}
                 </div>
         </div>
     {% endfor %}
