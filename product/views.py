@@ -31,7 +31,7 @@ def category_detail(request, category_id):
     item = Item.objects.filter(category__id=category_id).first()
     sub_categories = cat.sub_category.all()
     return render(request, 'product/category_detail.html', {'categories': categories,
-                                                            'items': handle_pagination(request, items),
+                                                            'items': handle_pagination(request, items, 12),
                                                             'cat': cat,
                                                             'item': item,
                                                             'sub_categories': sub_categories})
