@@ -25,7 +25,7 @@ class ItemAdmin(admin.ModelAdmin):
         """Add SKU to Item."""
         super().save_model(request, obj, form, change)
         if not obj.sku:
-            obj.sku = str(obj.id) + str(random.randint(100, 999))
+            obj.sku = str(obj.id) + str(random.randint(10, 99))
             obj.save()
 
     change_form_template = 'admin/product/item/change_form.html'
