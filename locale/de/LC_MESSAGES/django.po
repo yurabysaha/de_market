@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-05 17:51+0000\n"
+"POT-Creation-Date: 2018-07-09 09:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,7 +178,7 @@ msgstr "Nicht veröffentlicht"
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:74 product/templates/product/card_items.html:20
+#: product/models.py:74
 msgid "Sold"
 msgstr "Verkauft"
 
@@ -214,19 +214,19 @@ msgstr "Kommentar aktualisieren"
 msgid "Update"
 msgstr "Kommentar aktualisieren"
 
-#: product/templates/product/detail.html:63
+#: product/templates/product/detail.html:60
 msgid "Add to Cart"
 msgstr "In den Warenkorb legen"
 
-#: product/templates/product/detail.html:72
+#: product/templates/product/detail.html:69
 msgid "Product description"
 msgstr "Produktbeschreibung"
 
-#: product/templates/product/detail.html:81
+#: product/templates/product/detail.html:82
 msgid "Information about artists"
 msgstr "Information über Künstler"
 
-#: product/templates/product/detail.html:112
+#: product/templates/product/detail.html:111
 msgid "Similar items"
 msgstr "Ähnliche Gegenstände"
 
@@ -348,7 +348,7 @@ msgid "Payment/Delivery"
 msgstr "Zahlung/Lieferung"
 
 #: templates/base.html:58 templates/base.html:59 templates/base.html:60
-#: templates/search.html:21 templates/search.html:24
+#: templates/search.html:20 templates/search.html:23
 msgid "Search"
 msgstr "Suchen"
 
@@ -360,13 +360,17 @@ msgstr "Wunschzettel"
 msgid "Open Cart"
 msgstr "Warenkorb öffnen"
 
-#: templates/base.html:143
+#: templates/base.html:142
 msgid "ABOUT US"
 msgstr "ÜBER UNS"
 
-#: templates/base.html:146
+#: templates/base.html:145
 msgid "PAYMENT/DELIVERY"
 msgstr "ZAHLUNG/LIEFERUNG"
+
+#: templates/base.html:154
+msgid "Art for all"
+msgstr "Kunst für alle"
 
 #: templates/delivery.html:22
 msgid "Payment methods"
@@ -408,11 +412,11 @@ msgstr "Häufig gestellte Fragen"
 msgid "Last added products"
 msgstr "Zuletzt hinzugefügte Produkte"
 
-#: templates/search.html:10
+#: templates/search.html:9
 msgid "All Categories"
 msgstr "Alle Kategorien"
 
-#: templates/search.html:37
+#: templates/search.html:36
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
