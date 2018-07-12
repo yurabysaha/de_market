@@ -318,7 +318,7 @@
 <script>
 
     {#  For footer if page is small  #}
-    $(document).ready( function () {
+    $( window ).on( "load", function()  {
             if ($(document).height() <= $(window).height())
                 $("footer.footer").addClass("fixed-bottom");
         });

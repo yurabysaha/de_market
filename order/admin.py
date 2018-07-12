@@ -15,7 +15,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [ItemInline]
     list_filter = ('status',)
     search_fields = ('pk',)
-    list_display = ('__str__', 'total', 'status',)
+    list_display = ('__str__', 'total', 'status', 'payment_method')
     exclude = ('items', 'user_session')
 
 

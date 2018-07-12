@@ -3,21 +3,21 @@
 {% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/arrows_in_order.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/arrows_in_order.css' %}" />
 
 <div class="row col">
     <div class="wrapper col">
         <div class="arrow-steps clearfix col-md-12 d-flex justify-content-around">
           <div class="step current col"> <span>{% trans "Ordering" %}</span> </div>
           <div class="step current col"> <span>{% trans "Delivery info" %}</span> </div>
-          <div class="step col"> <span>{% trans "Payment method" %}</span> </div>
+          <div class="step current col"> <span>{% trans "Payment method" %}</span> </div>
         </div>
     </div>
 </div>
 
 
 <div class="container pt-3">
-  <table id="cart" class="table table-hover table-condensed">
+  <table id="cart" class="table table-condensed">
     <thead>
       <tr>
         <th style="width:50%">{% trans "Product Name" %}</th>
@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-       {% for item in cart.item.all %}
+       {% for item in order.items.all %}
       <tr>
         <td data-th="Product">
           <div class="row">
@@ -44,26 +44,20 @@
     </tbody>
   </table>
 
-  <table class="table table-hover table-condensed">
-    <thead>
-      <tr>
-          <td>
-            <form method="POST" class="form-group" id="order">{% csrf_token %}
-              {{ form.as_p }}
-            </form>
-          </td>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td><a href="/cart/" class="btn btn-outline-secondary">{% trans "Back to Cart" %}</a></td>
-        <td colspan="2" class="hidden-xs text-center"><strong>{% trans "Total price" %}: {{ cart_total }}</strong></td>
-        <td><button type="submit" form="order" class="btn btn-outline-danger btn-block">{% trans "Create Order" %}</button></td>
-      </tr>
-    </tfoot>
-  </table>
-
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center">
+            <strong>{% trans "How would you like to pay?" %}</strong>
+        </div>
+        <div class="row col-md-6 d-flex justify-content-center">
+            <div class="col-md-12 d-flex justify-content-center"><h6>{% trans "Pay with PayPal" %}</h6></div>
+            <div class="col-md-12 d-flex justify-content-center">
+              {{ paypal_form.render }}
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center pt-4">
+            <a href="{% url 'pay_upon_receipt' %}" class="btn btn-outline-danger btn-block col-md-6 btn-md" style="height: 40px">{% trans "Pay upon receipt" %}</a>
+        </div>
+    </div>
 </div>
-
 
 {% endblock %}

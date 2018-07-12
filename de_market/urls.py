@@ -32,6 +32,7 @@ urlpatterns += i18n_patterns(
     path('wishlist/', include('wishlist.urls')),
     path('order/', include('order.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
 )
 
 urlpatterns += [

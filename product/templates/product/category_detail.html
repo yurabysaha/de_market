@@ -5,42 +5,30 @@
 
  <!-- START container with dropdown with categories and category's name -->
         <div class="row mt-3">
-            <div class="col-md-4 col-sm-12 bg-light text-dark">
-                {% include 'collapse_category_dropdown.html' %}
-            </div>
-            <div class="col-md-8 bg-light text-dark d-none d-sm-block">
+
+        <div class="col-md-4 col-sm-12 bg-light text-dark d-md-none d-lg-none">
+            {% include 'collapse_category_dropdown.html' %}
+        </div>
+
+        <div class="col-lg-3 d-none d-md-block">
+             {% include 'category_dropdown.html' %}
+        </div>
+
+
+        <div class="col-lg-9">
+            <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">
                 <div class="brand" style="font-size: 25px">
                     <i class="material-icons card-body"
                     style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name }}
                 </div>
             </div>
+            <div class="row d-flex justify-content-center pt-3 pl-3">
+                {% include 'product/card_items.html' %}
+            </div>
+        </div>
+
         </div>
 <!-- END container -->
-
-
-
-{#<!-- START container with sub categories. If category doesn't have subcategories, this container isn't displayed -->#}
-{#     <div class="container mt-3">#}
-{#        <div class="card-columns text-center mt-3">#}
-{##}
-{#        {% for category in sub_categories %}#}
-{#        <div class="card mr-4" style="max-width: 200px">#}
-{#            <a href="{% url 'category_detail' category.id %}">#}
-{#                <img class="card-img-top" src="{{ category.items.first.photos.first.image.url }}" alt="Card image cap"></a>#}
-{#            <div class="card-body">#}
-{#                    <a href="{% url 'category_detail' category.id %}"><h5 class="card-title text-center">{{ category.name }}</h5></a>#}
-{##}
-{#            </div>#}
-{#        </div>#}
-{#        {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{#<!--END subcategories container -->#}
-
-<!-- START container with items. -->
-    <div class="container mt-3">
-        {% include 'product/card_items.html' %}
-    </div>
 
     <!-- Pagination -->
     <div class="container d-flex justify-content-center">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-09 09:29+0000\n"
+"POT-Creation-Date: 2018-07-12 17:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cart/templates/cart/cart.html:11 order/templates/order/order.html:12
+#: cart/templates/cart/cart.html:11 order/templates/order/confirm_order.html:11
+#: order/templates/order/order.html:11
+msgid "Ordering"
+msgstr "Bestellung"
+
+#: cart/templates/cart/cart.html:12 order/templates/order/confirm_order.html:12
+#: order/templates/order/order.html:12
+msgid "Delivery info"
+msgstr "Lieferung"
+
+#: cart/templates/cart/cart.html:13 order/templates/order/confirm_order.html:13
+#: order/templates/order/order.html:13
+msgid "Payment method"
+msgstr "Zahlungsarten"
+
+#: cart/templates/cart/cart.html:22 order/templates/order/confirm_order.html:23
+#: order/templates/order/order.html:23
 #: wishlist/templates/wishlist/wishlist.html:13
 msgid "Product Name"
 msgstr "Produktname"
 
-#: cart/templates/cart/cart.html:13 order/templates/order/order.html:14
-#: product/models.py:82 wishlist/templates/wishlist/wishlist.html:15
+#: cart/templates/cart/cart.html:24 order/templates/order/confirm_order.html:25
+#: order/templates/order/order.html:25 product/models.py:82
+#: wishlist/templates/wishlist/wishlist.html:15
 msgid "Price"
 msgstr "Preis"
 
-#: cart/templates/cart/cart.html:40 cart/templates/cart/cart.html:51
+#: cart/templates/cart/cart.html:51 cart/templates/cart/cart.html:62
 #: wishlist/templates/wishlist/wishlist.html:44
 msgid "Continue Shopping"
 msgstr "Weiter einkaufen"
 
-#: cart/templates/cart/cart.html:41 cart/templates/cart/cart.html:54
-#: order/models.py:27 order/templates/order/order.html:49
+#: cart/templates/cart/cart.html:52 cart/templates/cart/cart.html:65
+#: order/models.py:34 order/templates/order/order.html:60
 msgid "Total price"
 msgstr "Gesamtpreis"
 
-#: cart/templates/cart/cart.html:42 cart/templates/cart/cart.html:57
+#: cart/templates/cart/cart.html:53 cart/templates/cart/cart.html:68
 msgid "Checkout"
 msgstr "Auschecken"
 
@@ -46,11 +63,11 @@ msgstr "Auschecken"
 msgid "You add item to cart!"
 msgstr "Sie fügen Artikel zur Wunschliste hinzu!"
 
-#: de_market/settings.py:129
+#: de_market/settings.py:130
 msgid "English"
 msgstr "Englisch"
 
-#: de_market/settings.py:130
+#: de_market/settings.py:131
 msgid "German"
 msgstr "Deutsche"
 
@@ -66,7 +83,7 @@ msgstr "Auftragsverwaltung"
 msgid "Contact Phone"
 msgstr "Kontakt-Telefon"
 
-#: order/forms.py:8 order/models.py:24
+#: order/forms.py:8 order/models.py:29
 msgid "Delivery Address"
 msgstr "Lieferadresse"
 
@@ -90,27 +107,51 @@ msgstr "Bezahlt"
 msgid "Send to Client"
 msgstr "Senden Sie an den Kunden"
 
-#: order/models.py:23
+#: order/models.py:22
+msgid "PayPal"
+msgstr "PayPal"
+
+#: order/models.py:23 order/templates/order/confirm_order.html:58
+msgid "Pay upon receipt"
+msgstr "Zahlung bei Wareneingang in bar"
+
+#: order/models.py:28
 msgid "Track Number"
 msgstr "Titelnummer"
 
-#: order/models.py:25
+#: order/models.py:30
 msgid "Contact phone"
 msgstr "Kontakt-Telefon"
 
 #: order/models.py:32
+msgid "Payment Method"
+msgstr "Zahlungsarten"
+
+#: order/models.py:33
+msgid "Paid by PayPal"
+msgstr "Bezahlt von PayPal"
+
+#: order/models.py:39
 msgid "Order # "
 msgstr "Bestellung # "
 
-#: order/templates/order/order.html:48
+#: order/templates/order/confirm_order.html:49
+msgid "How would you like to pay?"
+msgstr "Wie möchten Sie bezahlen?"
+
+#: order/templates/order/confirm_order.html:52
+msgid "Pay with PayPal"
+msgstr "Mit PayPal bezahlen"
+
+#: order/templates/order/order.html:59
 msgid "Back to Cart"
 msgstr "In den Warenkorb legen"
 
-#: order/templates/order/order.html:50
+#: order/templates/order/order.html:61
 msgid "Create Order"
 msgstr "Bestellung anlegen"
 
-#: order/views.py:32
+#: order/views.py:89
 msgid "Thank you for your order, our manager will contact you soon!"
 msgstr ""
 "Vielen Dank für Ihre Bestellung, unser Manager wird Sie bald kontaktieren!"
@@ -149,8 +190,6 @@ msgid "Painters"
 msgstr "Maler"
 
 #: product/models.py:53
-#, fuzzy
-#| msgid "Author name"
 msgid "Painter name"
 msgstr "Autorenname"
 

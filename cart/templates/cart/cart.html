@@ -3,9 +3,20 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/arrows_in_order.css' %}" />
 
-<div class="row">
-  <table id="cart" class="table table-hover table-condensed">
+<div class="row col">
+    <div class="wrapper col">
+        <div class="arrow-steps clearfix col-md-12 d-flex justify-content-around">
+          <div class="step current col"> <span>{% trans "Ordering" %}</span> </div>
+          <div class="step col"> <span>{% trans "Delivery info" %}</span> </div>
+          <div class="step col"> <span>{% trans "Payment method" %}</span> </div>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+  <table id="cart" class="table table-condensed">
     <thead>
       <tr>
         <th style="width:50%">{% trans "Product Name" %}</th>
