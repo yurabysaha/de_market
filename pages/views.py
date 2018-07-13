@@ -27,14 +27,25 @@ def faq(request):
 
 def search(request):
     categories = Category.objects.all()
-    query_item_name = request.GET.get('q', '')
-    query_category_id = request.GET.get('qcategory')
+    item_name = request.GET.get('q', None)
+    category_id = request.GET.get('qcategory', None)
+    art = request.GET.get('art', None)
+    min_price = request.GET.get('min', None)
+    max_price = request.GET.get('max', None)
+    queryset = Item.objects.exclude(status=0)
 
-    if query_category_id:
-        items = Item.objects.exclude(status=0).filter(category=query_category_id, title__icontains=query_item_name)
-    else:
-        items = Item.objects.exclude(status=0).filter(title__icontains=query_item_name)
-    return render(request, 'search.html', {'items': handle_pagination(request, items, 12), 'categories': categories})
+    if item_name:
+        queryset = queryset.filter(title__icontains=item_name)
+    if category_id:
+        queryset = queryset.filter(category=category_id)
+    if art:
+        queryset = queryset.filter(sku=art)
+    if min_price:
+        queryset = queryset.filter(price__gte=min_price)
+    if max_price:
+        queryset = queryset.filter(price__lte=max_price)
+
+    return render(request, 'search.html', {'items': handle_pagination(request, queryset, 12), 'categories': categories})
 
 
 def site_map(request):

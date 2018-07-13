@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block content %}
+{% load static %}
 
-  <form class="form-group" method="get">
-  <div class="row col-md-9 m-0">
-      <div class="col-sm-12 col-md-4 mb-2">
+{% block content %}
+{#<link href="{% static 'css/bootstrap-slider.min.css' %}" rel="stylesheet">#}
+
+            <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">
+                <div class="brand" style="font-size: 25px">
+                    <i class="material-icons card-body"
+                    style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{% trans 'Search' %}
+                </div>
+            </div>
+
+
+    <div class="row mt-3">
+            <form class="form-group col pt-3" method="get">
+            <div class="pb-2">
               <select class="form-control" name="qcategory">
                        <option value="">{% trans "All Categories" %}</option>
                                   {% for category in categories %}
@@ -15,27 +26,42 @@
                                       {% endif %}
                                   {% endfor %}
               </select>
-      </div>
-      <div class="col-sm-12 col-md-5 mb-2">
-        <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" >
-      </div>
-        <div class="col-sm-12 col-md-3 mb-2">
-            <button type="submit" class="btn btn-outline-success col-sm-8">{% trans "Search" %}</button>
-   </div>
+            </div>
+            <div class="pb-2">
+                <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Find by Name" %}" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" >
+            </div>
+                <div class="pb-2">
+                <input class="form-control" name="art" type="text" placeholder="{% trans "Find by Art" %}" value="{% if request.GET.art %}{{ request.GET.art }}{% endif %}" >
+                </div>
+                <div class="pb-2 d-flex justify-content-around">
+                    <input class="form-control col-md-6" name="min" id="price_slider" type="number" placeholder="{% trans "Min Price" %}" value="{% if request.GET.min %}{{ request.GET.min }}{% endif %}" />
+                    <input class="form-control col-md-6" name="max" id="price_slider" type="number" placeholder="{% trans "Max Price" %}" value="{% if request.GET.max %}{{ request.GET.max }}{% endif %}"/>
+                </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-success col-sm-8">{% trans "Search" %}</button>
+            </div>
+            </form>
+
+        <div class="col-lg-9">
+{#            <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">#}
+{#                <div class="brand" style="font-size: 25px">#}
+{#                    <i class="material-icons card-body"#}
+{#                    style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{% trans 'Search' %}#}
+{#                </div>#}
+{#            </div>#}
+            {% if items %}
+            <div class="row d-flex justify-content-center pt-3 pl-3">
+                {% include 'product/card_items.html' %}
+            </div>
+            {% else %}
+
+            <h4 class="text-center">{% trans "No results" %}</h4>
+
+            {% endif %}
         </div>
-  </form>
 
-{% if items %}
-
-    <div class="row d-flex justify-content-center">
-        {% include 'product/card_items.html' %}
-    </div>
-
-{% else %}
-
-<h4 class="text-center">{% trans "No results" %}</h4>
-
-{% endif %}
+        </div>
+<!-- END container -->
 
     <!-- Pagination -->
     <div class="container d-flex justify-content-center">
@@ -74,4 +100,6 @@
         {% endif %}
         </nav>
     </div>
+
+
 {% endblock %}

@@ -314,6 +314,7 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+{#<script src="{% static 'js/bootstrap-slider.min.js' %}"></script>#}
 
 <script>
 
@@ -351,6 +352,10 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     });
 
 </script>
-
+{#<script>#}
+{#     $(document).ready(function () {#}
+{#$("#price_slider").slider({ id: "price_slider", min: 0, max: 10000, range: true, value: [0, 10000], tooltip: 'always',  tooltip_position: 'top'});#}
+{#     });#}
+{#</script>#}
 </body>
 </html>

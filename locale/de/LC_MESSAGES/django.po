@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-12 17:21+0000\n"
+"POT-Creation-Date: 2018-07-13 16:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -387,7 +387,7 @@ msgid "Payment/Delivery"
 msgstr "Zahlung/Lieferung"
 
 #: templates/base.html:58 templates/base.html:59 templates/base.html:60
-#: templates/search.html:20 templates/search.html:23
+#: templates/search.html:11 templates/search.html:41
 msgid "Search"
 msgstr "Suchen"
 
@@ -451,11 +451,27 @@ msgstr "Häufig gestellte Fragen"
 msgid "Last added products"
 msgstr "Zuletzt hinzugefügte Produkte"
 
-#: templates/search.html:9
+#: templates/search.html:20
 msgid "All Categories"
 msgstr "Alle Kategorien"
 
-#: templates/search.html:36
+#: templates/search.html:31
+msgid "Find by Name"
+msgstr "Gib einen Titel ein"
+
+#: templates/search.html:34
+msgid "Find by Art"
+msgstr "Suche nach Art"
+
+#: templates/search.html:37
+msgid "Min Price"
+msgstr "Min Preis"
+
+#: templates/search.html:38
+msgid "Max Price"
+msgstr "Max Preis"
+
+#: templates/search.html:58
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
