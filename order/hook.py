@@ -13,7 +13,7 @@ def show_me_the_money(sender, **kwargs):
         # Check that the receiver email is the same we previously
         # set on the `business` field. (The user could tamper with
         # that fields on the payment form before it goes to PayPal)
-        if ipn_obj.receiver_email != "feniks402@gmail.com":
+        if ipn_obj.receiver_email != "danikerwd@gmail.com":
             # Not a valid payment
             return
         order = get_object_or_404(Order, user_session=ipn_obj.invoice)

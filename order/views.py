@@ -59,7 +59,7 @@ def confirm_order(request):
 
         # What you want the button to do.
         paypal_dict = {
-            "business": "feniks402@gmail.com",
+            "business": "danikerwd@gmail.com",
             "amount": order_total,
             "currency_code": "EUR",
             "item_name": "name of the item",
