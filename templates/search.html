@@ -3,8 +3,13 @@
 {% load static %}
 
 {% block content %}
-{#<link href="{% static 'css/bootstrap-slider.min.css' %}" rel="stylesheet">#}
 
+<style>
+.btn-for-multidropdown {
+    background-color: #ffffff;
+    border-color: #ced4da;
+}
+</style>
             <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">
                 <div class="brand" style="font-size: 25px">
                     <i class="material-icons card-body"
@@ -12,20 +17,31 @@
                 </div>
             </div>
 
-
     <div class="row mt-3">
             <form class="form-group col pt-3" method="get">
             <div class="pb-2">
-              <select class="form-control" name="qcategory">
-                       <option value="">{% trans "All Categories" %}</option>
-                                  {% for category in categories %}
-                                        {% if category.id|slugify == request.GET.qcategory %}
-                                                <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>
-                                        {% else %}
-                                                <option value="{{ category.id }}">{{ category.name }}</option>
-                                      {% endif %}
-                                  {% endfor %}
-              </select>
+
+                <select class="selectpicker form-control" data-style="btn-for-multidropdown" multiple name="qcategory" title="{% trans "All Categories" %}">
+                  {% for category in categories %}
+                        {% if category.id|slugify in selected %}
+                                <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>
+                        {% else %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                      {% endif %}
+                 {% endfor %}
+                </select>
+
+{#              <select class="form-control" name="qcategory">#}
+{#                       <option value="">{% trans "All Categories" %}</option>#}
+{#                                  {% for category in categories %}#}
+{#                                        {% if category.id|slugify == request.GET.qcategory %}#}
+{#                                                <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>#}
+{#                                        {% else %}#}
+{#                                                <option value="{{ category.id }}">{{ category.name }}</option>#}
+{#                                      {% endif %}#}
+{#                                  {% endfor %}#}
+{#              </select>#}
+
             </div>
             <div class="pb-2">
                 <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Find by Name, Art" %}" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" >
@@ -40,12 +56,6 @@
             </form>
 
         <div class="col-lg-9">
-{#            <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">#}
-{#                <div class="brand" style="font-size: 25px">#}
-{#                    <i class="material-icons card-body"#}
-{#                    style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{% trans 'Search' %}#}
-{#                </div>#}
-{#            </div>#}
             {% if items %}
             <div class="row d-flex justify-content-center pt-3 pl-3">
                 {% include 'product/card_items.html' %}
