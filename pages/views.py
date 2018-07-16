@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 
 from product.models import Category, Item
@@ -35,11 +36,9 @@ def search(request):
     queryset = Item.objects.exclude(status=0)
 
     if item_name:
-        queryset = queryset.filter(title__icontains=item_name)
+        queryset = queryset.filter(Q(title__icontains=item_name) | Q(sku=item_name))
     if category_id:
         queryset = queryset.filter(category=category_id)
-    if art:
-        queryset = queryset.filter(sku=art)
     if min_price:
         queryset = queryset.filter(price__gte=min_price)
     if max_price:

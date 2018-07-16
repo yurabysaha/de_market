@@ -20,8 +20,16 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
+
+from de_market.sitemap import ItemSitemap, StaticViewSitemap
 
 urlpatterns = []
+
+sitemaps = {
+    'item': ItemSitemap,
+    'static': StaticViewSitemap,
+}
 
 urlpatterns += i18n_patterns(
     path('', include('pages.urls')),
@@ -33,6 +41,8 @@ urlpatterns += i18n_patterns(
     path('order/', include('order.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
+path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+     name='django.contrib.sitemaps.views.sitemap')
 )
 
 urlpatterns += [

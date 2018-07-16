@@ -94,6 +94,10 @@ class Item(models.Model):
             return self.title_en
         return self.title
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('item-detail', args=[str(self.id)])
+
 
 class ItemPhoto(models.Model):
     item = models.ForeignKey(Item, related_name='photos', on_delete=models.CASCADE)

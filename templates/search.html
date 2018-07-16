@@ -28,11 +28,8 @@
               </select>
             </div>
             <div class="pb-2">
-                <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Find by Name" %}" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" >
+                <input class="form-control" id="searchbox" name="q" type="text" placeholder="{% trans "Find by Name, Art" %}" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}" >
             </div>
-                <div class="pb-2">
-                <input class="form-control" name="art" type="text" placeholder="{% trans "Find by Art" %}" value="{% if request.GET.art %}{{ request.GET.art }}{% endif %}" >
-                </div>
                 <div class="pb-2 d-flex justify-content-around">
                     <input class="form-control col-md-6" name="min" id="price_slider" type="number" placeholder="{% trans "Min Price" %}" value="{% if request.GET.min %}{{ request.GET.min }}{% endif %}" />
                     <input class="form-control col-md-6" name="max" id="price_slider" type="number" placeholder="{% trans "Max Price" %}" value="{% if request.GET.max %}{{ request.GET.max }}{% endif %}"/>
