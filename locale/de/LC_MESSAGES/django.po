@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-16 15:12+0000\n"
+"POT-Creation-Date: 2018-07-17 08:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -274,7 +274,7 @@ msgstr "Ähnliche Gegenstände"
 msgid "Discount"
 msgstr "Rabatt"
 
-#: templates/about_us.html:14 templates/base.html:53
+#: templates/about_us.html:14 templates/base.html:54
 msgid "About us"
 msgstr "Über uns"
 
@@ -382,32 +382,32 @@ msgid ""
 "a>."
 msgstr ""
 
-#: templates/base.html:56 templates/delivery.html:14
+#: templates/base.html:57 templates/delivery.html:14
 msgid "Payment/Delivery"
 msgstr "Zahlung/Lieferung"
 
-#: templates/base.html:59 templates/base.html:60 templates/base.html:61
-#: templates/search.html:11 templates/search.html:38
+#: templates/base.html:60 templates/base.html:61 templates/base.html:62
+#: templates/search.html:16 templates/search.html:54
 msgid "Search"
 msgstr "Suchen"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Wish List"
 msgstr "Wunschzettel"
 
-#: templates/base.html:111
+#: templates/base.html:112
 msgid "Open Cart"
 msgstr "Warenkorb öffnen"
 
-#: templates/base.html:143
+#: templates/base.html:144
 msgid "ABOUT US"
 msgstr "ÜBER UNS"
 
-#: templates/base.html:146
+#: templates/base.html:147
 msgid "PAYMENT/DELIVERY"
 msgstr "ZAHLUNG/LIEFERUNG"
 
-#: templates/base.html:155
+#: templates/base.html:156
 msgid "Art for all"
 msgstr "Kunst für alle"
 
@@ -447,27 +447,34 @@ msgstr "Lieferung innerhalb 2-5 Arbeitstage"
 msgid "Frequently asked questions"
 msgstr "Häufig gestellte Fragen"
 
-#: templates/home.html:16
+#: templates/home.html:5
+msgid ""
+"Buy painting, Original picture, Handmade paintings, Oil painting. Oil on "
+"canvas; Acrylic on canvas; decorate the interior; Bridal Paintings"
+msgstr ""
+"Gemälde kaufen, Originalbild, Handgemalte Gemälde, Ölgemälde. Öl auf Leinwand; Acryl auf Leinwand; dekoriere das Interieur; Braut Gemälde"
+
+#: templates/home.html:20
 msgid "Last added products"
 msgstr "Zuletzt hinzugefügte Produkte"
 
-#: templates/search.html:20
+#: templates/search.html:24
 msgid "All Categories"
 msgstr "Alle Kategorien"
 
-#: templates/search.html:31
+#: templates/search.html:47
 msgid "Find by Name, Art"
 msgstr "Suche nach Namen, Art"
 
-#: templates/search.html:34
+#: templates/search.html:50
 msgid "Min Price"
 msgstr "Min Preis"
 
-#: templates/search.html:35
+#: templates/search.html:51
 msgid "Max Price"
 msgstr "Max Preis"
 
-#: templates/search.html:55
+#: templates/search.html:65
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
