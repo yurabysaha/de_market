@@ -32,7 +32,7 @@ def search(request):
     category_id = request.GET.getlist('qcategory', None)
     min_price = request.GET.get('min', None)
     max_price = request.GET.get('max', None)
-    queryset = Item.objects.exclude(status=0)
+    queryset = Item.objects.exclude(status=0).prefetch_related(Prefetch('photos', queryset=ItemPhoto.objects.order_by('id')))
 
     if item_name:
         queryset = queryset.filter(Q(title__icontains=item_name) | Q(sku=item_name))
