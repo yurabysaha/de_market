@@ -1,13 +1,13 @@
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.shortcuts import render
 
-from product.models import Category, Item
+from product.models import Category, Item, ItemPhoto
 from product.utils import handle_pagination
 
 
 def home(request):
-    items = Item.objects.exclude(status=0)
-    categories = Category.objects.all()
+    items = Item.objects.exclude(status=0).prefetch_related(Prefetch('photos', queryset=ItemPhoto.objects.order_by('id')))
+    categories = Category.objects.all().prefetch_related('sub_category')
     return render(request, 'home.html', {'items': handle_pagination(request, items, 12), 'categories': categories})
 
 

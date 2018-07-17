@@ -43,7 +43,7 @@
 <div class="container-fluid bg-light">
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand p-0 m-0 pr-5" style="color: #6699FF" href="/"><img style="width: 130px; margin-top: -7px" src="{%  static 'images/kunst-logo.png'  %}"></a>
+        <a class="navbar-brand p-0 m-0 pr-5" style="color: #6699FF" href="/"><img style="width: 130px; margin-top: -7px" alt="Kunst-WD" src="{%  static 'images/kunst-logo.png'  %}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,12 +56,12 @@
                 <li class="nav-item ml-0">
                     <a class="nav-link" href="{% url 'delivery' %}">{% trans "Payment/Delivery" %}</a>
                 </li>
-
-               <form class="form-inline my-2 my-lg-0 ml-0" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
-                     <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
-                     <button class="btn btn-outline-success h-75 col pt-1 pb-1 mb-1 mt-1" type="submit">{% trans "Search" %}</button>
-               </form>
-
+                <li>
+                   <form class="form-inline my-2 my-lg-0 ml-0" id="searchform" aria-label="{% trans "Search" %}" action="{% url 'search' %}" method="get" accept-charset="utf-8">
+                         <input class="form-control mr-sm-2 h-75" id="searchbox" name="q" type="text" placeholder="{% trans "Search" %}">
+                         <button class="btn btn-outline-success h-75 col pt-1 pb-1 mb-1 mt-1" type="submit">{% trans "Search" %}</button>
+                   </form>
+                </li>
             </ul>
             <ul class="navbar-nav mr-auto">
                 <li class="btn-group">
@@ -140,12 +140,16 @@
                 <div class="col-md-4 col-lg-4 ml-auto text-center for_desktop_only">
 
                     <ul class="list-unstyled">
-                        <p>
+                        <li>
+                            <p>
                             <a href="{% url 'about_us' %}" class="text-dark">{% trans "ABOUT US" %}</a>
-                        </p>
-                        <p>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
                             <a href="{% url 'delivery' %}" class="text-dark">{% trans "PAYMENT/DELIVERY" %}</a>
-                        </p>
+                            </p>
+                        </li>
                     </ul>
                 </div>
                 <!--/.First column-->
