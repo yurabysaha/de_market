@@ -6,5 +6,5 @@ register = template.Library()
 def calculate_precent(item):
     """Сalculate precent for sale"""
 
-    return int(item.sale_price * 100 / item.price)
+    return int((item.price - item.sale_price) * 100 / item.price)
 
