@@ -1,4 +1,8 @@
 {% load i18n %}
+{% load static %}
+{% load precent %}
+
+<link rel="stylesheet" href="{% static 'css/for-ribbon.css' %}">
 
 <div class="card-columns">
     {% for i in items %}
@@ -12,6 +16,7 @@
                     <div class="d-flex justify-content-end pr-2 pt-0 mt-0">
                     {% if i.status != 2 %}
                         {% if i.sale_price %}
+                                    <div class="ribbon"><span>-{% calculate_precent i %} %</span></div>
                             <span class="font-weight-bold text-muted pr-3"><s> {{ i.price }} €</s></span>
                             <span class="font-weight-bold text-danger"> {{ i.sale_price }} €</span>
                         {% else %}
