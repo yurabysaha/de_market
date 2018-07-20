@@ -9,9 +9,12 @@
     <meta property="og:title" content="{{ item.title }}">
     <meta property="og:image" content="http://127.0.0.1:8000{{ item.photos.first.image.url }}">
     <meta property="og:url" content="{{ request.get_full_path }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 {% endblock %}
 
 {% block content %}
+        <link rel="stylesheet" href="{% static 'css/zoom-efect.css' %}" />
+
     <div class="row mb-2 col-sm-12 col-md-12 m-0 p-0">
         <div class="col-lg-6 col-sm-12 col-md-6 item-photo pr-5">
             <a href="{{ item.photos.first.image.url }}?image=250" data-toggle="lightbox" data-title="{{ item.title }}">
@@ -119,5 +122,35 @@
             </div>
         </div>
     {% endif %}
+
+{% endblock %}
+
+{% block for_scrips %}
+    {#   For zoom on image   #}
+    <script type="text/javascript" src="{% static "js/xzoom.min.js" %}"></script>
+
+    <script type="text/javascript">
+
+     $(document).ready(function () {
+            $('img.demo').xzoom({
+                position: 'right',
+                Xoffset: 50,
+                Yoffset: 5,
+                scroll: false,
+                defaultScale: 0.8
+
+            });
+        });
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+    <script>
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+    </script>
 
 {% endblock %}

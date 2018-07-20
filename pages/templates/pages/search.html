@@ -2,14 +2,19 @@
 {% load i18n %}
 {% load static %}
 
+{% block meta %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+{% endblock %}
+
 {% block content %}
 
-<style>
-.btn-for-multidropdown {
-    background-color: #ffffff;
-    border-color: #ced4da;
-}
-</style>
+    <style>
+    .btn-for-multidropdown {
+        background-color: #ffffff;
+        border-color: #ced4da;
+    }
+    </style>
+
     <div class="col-md-12 ml-0 pl-0 pr-0 ml-1 bg-light text-dark d-none d-sm-block">
         <div class="brand" style="font-size: 25px">
             <i class="material-icons card-body"
@@ -108,5 +113,8 @@
         </nav>
     </div>
 
+{% endblock %}
 
+{% block for_scrips %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 {% endblock %}

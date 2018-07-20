@@ -24,19 +24,11 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
         <meta name="og:type" content="website">
-    {% block meta %}
-    {% endblock meta %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    {% block meta %}
+    {% endblock meta %}
 </head>
 
 <body>
@@ -70,6 +62,7 @@
                 </li>
             </ul>
 
+{#   Change language block   #}
         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select name="language" onchange="this.form.submit();" class="custom-select">
@@ -130,10 +123,8 @@
     {% endblock content %}
 </div>
 
-
 <!--Footer-->
     <footer class="footer font-small bg-light lighten-3 pt-1 mt-3">
-        <!--Footer Links-->
         <div class="container text-center text-md-left">
             <div class="row">
                 <!--First column-->
@@ -194,121 +185,6 @@
 }
 </style>
 
-{# For zoom effect #}
-<style>
-#glass {
-    position: absolute;
-    border-radius: 50%;
-    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
-    display: none;
-    background-repeat: no-repeat;
-    background-color: rgba(0,0,0,.6);
-}
-    /* Compatibility styles for frameworks like bootstrap, foundation e.t.c */
-.xzoom-source img, .xzoom-preview img, .xzoom-lens img {
-  display: block;
-  max-width: none;
-  max-height: none;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-/* --------------- */
-
-/* xZoom Styles below */
-.xzoom-container {
-  display: inline-block;
-}
-
-.xzoom-thumbs {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.xzoom {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-}
-.xzoom2, .xzoom3, .xzoom4, .xzoom5 {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-}
-
-/* Thumbs */
-.xzoom-gallery, .xzoom-gallery2, .xzoom-gallery3, .xzoom-gallery4, .xzoom-gallery5 {
-  border: 1px solid #cecece;
-  margin-left: 5px;
-  margin-bottom: 10px;
-}
-
-.xzoom-source, .xzoom-hidden {
-  display: block;
-  position: static;
-  float: none;
-  clear: both;
-}
-
-/* Everything out of border is hidden */
-.xzoom-hidden {
-  overflow: hidden;
-}
-
-/* Preview */
-.xzoom-preview {
-  border: 1px solid #888;
-  background: #2f4f4f;
-  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);
-}
-
-/* Lens */
-.xzoom-lens {
-  border: 1px solid #555;
-  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);
-  cursor: crosshair;
-}
-
-/* Loading */
-.xzoom-loading {
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-radius: 100%;
-  opacity: .7;
-  background: url(/static/images/xloading.gif);
-  width: 48px;
-  height: 48px;
-}
-
-/* Additional class that applied to thumb when it is active */
-.xactive {
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(74,169,210,1);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(74,169,210,1);
-  box-shadow: 0px 0px 3px 0px rgba(74,169,210,1);
-  border: 1px solid #4aaad2;
-}
-
-/* Caption */
-.xzoom-caption {
-  position: absolute;
-  bottom: -43px;
-  left: 0;
-  background: #000;
-  width: 100%;
-  text-align: left;
-}
-
-.xzoom-caption span {
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: block;
-  font-size: 0.75em;
-  font-weight: bold;
-  padding: 10px;
-}
-</style>
-
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -319,13 +195,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
-{#<script src="{% static 'js/bootstrap-slider.min.js' %}"></script>#}
+{% block for_scrips %}{% endblock for_scrips %}
 
 <script>
-
     {#  For footer if page is small  #}
     $( window ).on( "load", function()  {
             if ($(document).height() <= $(window).height())
@@ -333,32 +206,5 @@
         });
 </script>
 
-
-<script>
-
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-</script>
-
-{#   For zoom on image   #}
-
-<script type="text/javascript" src="{% static "js/xzoom.min.js" %}"></script>
-
-<script type="text/javascript">
-
- $(document).ready(function () {
-        $('img.demo').xzoom({
-            position: 'right',
-            Xoffset: 50,
-            Yoffset: 5,
-            scroll: false,
-            defaultScale: 0.8
-
-        });
-    });
-
-</script>
 </body>
 </html>
