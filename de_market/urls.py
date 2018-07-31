@@ -22,13 +22,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
 
-from de_market.sitemap import ItemSitemap, StaticViewSitemap
+from de_market.sitemap import ItemSitemap, StaticViewSitemap, CategorySitemap
 
 urlpatterns = []
 
 sitemaps = {
     'item': ItemSitemap,
     'static': StaticViewSitemap,
+    'category': CategorySitemap,
 }
 
 urlpatterns += i18n_patterns(

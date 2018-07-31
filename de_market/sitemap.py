@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from product.models import Item
+from product.models import Item, Category
 
 
 class ItemSitemap(Sitemap):
@@ -11,6 +11,18 @@ class ItemSitemap(Sitemap):
 
     def items(self):
         return Item.objects.all()
+
+    def lastmod(self, obj):
+        return obj.updated_at
+
+
+class CategorySitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.5
+    i18n = True
+
+    def items(self):
+        return Category.objects.all()
 
     def lastmod(self, obj):
         return obj.updated_at

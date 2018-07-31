@@ -10,7 +10,7 @@ class CategoryManager(models.Manager):
 
     def get_queryset(self):
         locale = get_language()
-        return super().get_queryset().annotate(name=F('name_' + locale))
+        return super().get_queryset().annotate(name=F('name_' + locale), title=F('seo_' + locale))
 
 
 class ItemManager(models.Manager):
@@ -34,7 +34,10 @@ class Category(models.Model):
 
     name_en = models.CharField(max_length=255, verbose_name=_('Name on English'))
     name_de = models.CharField(max_length=255, verbose_name=_('Name on German'))
+    seo_en = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on English'))
+    seo_de = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on German'))
     parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name=_('Parent Category'))
+    updated_at = models.DateTimeField(auto_now=True)
 
     objects = CategoryManager()
 
@@ -43,6 +46,10 @@ class Category(models.Model):
             locale = get_language()
             return eval('self.name_' + locale)
         return self.name
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('category_detail', args=[str(self.id)])
 
 
 class Painter(models.Model):
