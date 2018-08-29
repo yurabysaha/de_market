@@ -8,7 +8,8 @@
     {% for i in items %}
         <div class="card" style="max-width: 300px; border:none">
             <a href="{% url 'item-detail' i.id %}" class="text-dark" style="text-decoration: none">
-                <img class="card-img-top shadow-lg mb-3" src="{{ i.photos.first.image.url }}" alt="Card image cap">
+{#                <img class="card-img-top shadow-lg mb-3" src="{{ i.photos.first.image.url }}" alt="Card image cap">#}
+                <img class="card-img-top shadow-lg mb-3" src="https://oa8mix1pya.execute-api.eu-central-1.amazonaws.com/production/{{ i.photos.first.image.name }}?width=300" alt="Card image cap">
                 <div class="pb-2" style="font-family: 'Monotype Corsiva'; font-style: oblique;">
                     <h5 class="m-0 p-0">{{ i.title }}</h5></a>
 
