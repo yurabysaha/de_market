@@ -10,14 +10,16 @@ class CategoryManager(models.Manager):
 
     def get_queryset(self):
         locale = get_language()
-        return super().get_queryset().annotate(name=F('name_' + locale), title=F('seo_' + locale))
+        return super().get_queryset().annotate(name=F('name_' + locale),
+                                               title=F('seo_' + locale),
+                                               artist_desc=F('artist_desc_' + locale))
 
 
 class ItemManager(models.Manager):
 
     def get_queryset(self):
         locale = get_language()
-        return super().get_queryset().annotate(title=F('title_' + locale), description=F('description_' + locale))
+        return super().get_queryset().annotate(title=F('title_' + str(locale)), description=F('description_' + str(locale)))
 
 
 class PainterManager(models.Manager):
@@ -34,6 +36,9 @@ class Category(models.Model):
 
     name_en = models.CharField(max_length=255, verbose_name=_('Name on English'))
     name_de = models.CharField(max_length=255, verbose_name=_('Name on German'))
+    artist_photo = models.ImageField(upload_to='artist-photos', verbose_name=_('Painters photo'), null=True, blank=True)
+    artist_desc_en = models.TextField(null=True, blank=True, verbose_name=_('Description for Artist on English'))
+    artist_desc_de = models.TextField(null=True, blank=True, verbose_name=_('Description for Artist on German'))
     seo_en = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on English'))
     seo_de = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on German'))
     parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name=_('Parent Category'))

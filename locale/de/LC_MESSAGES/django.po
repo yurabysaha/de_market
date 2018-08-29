@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 14:56+0000\n"
+"POT-Creation-Date: 2018-08-28 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgid "Product Name"
 msgstr "Produktname"
 
 #: cart/templates/cart/cart.html:24 order/templates/order/confirm_order.html:25
-#: order/templates/order/order.html:25 product/models.py:89
+#: order/templates/order/order.html:25 product/models.py:94
 #: wishlist/templates/wishlist/wishlist.html:15
 msgid "Price"
 msgstr "Preis"
@@ -241,96 +241,108 @@ msgstr "Keine Ergebnisse"
 msgid "Product Management"
 msgstr "Produktmanagement"
 
-#: product/models.py:32
+#: product/models.py:34
 msgid "Category"
 msgstr "Kategorien"
 
-#: product/models.py:33 templates/category_dropdown.html:5
+#: product/models.py:35 templates/category_dropdown.html:5
 #: templates/collapse_category_dropdown.html:5
 msgid "Categories"
 msgstr "Kategorien"
 
-#: product/models.py:35 product/models.py:84
+#: product/models.py:37 product/models.py:89
 msgid "Name on English"
 msgstr "Englisch"
 
-#: product/models.py:36 product/models.py:85
+#: product/models.py:38 product/models.py:90
 msgid "Name on German"
 msgstr "Deutsche"
 
-#: product/models.py:37
+#: product/models.py:39
+msgid "Painters photo"
+msgstr "Maler Foto"
+
+#: product/models.py:40
+msgid "Description for Artist on English"
+msgstr "Beschreibung für Maler auf English"
+
+#: product/models.py:41
+msgid "Description for Artist on German"
+msgstr "Beschreibung für Maler auf Deutsch"
+
+#: product/models.py:42
 msgid "Title for SEO on English"
 msgstr "Titel für SEO auf Englisch"
 
-#: product/models.py:38
+#: product/models.py:43
 msgid "Title for SEO on German"
 msgstr "Titel für SEO auf Deutsch"
 
-#: product/models.py:39
+#: product/models.py:44
 msgid "Parent Category"
 msgstr "Eltern-Kategorie"
 
-#: product/models.py:57
+#: product/models.py:62
 msgid "Painter"
 msgstr "Maler"
 
-#: product/models.py:58
+#: product/models.py:63
 msgid "Painters"
 msgstr "Maler"
 
-#: product/models.py:60
+#: product/models.py:65
 msgid "Painter name"
 msgstr "Autorenname"
 
-#: product/models.py:61
+#: product/models.py:66
 msgid "Picture on English"
 msgstr "Bild auf Englisch"
 
-#: product/models.py:62
+#: product/models.py:67
 msgid "Picture on German"
 msgstr "Bild auf Deutsch"
 
-#: product/models.py:74
+#: product/models.py:79
 msgid "Item"
 msgstr "Artikel"
 
-#: product/models.py:75
+#: product/models.py:80
 msgid "Items"
 msgstr "Artikel"
 
-#: product/models.py:79
+#: product/models.py:84
 msgid "Not Published"
 msgstr "Nicht veröffentlicht"
 
-#: product/models.py:80
+#: product/models.py:85
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: product/models.py:81 product/templates/product/card_items.html:27
+#: product/models.py:86 product/templates/product/card_items.html:27
 msgid "Sold"
 msgstr "Verkauft"
 
-#: product/models.py:83
+#: product/models.py:88
 msgid "SKU"
 msgstr "SKU"
 
-#: product/models.py:86
+#: product/models.py:91
 msgid "Description on English"
 msgstr "Beschreibung auf Englisch"
 
-#: product/models.py:87
+#: product/models.py:92
 msgid "Description on German"
 msgstr "Beschreibung auf Deutsch"
 
-#: product/models.py:88
+#: product/models.py:93
 msgid "Size"
 msgstr "Größe"
 
-#: product/models.py:90
+#: product/models.py:95
 msgid "Sale Price"
 msgstr "Verkaufspreis"
 
-#: product/models.py:92
+#: product/models.py:97
 msgid "Author"
 msgstr "Autorenname"
 

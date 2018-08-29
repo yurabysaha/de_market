@@ -23,7 +23,12 @@
                     style="font-size: 30px; color: #6699FF; position: relative; top: 5px; left: 5px">label_important</i>{{ cat.name }}
                 </div>
             </div>
+            {% if cat.artist_photo and cat.artist_desc %}
             <div class="row d-flex justify-content-center pt-3 pl-3">
+                {% include 'product/painter_info.html' %}
+            </div>
+            {% endif %}
+            <div class="row d-flex justify-content-center pt-4 pl-3">
                 {% include 'product/card_items.html' %}
             </div>
         </div>
