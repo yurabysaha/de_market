@@ -12,6 +12,7 @@ class CategoryManager(models.Manager):
         locale = get_language()
         return super().get_queryset().annotate(name=F('name_' + locale),
                                                title=F('seo_' + locale),
+                                               seo_desc=F('seo_desc_' + locale),
                                                artist_desc=F('artist_desc_' + locale))
 
 
@@ -41,6 +42,8 @@ class Category(models.Model):
     artist_desc_de = models.TextField(null=True, blank=True, verbose_name=_('Description for Artist on German'))
     seo_en = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on English'))
     seo_de = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title for SEO on German'))
+    seo_desc_en = models.TextField(null=True, blank=True, verbose_name=_('Description for SEO on English'))
+    seo_desc_de = models.TextField(null=True, blank=True, verbose_name=_('Description for SEO on German'))
     parent = models.ForeignKey("Category", null=True, blank=True, on_delete=models.CASCADE, related_name='sub_category', verbose_name=_('Parent Category'))
     updated_at = models.DateTimeField(auto_now=True)
 
